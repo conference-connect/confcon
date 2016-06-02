@@ -8,6 +8,7 @@ Attendees need a way to
 - navigate the conference events and plan their agenda
 - network with each other
 - get related information about restaurant and activity recommendations, travel and lodging tips, etc
+
 Organizers need
 - attendees get the most value out of the conference
 - a single online location to direct attendees to for conference chatting
