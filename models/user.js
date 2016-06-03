@@ -11,7 +11,27 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  roles: [String]
+  email: {
+    type:String
+  },
+  roles: {
+    type:[String]
+  },
+  agenda:{
+    type:[Schema.Talk.ObjectId]
+  },
+  profile_description:{
+    type: String
+  },
+  profile_image:{
+    tyope: Buffer
+  },
+  profile_website:{
+    type: String
+  },
+  profile_twitter_username:{
+    type:String
+  }
 });
 
 userSchema.methods.generateHash = function(password) {
