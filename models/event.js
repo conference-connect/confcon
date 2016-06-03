@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const talkSchema = new Schema({
+const eventSchema = new Schema({
   title: {
     type: String,
     required: true
@@ -27,4 +27,4 @@ const talkSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Talk', talkSchema);
+module.exports = mongoose.model('Event', eventSchema);

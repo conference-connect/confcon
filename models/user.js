@@ -18,7 +18,7 @@ const userSchema = new Schema({
     type:[String]
   },
   agenda:{
-    type:[Schema.Talk.ObjectId]
+    type:[Schema.Event.ObjectId]
   },
   profile_description:{
     type: String

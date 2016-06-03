@@ -13,9 +13,9 @@ const postSchema = new Schema({
   topics:{
     type: [Schema.Topic.objectId]
   },
-  talk: {
-    type: Schema.Talk.objectId
-  }, 
+  event: {
+    type: Schema.Event.objectId
+  },
   link: {
     type: String
   },
