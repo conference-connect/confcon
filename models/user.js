@@ -24,7 +24,7 @@ const userSchema = new Schema({
     type: String
   },
   profile_image:{
-    tyope: Buffer
+    type: Buffer
   },
   profile_website:{
     type: String
