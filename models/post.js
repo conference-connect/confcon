@@ -24,6 +24,9 @@ const postSchema = new Schema({
   },
   image: {
     type: Buffer
+  },
+  edit_history: {
+    type: [Date]
   }
 
 }, {

@@ -49,12 +49,12 @@ __Outputs:__
 
 - id
 - body  *--the full text of the post*
-- creation_date  *--timestamp of creation date*
 - user  *--name of poster*
 - topics  *--all associated topics*
 - event  *--name of associated event*
 - link  *--HTTP link associated with post*
-- edited  *--indicates that the post has been edited by its creator*
+- edit_history  *--array of datetimes of edits, an empty array if has never been edited*
+- creation_date  *--timestamp of creation date*
 
 ___
 
@@ -79,6 +79,7 @@ __Outputs:__
 - topic_ids
 - event_id
 - link
+- edit_history
 - creation_date
 
 ___
@@ -100,6 +101,7 @@ __Outputs:__
 - topic_ids
 - event_id
 - link
+- edit_history
 - creation_date
 - modification_date
 
@@ -108,7 +110,7 @@ ___
 ####UPDATE POST  
 __URL:__ /api/post  
 __Method:__ PATCH  
-__Description:__ Updates the details of a message board post, returns updated post details. Whatever optional inputs are provided are the fields that will be updated. Fields that are not updated are left with their original values.   
+__Description:__ Updates the details of a message board post, returns updated post details. Whatever optional inputs are provided are the fields that will be updated. Fields that are not updated are left with their original values. It will automatically add a new entry to the edit_history array with a new timestamp.   
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee that created the post*     
 __Inputs:__  
 
@@ -126,6 +128,7 @@ __Outputs:__
 - topic_ids
 - event_id
 - link
+- edit_history
 - creation_date
 
 ___
@@ -178,6 +181,7 @@ __Inputs:__
 - username
 - password  *--The password is hashed and encrypted before saved to database.*
 - email (OPTIONAL)
+- email_hidden (OPTIONAL)  *--default is true*
 - roles (OPTIONAL)  
 - organization (OPTIONAL)
 - agenda (OPTIONAL)  *--an array of Event ids*
@@ -185,6 +189,7 @@ __Inputs:__
 - profile_image (OPTIONAL)
 - profile_website (OPTIONAL)
 - profile\_twitter\_username (OPTIONAL)
+- profile\_twitter\_hidden (OPTIONAL)  *--default is true*
 
 __Outputs:__  
 
@@ -192,12 +197,14 @@ __Outputs:__
 - username
 - organization
 - email
+- email_hidden
 - roles
 - agenda
 - profile_description
 - profile_image
 - profile_website
 - profile\_twitter\_username
+- profile\_twitter\_hidden
 
 ___
 
@@ -216,12 +223,14 @@ __Outputs:__
 - username
 - organization
 - email
+- email_hidden
 - roles
 - agenda
 - profile_description
 - profile_image
 - profile_website
 - profile\_twitter\_username
+- profile\_twitter\_hidden
 
 ____
 
@@ -236,6 +245,7 @@ __Inputs:__
 - username (OPTIONAL)
 - password (OPTIONAL)  *--The password is hashed and encrypted before saved to database.*
 - email (OPTIONAL)
+- email_hidden (OPTIONAL)  *--default is true*
 - roles (OPTIONAL)  
 - organization (OPTIONAL)
 - agenda (OPTIONAL)  *--an array of Event ids*
@@ -243,6 +253,7 @@ __Inputs:__
 - profile_image (OPTIONAL)
 - profile_website (OPTIONAL)
 - profile\_twitter\_username (OPTIONAL)
+- profile\_twitter\_hidden (OPTIONAL)  *--default is true*
 
 __Outputs:__  
 
@@ -250,12 +261,14 @@ __Outputs:__
 - username
 - organization
 - email
+- email_hidden
 - roles
 - agenda
 - profile_description
 - profile_image
 - profile_website
 - profile\_twitter\_username
+- profile\_twitter\_hidden
 
 ___
 

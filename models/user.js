@@ -14,8 +14,15 @@ const userSchema = new Schema({
   email: {
     type:String
   },
+  email_hidden: {
+    type: Boolean,
+    default: true
+  },
   roles: {
     type:[String]
+  },
+  organization: {
+    type:String
   },
   agenda:{
     type:[Schema.Types.ObjectId],
@@ -32,6 +39,10 @@ const userSchema = new Schema({
   },
   profile_twitter_username:{
     type:String
+  },
+  profile_twitter_hidden:{
+    type: Boolean,
+    default: true
   }
 });
 
