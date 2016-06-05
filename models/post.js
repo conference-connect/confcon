@@ -7,14 +7,17 @@ const postSchema = new Schema({
     required: true
   },
   user: {
-    user: Schema.User.objectId,
+    user: Schema.Types.objectId,
+    ref: 'User',
     required: true
   },
   topics:{
-    type: [Schema.Topic.objectId]
+    type: [Schema.Types.objectId],
+    ref: 'Topic'
   },
   event: {
-    type: Schema.Event.objectId
+    type: Schema.Types.objectId,
+    ref: 'Event'
   },
   link: {
     type: String

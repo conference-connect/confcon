@@ -14,7 +14,8 @@ const eventSchema = new Schema({
     required: true
   },
   topics: {
-    type: [Schema.Topic.ObjectId]
+    type: [Schema.Types.ObjectId],
+    ref: 'Topic'
   },
   maxAttendance: {
     type: Number

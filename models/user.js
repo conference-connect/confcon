@@ -18,7 +18,8 @@ const userSchema = new Schema({
     type:[String]
   },
   agenda:{
-    type:[Schema.Event.ObjectId]
+    type:[Schema.Types.ObjectId],
+    ref: 'Event'
   },
   profile_description:{
     type: String
