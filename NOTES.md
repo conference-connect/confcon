@@ -18,7 +18,7 @@ Organizers need
 Scheduling is a huge problem (but not in our MVP)
 
 
-<<<<<<< HEAD
+
 ## Proposed Solution (summary)
 
 
