@@ -28,6 +28,7 @@
 [DELETE EVENT](#deleteevent)  
 [UPDATE EVENT](#updateevent)  
 
+[VIEW TOPIC](#viewtopic)
 [CREATE TOPIC](#createtopic)  
 [DELETE TOPIC](#deletetopic)   
 [UPDATE TOPIC](#updatetopic)  
@@ -39,7 +40,7 @@ ___
 <a name="signup"></a>  
 #### SIGN UP  
 __URL:__ /api/signup  
-__Method:__ GET  
+__Method:__ POST
 __Description:__ Creates a new user and returns a token. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
 __Authorized roles:__ N/A  
 __Inputs:__
@@ -60,7 +61,7 @@ ___
 <a name="signin"></a>  
 #### SIGN IN
 __URL:__ /api/signin  
-__Method:__ GET  
+__Method:__ POST  
 __Description:__ If the login returns a successful authentication, a token is returned. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
 __Authorized roles:__ N/A  
 __Inputs:__
@@ -414,7 +415,7 @@ __Outputs:__
 ___
 
 <a name="vieweventdetail"></a>  
-#### VIEW EVENT DETAIL
+#### VIEW EVENT DETAIL  
 __URL:__ /api/event  
 __Method:__ GET  
 __Description:__ Returns all detailed information for a given event.  
@@ -437,7 +438,7 @@ __Outputs:__
 ___
 
 <a name="createevent"></a>  
-#### CREATE EVENT
+#### CREATE EVENT  
 __URL:__ /api/event  
 __Method:__ POST  
 __Description:__ Creates a new event. Returns event details including the id.    
@@ -516,6 +517,24 @@ __Outputs:__
 - current_attendance
 - location
 
+___
+
+<a name="viewtopic"></a>
+#### CREATE TOPIC  
+__URL:__ /api/topic  
+__Method:__ GET  
+__Description:__ Returns available topics.  
+__Authorized roles:__ admin *--token of user making the request must be an admin role*  
+__Inputs:__  
+
+- title
+- color (OPTIONAL)
+
+__Outputs:__
+
+- id
+- title
+- color
 ___
 
 <a name="createtopic"></a>  
