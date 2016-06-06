@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user');
 const ensureRole = require('../lib/ensureRole');
+const bodyParser = require('body-parser').json();
 
 router
   .post('/:userId/roles/:role', ensureRole('admin'), (req, res, next) => {
@@ -34,7 +35,14 @@ router
   })
   .get('/:id', (req, res, next) =>{
     User.findById(req.params.id)
-    .then(result => res.json(result))
+    .then(result => {
+      const publicUser = result;
+      if(result.email_hidden){
+        publicUser.email = 'Email not available';
+      }
+      return publicUser;
+    })
+    .then(publicUser => res.json(publicUser))
     .catch(err => {
       next({
         code: 400,
@@ -42,6 +50,19 @@ router
         error: err
       });
     });
+  })
+  .patch('/:id', bodyParser, (req, res, next) => {
+    console.log('whoa');
+    if (req.params.id) {
+      User.findById(req.params.id)
+        .then(result => {
+          if (result) {
+            new User(Object.assign(result, req.body)).save()
+              .then(result => res.json(result))
+              .catch(err => next(err));
+          }
+        });
+    }
   })
   .delete('/:id', ensureRole('admin'), (req, res, next) => {
     User.findByIdAndRemove(req.params.id)
