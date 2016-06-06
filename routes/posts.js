@@ -17,7 +17,7 @@ router
           delete r.author.password;
           if (req.user.roles.indexOf('admin') === -1) {
             if (r.author.email_hidden) delete r.author.email;
-            if (r.author.profile_twitter_hidden) delete r.author.twitter_username;
+            if (r.author.profile_twitter_hidden) delete r.author.profile_twitter_username;
           }
           delete r.author.email_hidden;
           delete r.author.profile_twitter_hidden;
