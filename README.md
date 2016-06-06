@@ -2,42 +2,42 @@
 
 ##Things you can do with the REST API
 
-SIGN UP  
-SIGN IN  
+[SIGN UP](#signup)  
+[SIGN IN](#signin)  
 
 *The following endpoints require a valid token, provided with sign up or sign in*
 
-VIEW POSTS  
-CREATE POST  
-DELETE POST  
-UPDATE POST  
+[VIEW POSTS](#viewposts)  
+[CREATE POST](#createpost)  
+[DELETE POST](#deletepost)  
+[UPDATE POST](#updatepost)  
 
-VIEW USERS  
-VIEW USER DETAIL  
-CREATE USER  
-DELETE USER  
-UPDATE USER  
+[VIEW USERS](#viewusers)  
+[VIEW USER DETAIL](#viewuserdetail)  
+[CREATE USER](#createuser)  
+[DELETE USER](#deleteuser)  
+[UPDATE USER](#updateuser)  
 
-VIEW AGENDA  
-ADD AGENDA ITEM  
-DELETE AGENDA ITEM  
+[VIEW AGENDA](#viewagenda)  
+[ADD AGENDA ITEM](#addagendaitem)  
+[DELETE AGENDA ITEM](#deleteagendaitem)  
 
-VIEW EVENTS  
-VIEW EVENT DETAIL  
-CREATE EVENT  
-DELETE EVENT  
-UPDATE EVENT  
+[VIEW EVENTS](#viewevents)  
+[VIEW EVENT DETAIL](#vieweventdetail)  
+[CREATE EVENT](#createevent)  
+[DELETE EVENT](#deleteevent)  
+[UPDATE EVENT](#updateevent)  
 
-CREATE TOPIC  
-DELETE TOPIC   
-UPDATE TOPIC  
+[CREATE TOPIC](#createtopic)  
+[DELETE TOPIC](#deletetopic)   
+[UPDATE TOPIC](#updatetopic)  
 
-UPDATE CONFIG  
+[UPDATE CONFIG](#updateconfig)  
 
 ___
 
-
-####SIGN UP
+<a name="signup"></a>  
+####SIGN UP  
 __URL:__ /api/signup  
 __Method:__ GET  
 __Description:__ Creates a new user and returns a token. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
@@ -57,6 +57,7 @@ __Outputs:__
 
 ___
 
+<a name="signin"></a>  
 ####SIGN IN
 __URL:__ /api/signin  
 __Method:__ GET  
@@ -75,6 +76,7 @@ ___
 
 *The following endpoints require a valid token, provided with sign up or sign in*  
 
+<a name="viewposts"></a>  
 ####VIEW POSTS
 __URL:__ /api/postlist  
 __Method:__ GET  
@@ -100,6 +102,7 @@ __Outputs:__
 
 ___
 
+<a name="createpost"></a>  
 ####CREATE POST  
 __URL:__ /api/post  
 __Method:__ POST  
@@ -126,6 +129,7 @@ __Outputs:__
 
 ___
 
+<a name="deletepost"></a>  
 ####DELETE POST  
 __URL:__ /api/post  
 __Method:__ DELETE  
@@ -149,6 +153,7 @@ __Outputs:__
 
 ___
 
+<a name="updatepost"></a>  
 ####UPDATE POST  
 __URL:__ /api/post  
 __Method:__ PATCH  
@@ -175,6 +180,7 @@ __Outputs:__
 
 ___
 
+<a name="viewusers"></a>  
 ####VIEW USERS  
 __URL:__ /api/userlist  
 __Method:__ GET  
@@ -189,6 +195,7 @@ __Outputs:__
 
 ___
 
+<a name="viewuserdetail"></a>  
 ####VIEW USER DETAIL
 __URL:__ /api/user  
 __Method:__ GET  
@@ -213,6 +220,7 @@ __Outputs:__
 
 ___
 
+<a name="createuser"></a>  
 ####CREATE USER
 __URL:__ /api/user  
 __Method:__ POST    
@@ -250,6 +258,7 @@ __Outputs:__
 
 ___
 
+<a name="deleteuser"></a>  
 ####DELETE USER
 __URL:__ /api/user  
 __Method:__ DELETE  
@@ -276,6 +285,7 @@ __Outputs:__
 
 ____
 
+<a name="updateuser"></a>  
 ####UPDATE USER
 __URL:__ /api/user  
 __Method:__ PATCH      
@@ -314,6 +324,7 @@ __Outputs:__
 
 ___
 
+<a name="viewagenda"></a>  
 ####VIEW AGENDA
 __URL:__ /api/agenda  
 __Method:__ GET  
@@ -336,6 +347,7 @@ __Outputs:__
 
 ___
 
+<a name="addagendaitem"></a>  
 ####ADD AGENDA ITEM
 __URL:__ /api/agenda  
 __Method:__ PATCH  
@@ -359,6 +371,7 @@ __Outputs:__
 
 ___
 
+<a name="deleteagendaitem"></a>  
 ####DELETE AGENDA ITEM
 __URL:__ /api/agenda  
 __Method:__ DELETE    
@@ -382,6 +395,7 @@ __Outputs:__
 
 ____
 
+<a name="viewevents"></a>  
 ####VIEW EVENTS
 __URL:__ /api/eventlist  
 __Method:__ GET  
@@ -399,6 +413,7 @@ __Outputs:__
 
 ___
 
+<a name="vieweventdetail"></a>  
 ####VIEW EVENT DETAIL
 __URL:__ /api/event  
 __Method:__ GET  
@@ -421,6 +436,7 @@ __Outputs:__
 
 ___
 
+<a name="createevent"></a>  
 ####CREATE EVENT
 __URL:__ /api/event  
 __Method:__ POST  
@@ -449,6 +465,7 @@ __Outputs:__
 
 ___
 
+<a name="deleteevent"></a>  
 ####DELETE EVENT
 __URL:__ /api/event  
 __Method:__ DELETE   
@@ -471,6 +488,7 @@ __Outputs:__
 
 ___
 
+<a name="updateevent"></a>  
 ####UPDATE EVENT
 __URL:__ /api/event  
 __Method:__ PATCH  
@@ -500,6 +518,7 @@ __Outputs:__
 
 ___
 
+<a name="createtopic"></a>  
 ####CREATE TOPIC
 __URL:__ /api/topic  
 __Method:__ POST  
@@ -518,6 +537,7 @@ __Outputs:__
 
 ___
 
+<a name="deletetopic"></a>  
 ####DELETE TOPIC
 __URL:__ /api/topic  
 __Method:__ DELETE  
@@ -535,6 +555,7 @@ __Outputs:__
 
 ___
 
+<a name="updatetopic"></a>  
 ####UPDATE TOPIC
 __URL:__ /api/topic  
 __Method:__ PATCH  
@@ -554,6 +575,7 @@ __Outputs:__
 
 ___
 
+<a name="updateconfig"></a>  
 ####UPDATE CONFIG
 __URL:__ /api/config  
 __Method:__ PATCH  
