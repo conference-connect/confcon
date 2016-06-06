@@ -18,28 +18,6 @@ Organizers need
 Scheduling is a huge problem (but not in our MVP)
 
 
-<<<<<<< HEAD
-##Proposed Solution (summary)
-
-
-##Scope (features list)
-
-
-##Milestones
-Up until first alpha release and date
-
-
-##Schedule
-- 3-Fri:
-- 6-Mon:
-- 7-Tues:
-- 8-Wed:
-- 9-Thur:
-- 10-Fri:
-
-DG:
-foreach results if isUser(token) editable = true
-=======
 ##Strategy
 1. Create a chat-style message board in which conference attendees' posts appear in a single location but are easily filtered by topics of interest.
 ###Operations
