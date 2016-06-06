@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const User = require('../models/user');
+const ensureRole = require('../lib/ensureRole');
 
 router
-  .post('/:userId/roles/:role', (req, res, next) => {
+  .post('/:userId/roles/:role', ensureRole('admin'), (req, res, next) => {
     User.findById(req.params.userId)
       .then( user => {
         if (!user) {
@@ -31,12 +32,23 @@ router
         });
       });
   })
-  .delete('/:id', (req, res, next) => {
+  .get('/:id', (req, res, next) =>{
+    User.findById(req.params.id)
+    .then(result => res.json(result))
+    .catch(err => {
+      next({
+        code: 400,
+        msg: 'user not found',
+        error: err
+      });
+    });
+  })
+  .delete('/:id', ensureRole('admin'), (req, res, next) => {
     User.findByIdAndRemove(req.params.id)
     .then(result => res.json(result))
     .catch(err => {
       next({
-        code: 500, 
+        code: 500,
         msg: 'unable to delete user',
         error: err
       });
