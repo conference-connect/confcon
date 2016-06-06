@@ -43,7 +43,6 @@ router
     const username = req.body.username;
     const password = req.body.password;
     delete req.body;
-
     User.findOne({username})
       .then(user => {
         if (!user || !user.compareHash(password)) {
@@ -52,7 +51,10 @@ router
 
         return token.sign(user);
       })
-      .then(token => res.json({token}))
+      .then(token => {
+        console.log('got here');
+        res.json({token});
+      })
       .catch(next);
   });
 

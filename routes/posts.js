@@ -2,13 +2,15 @@ const router = require('express').Router();
 const bodyParser = require('body-parser').json();
 const Post = require('../models/post');
 // const token = require('../lib/token');
+const isAuth = require('../lib/ensureAuth');
 
 router
-  .get('/list', bodyParser, (req, res, next) => {
+  .get('/list', bodyParser, isAuth, (req, res, next) => {
+    console.log(req.user);
     const query = req.query.type;
     Post.find(query)
       .select('body author topics event link image')
-      .populate('author topics event')
+      .populate('author', '{username: , email}')
       .lean()
       .then(results => res.json(results))
       .catch(err => next(err));

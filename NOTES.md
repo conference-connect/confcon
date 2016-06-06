@@ -34,3 +34,6 @@ Up until first alpha release and date
 - 8-Wed:
 - 9-Thur:
 - 10-Fri:
+
+DG:
+foreach results if isUser(token) editable = true
