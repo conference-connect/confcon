@@ -13,7 +13,7 @@ describe('End-to-End REST API test', () => {
   var request;
 
   before( done => {
-    request = chai.request(app.listen(process.env.PORT || 9000));
+    request = chai.request(app);
     done();
   });
 
