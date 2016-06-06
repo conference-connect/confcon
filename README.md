@@ -2,6 +2,11 @@
 
 ##Things you can do with the REST API
 
+SIGN UP  
+SIGN IN  
+
+*The following endpoints require a valid token, provided with sign up or sign in*
+
 VIEW POSTS  
 CREATE POST  
 DELETE POST  
@@ -23,15 +28,52 @@ CREATE EVENT
 DELETE EVENT  
 UPDATE EVENT  
 
-CREATE TOPIC
+CREATE TOPIC  
 DELETE TOPIC   
 UPDATE TOPIC  
 
-TODO: Add update to site config record    
-TODO: Add sign-in as an authenticated user  
+UPDATE CONFIG  
 
 ___
 
+
+####SIGN UP
+__URL:__ /api/signup  
+__Method:__ GET  
+__Description:__ Creates a new user and returns a token. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
+__Authorized roles:__ N/A  
+__Inputs:__
+
+- username  *--the username must be unique. an error will be returned if the username if found in the database.*
+- password  *--The password is encrypted before saved to database.*
+- email (OPTIONAL)
+- organization (OPTIONAL)
+- roles (OPTIONAL)  *--an admin role can only be assigned with the CREATE USER or UPDATE USER end points*
+- profile_twitter_username
+
+__Outputs:__
+
+- token
+
+___
+
+####SIGN IN
+__URL:__ /api/signin  
+__Method:__ GET  
+__Description:__ If the login returns a successful authentication, a token is returned. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
+__Authorized roles:__ N/A  
+__Inputs:__
+
+- username  
+- password  *--The password is encrypted before saved to database.*
+
+__Outputs:__
+
+- token
+
+___
+
+*The following endpoints require a valid token, provided with sign up or sign in*  
 
 ####VIEW POSTS
 __URL:__ /api/postlist  
@@ -179,7 +221,7 @@ __Authorized roles:__ admin  *--token of user making the request must be an admi
 __Inputs:__   
 
 - username
-- password  *--The password is hashed and encrypted before saved to database.*
+- password  *--The password is encrypted before saved to database.*
 - email (OPTIONAL)
 - email_hidden (OPTIONAL)  *--default is true*
 - roles (OPTIONAL)  
@@ -243,7 +285,7 @@ __Inputs:__
 
 - id
 - username (OPTIONAL)
-- password (OPTIONAL)  *--The password is hashed and encrypted before saved to database.*
+- password (OPTIONAL)  *--The password is encrypted before saved to database.*
 - email (OPTIONAL)
 - email_hidden (OPTIONAL)  *--default is true*
 - roles (OPTIONAL)  
@@ -509,3 +551,34 @@ __Outputs:__
 - id
 - title
 - color
+
+___
+
+####UPDATE CONFIG
+__URL:__ /api/config  
+__Method:__ PATCH  
+__Description:__ Updates the conference site configuration details. Any fields submitted will be overwritten with the new info. Returns the updated Config.  
+__Authorized roles:__ admin  
+__Inputs:__
+
+- name (OPTIONAL)
+- year (OPTIONAL)
+- city (OPTIONAL)
+- description (OPTIONAL)
+- contact_email (OPTIONAL)
+- contact_phone (OPTIONAL)
+- contact_address (OPTIONAL)
+- posts\_are\_public (OPTIONAL)
+
+__Outputs:__
+
+- name
+- year
+- city
+- description
+- contact_email
+- contact_phone
+- contact_address
+- posts\_are\_public
+
+___
