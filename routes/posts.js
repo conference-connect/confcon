@@ -7,7 +7,8 @@ router
   .get('/list', bodyParser, (req, res, next) => {
     const query = req.query.type;
     Post.find(query)
-      .select('body user Posts event link image')
+      .select('body author topics event link image')
+      .populate('author topics event')
       .lean()
       .then(results => res.json(results))
       .catch(err => next(err));

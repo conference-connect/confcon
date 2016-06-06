@@ -6,18 +6,10 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
-  user: {
-    user: Schema.Types.objectId,
+  author: {
+    type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  },
-  topics:{
-    type: [Schema.Types.objectId],
-    ref: 'Topic'
-  },
-  event: {
-    type: Schema.Types.objectId,
-    ref: 'Event'
   },
   link: {
     type: String
@@ -25,10 +17,17 @@ const postSchema = new Schema({
   image: {
     type: Buffer
   },
+  topics: {
+    type: Schema.Types.ObjectId,
+    ref: 'Topic'
+  },
+  event: {
+    type: Schema.Types.ObjectId,
+    ref: 'Event'
+  },
   edit_history: {
     type: [Date]
   }
-
 }, {
   timestamps: true
 });
