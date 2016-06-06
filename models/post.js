@@ -7,7 +7,7 @@ const postSchema = new Schema({
     required: true
   },
   user: {
-    user: Schema.Types.objectId,
+    type: Schema.Types.objectId,
     ref: 'User',
     required: true
   },
