@@ -1,6 +1,6 @@
 # confcon
 
-##Things you can do with the REST API
+## Things you can do with the REST API
 
 [SIGN UP](#signup)  
 [SIGN IN](#signin)  
@@ -37,7 +37,7 @@
 ___
 
 <a name="signup"></a>  
-####SIGN UP  
+#### SIGN UP  
 __URL:__ /api/signup  
 __Method:__ GET  
 __Description:__ Creates a new user and returns a token. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
@@ -58,7 +58,7 @@ __Outputs:__
 ___
 
 <a name="signin"></a>  
-####SIGN IN
+#### SIGN IN
 __URL:__ /api/signin  
 __Method:__ GET  
 __Description:__ If the login returns a successful authentication, a token is returned. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
@@ -77,7 +77,7 @@ ___
 *The following endpoints require a valid token, provided with sign up or sign in*  
 
 <a name="viewposts"></a>  
-####VIEW POSTS
+#### VIEW POSTS
 __URL:__ /api/postlist  
 __Method:__ GET  
 __Description:__ Returns posts in reverse chronological order, includes all posts unless input has an optional filter parameter.  
@@ -103,7 +103,7 @@ __Outputs:__
 ___
 
 <a name="createpost"></a>  
-####CREATE POST  
+#### CREATE POST  
 __URL:__ /api/post  
 __Method:__ POST  
 __Description:__ Creates a new message board post, returns post details with id.  
@@ -130,7 +130,7 @@ __Outputs:__
 ___
 
 <a name="deletepost"></a>  
-####DELETE POST  
+#### DELETE POST  
 __URL:__ /api/post  
 __Method:__ DELETE  
 __Description:__ Deletes a specified message board post, returns the deleted post details.  
@@ -154,7 +154,7 @@ __Outputs:__
 ___
 
 <a name="updatepost"></a>  
-####UPDATE POST  
+#### UPDATE POST  
 __URL:__ /api/post  
 __Method:__ PATCH  
 __Description:__ Updates the details of a message board post, returns updated post details. Whatever optional inputs are provided are the fields that will be updated. Fields that are not updated are left with their original values. It will automatically add a new entry to the edit_history array with a new timestamp.   
@@ -181,7 +181,7 @@ __Outputs:__
 ___
 
 <a name="viewusers"></a>  
-####VIEW USERS  
+#### VIEW USERS  
 __URL:__ /api/userlist  
 __Method:__ GET  
 __Description:__ Returns a list of attendees.  
@@ -196,7 +196,7 @@ __Outputs:__
 ___
 
 <a name="viewuserdetail"></a>  
-####VIEW USER DETAIL
+#### VIEW USER DETAIL
 __URL:__ /api/user  
 __Method:__ GET  
 __Description:__ Returns details for an specified user.  
@@ -221,7 +221,7 @@ __Outputs:__
 ___
 
 <a name="createuser"></a>  
-####CREATE USER
+#### CREATE USER
 __URL:__ /api/user  
 __Method:__ POST    
 __Description:__ Returns details for the new User account including the id.    
@@ -259,7 +259,7 @@ __Outputs:__
 ___
 
 <a name="deleteuser"></a>  
-####DELETE USER
+#### DELETE USER
 __URL:__ /api/user  
 __Method:__ DELETE  
 __Description:__ Deletes the specified user account. Returns the deleted user details.  
@@ -286,7 +286,7 @@ __Outputs:__
 ____
 
 <a name="updateuser"></a>  
-####UPDATE USER
+#### UPDATE USER
 __URL:__ /api/user  
 __Method:__ PATCH      
 __Description:__ Updates a specified User account. Updates all optional fields included in the submission. Returns the updated User.    
@@ -325,7 +325,7 @@ __Outputs:__
 ___
 
 <a name="viewagenda"></a>  
-####VIEW AGENDA
+#### VIEW AGENDA
 __URL:__ /api/agenda  
 __Method:__ GET  
 __Description:__ Returns the list of favorited Events (the agenda) for a specified user.  
@@ -348,7 +348,7 @@ __Outputs:__
 ___
 
 <a name="addagendaitem"></a>  
-####ADD AGENDA ITEM
+#### ADD AGENDA ITEM
 __URL:__ /api/agenda  
 __Method:__ PATCH  
 __Description:__ Returns the updated list of favorited Events (the agenda) for a specified user.  
@@ -372,7 +372,7 @@ __Outputs:__
 ___
 
 <a name="deleteagendaitem"></a>  
-####DELETE AGENDA ITEM
+#### DELETE AGENDA ITEM
 __URL:__ /api/agenda  
 __Method:__ DELETE    
 __Description:__ Returns the updated list of favorited Events (the agenda) for a specified user.  
@@ -396,7 +396,7 @@ __Outputs:__
 ____
 
 <a name="viewevents"></a>  
-####VIEW EVENTS
+#### VIEW EVENTS
 __URL:__ /api/eventlist  
 __Method:__ GET  
 __Description:__ Returns a list event title and date, includes all events unless input has the optional filter parameter.  
@@ -414,7 +414,7 @@ __Outputs:__
 ___
 
 <a name="vieweventdetail"></a>  
-####VIEW EVENT DETAIL
+#### VIEW EVENT DETAIL
 __URL:__ /api/event  
 __Method:__ GET  
 __Description:__ Returns all detailed information for a given event.  
@@ -437,7 +437,7 @@ __Outputs:__
 ___
 
 <a name="createevent"></a>  
-####CREATE EVENT
+#### CREATE EVENT
 __URL:__ /api/event  
 __Method:__ POST  
 __Description:__ Creates a new event. Returns event details including the id.    
@@ -466,7 +466,7 @@ __Outputs:__
 ___
 
 <a name="deleteevent"></a>  
-####DELETE EVENT
+#### DELETE EVENT
 __URL:__ /api/event  
 __Method:__ DELETE   
 __Description:__ Deletes a specified event. Returns the deleted event details.  
@@ -489,7 +489,7 @@ __Outputs:__
 ___
 
 <a name="updateevent"></a>  
-####UPDATE EVENT
+#### UPDATE EVENT
 __URL:__ /api/event  
 __Method:__ PATCH  
 __Description:__ Updates a specified event. Updates all optional fields submitted. Returns the updated event details.  
@@ -519,7 +519,7 @@ __Outputs:__
 ___
 
 <a name="createtopic"></a>  
-####CREATE TOPIC
+#### CREATE TOPIC
 __URL:__ /api/topic  
 __Method:__ POST  
 __Description:__ Create a new topic.  
@@ -538,7 +538,7 @@ __Outputs:__
 ___
 
 <a name="deletetopic"></a>  
-####DELETE TOPIC
+#### DELETE TOPIC
 __URL:__ /api/topic  
 __Method:__ DELETE  
 __Description:__ Delete a specified topic. Returns the deleted topic.   
@@ -556,7 +556,7 @@ __Outputs:__
 ___
 
 <a name="updatetopic"></a>  
-####UPDATE TOPIC
+#### UPDATE TOPIC
 __URL:__ /api/topic  
 __Method:__ PATCH  
 __Description:__ Update a specified topic. It will updated whatever optional fields are provided. Returns the updated topic.   
@@ -576,7 +576,7 @@ __Outputs:__
 ___
 
 <a name="updateconfig"></a>  
-####UPDATE CONFIG
+#### UPDATE CONFIG
 __URL:__ /api/config  
 __Method:__ PATCH  
 __Description:__ Updates the conference site configuration details. Any fields submitted will be overwritten with the new info. Returns the updated Config.  
