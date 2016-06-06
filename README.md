@@ -79,16 +79,11 @@ ___
 
 <a name="viewposts"></a>  
 #### VIEW POSTS
-__URL:__ /api/postlist  
+__URL:__ /api/post/list  
 __Method:__ GET  
 __Description:__ Returns posts in reverse chronological order, includes all posts unless input has an optional filter parameter.  
 __Authorized roles:__ attendee, admin  
-__Inputs:__
 
-- topic_id (OPTIONAL)
-- event_id (OPTIONAL)
-- user_id (OPTIONAL)
-- date_range (OPTIONAL)
 
 __Outputs:__  
 
