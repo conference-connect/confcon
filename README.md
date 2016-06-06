@@ -397,8 +397,8 @@ __Outputs:__
 ____
 
 <a name="viewevents"></a>  
-#### VIEW EVENTS
-__URL:__ /api/eventlist  
+####VIEW EVENTS
+__URL:__ /api/event/list  
 __Method:__ GET  
 __Description:__ Returns a list event title and date, includes all events unless input has the optional filter parameter.  
 __Authorized roles:__ admin, attendee   
