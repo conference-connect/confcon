@@ -1,16 +1,16 @@
-const Topic = require('../models/topic');
+const Config = require('../../models/config');
 
-describe('Topic model', () => {
+describe('config model', () => {
   it('requires name', done => {
-    const topic = new Topic();
-    topic.validate()
+    const config = new Config();
+    config.validate()
       .then(() => done('expected error'))
       .catch(() => done());
   });
 
   it('validates with required fields', done => {
-    const topic = new Topic({title: 'test'});
-    topic.validate()
+    const config = new Config({name: 'test'});
+    config.validate()
     .then(done)
     .catch(done);
   });
