@@ -45,13 +45,40 @@
     });
   }
 
-  function editPost(){
-
+  function editPost(postID, postData, callback){
+    const tokenFromStorage = localStorage.token;
+    const updateUrl = `/api/post/${postID}`;
+    $.ajax({
+      url:updateUrl,
+      type:'PATCH',
+      contentType: 'application/json',
+      data: JSON.stringify(postData),
+      headers: {'token': tokenFromStorage}})
+    .done( data => {
+      var returnObject = new Post(data);
+      callback(returnObject);
+    })
+    .fail( () => {
+      console.log('failure to complete ajax in editPost');
+      callback({});
+    });
   }
 
-  function deletePost(){
-
-
+  function deletePost(postID, callback){
+    const tokenFromStorage = localStorage.token;
+    const deleteUrl = `/api/post/${postID}`;
+    $.ajax({
+      url:deleteUrl,
+      type:'DELETE',
+      headers: {'token': tokenFromStorage}})
+    .done( data => {
+      var returnObject = new Post(data);
+      callback(returnObject);
+    })
+    .fail( () => {
+      console.log('failure to complete ajax in deletePost');
+      callback({});
+    });
   }
 
 
