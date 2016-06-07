@@ -4,25 +4,25 @@ const Post = require('../models/post');
 
 router
   .get('/list', bodyParser, (req, res, next) => {
-    const query = req.query.type;
-    Post.find(query)
+    Post.find({})
       .populate('author')
       .populate('topics')
       .populate('event')
       .lean()
       .then(results => {
-        console.log(results);
-        if (results.length < 0) {
+        if (results.length > 0) {
           results.forEach(r => {
-            delete r.author.password;
-            if (req.user.roles.indexOf('admin') === -1) {
-              if (r.author.email_hidden) delete r.author.email;
-              if (r.author.profile_twitter_hidden) delete r.author.profile_twitter_username;
+            if (r.author) {
+              delete r.author.password;
+              if (req.user.roles.indexOf('admin') === -1) {
+                if (r.author.email_hidden) delete r.author.email;
+                if (r.author.profile_twitter_hidden) delete r.author.profile_twitter_username;
+              }
+              delete r.author.email_hidden;
+              delete r.author.profile_twitter_hidden;
+              delete r.author.agenda;
+              delete r.author.roles;
             }
-            delete r.author.email_hidden;
-            delete r.author.profile_twitter_hidden;
-            delete r.author.agenda;
-            delete r.author.roles;
           });
           res.json(results);
         } else next({code: 404,error:'no posts found'});
