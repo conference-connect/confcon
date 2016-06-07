@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const bodyParser = require('body-parser').json();
 const Post = require('../models/post');
-const isAuth = require('../lib/ensureAuth');
 
 router
-  .get('/list', bodyParser, isAuth, (req, res, next) => {
+  .get('/list', bodyParser, (req, res, next) => {
     const query = req.query.type;
     Post.find(query)
       // .select('body author topics event link image')
