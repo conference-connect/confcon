@@ -1,31 +1,47 @@
 var request = superagent;
 
-var form = document.getElementById( 'credentials' ).elements;
-var error = document.getElementById( 'error' );
+var existing = document.getElementById('existing-credentials').elements;
+var newuser = document.getElementById('new-credentials').elements;
+var $error = $('#error');
 
-function getCredentials(){
-  return {
-    username: form.username.value,
-    password: form.password.value
+function getCredentials(type){
+  if (type === 'signup')
+    return {
+      username: newuser.username.value,
+      password: newuser.password.value,
+      firstName: newuser.firstName.value,
+      lastName: newuser.lastName.value,
+      email: newuser.email.value
+    };
+  else return {
+    username: existing.username.value,
+    password: existing.password.value
   };
 }
 
+$('#showNew').on('click', function() {
+  $('#existing').hide().siblings().show();
+});
 
+$('#existing-button').click( function() {
+  login('signin');
+});
+$('#new-button').click( function() {
+  login('signup');
+});
 
-
-function login( type ){
-  error.textContent = '';
-
-  const cred = getCredentials();
-  request.post( '/auth/' + type )
+function login(type){
+  $error.text('');
+  const cred = getCredentials(type);
+  request.post('/' + type)
     .send(cred)
-    .end( function( err, res ){
-      if( !err && res.body && res.body.token ) {
+    .end(function(err,res){
+      if(!err && res.body && res.body.token) {
         localStorage.token = res.body.token;
         window.location = '/';
       }
       else {
-        error.textContent = res.body ? res.body.error : err;
+        $error.text(res.body ? res.body.msg : err);
       }
     });
 }
