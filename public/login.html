@@ -3,28 +3,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-  <link rel="stylesheet" href="css/login.css" type="test/css">
+  <link rel="stylesheet" href="css/login.css" type="text/css">
 </head>
 <body>
 	<h1>Sign in or up for Pets!</h1>
+  <main>
+  	<section id="existing">
+  		<h2>Log in with username/password</h2>
+  		<form id="existing-credentials" onsubmit="return false;">
+        <label for="username">username: </label><input name="username"><br>
+  			<label for="password">password: </label><input name="password"><br>
+				<button id="existing-button">sign in</button>
+  			<div id="in-error"></div>
+  		</form>
+      <p>
+        Don't have an account?  <button id="showNew">Create Account</button>
+  	</section>
 
+    <section id="newuser">
+      <h2>Enter your information to create a new account</h2>
+      <form id="new-credentials" onsubmit="return false;">
+        <label for="username">username: </label><input name="username"><br>
+        <label for="password">password: </label><input name="password"><br>
+        <label for="firstName">First Name: </label><input name="firstName"><br>
+        <label for="lastName">Last Name: </label><input name="lastName"><br>
+        <label for="email">email: </label><input name="email"><br>
+        <button id="new-button">sign up</button>
+    </section>
+  </main>
+  <div id="error"></div>
 
-	<section id="signin">
-		<h2>Log in with username/password</h2>
-		<form id="in-credentials" onsubmit="return false;">
-      <username: <input name="username"></div>
-			<div>password: <input name="password"></div>
-			<div>
-				<button onclick="login('signup')">sign up</button>
-				<button onclick="login('signin')">sign in</button>
-			</div>
-			<div id="error"></div>
-		</form>
-	</section>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
-	<script>
-
-	</script>
+	<script src="lib/jquery-2.2.4.min.js"></script>
+	<script src="lib/superagent.min.js"></script>
+  <script src="js/login.js"></script>
 </body>
 </html>

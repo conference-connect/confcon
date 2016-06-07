@@ -17,7 +17,9 @@
     "beforeEach": false,
     "afterEach": false,
     "before": false,
-    "after": false
+    "after": false,
+    "$": false,
+    "superagent": false
   },
   "ecmaFeatures": {
     "modules": true,
