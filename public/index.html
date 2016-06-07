@@ -2,28 +2,49 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Conference-Connect</title>
+
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="lib/font-awesome.min.css">
-  <link rel="stylesheet" href="node_modules/pills/dist/pills.min.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="lib/pills.min.css">
+
+  <link rel="stylesheet" href="css/base.css">
 </head>
 
-<header>
-  <h1>Conference-Connect</h1>
-</header>
-
 <body>
+	<header id="nav">
+	  <h1 id="nav-logo">Conf-Con</h1>
+		<div class="nav-menu">
+			<a href="#"><i class="fa fa-calendar-check-o"></i></a>
+			<a href="#"><i class="fa fa-pencil-square-o"></i></a>
+			<a href="#"><i class="fa fa-cog"></i></a>
+		</div>
+	</header>
 
-  <section id="">
-  </section>
+  <main>
+		<div id="post">
+			<a href="" id="post-author"></a>
+			<div id="post-body"></div>
+			<ul id="post-topics"></ul>
+			<div id="post-event"></div>
+			<div id="post-timestamp"></div>
+  	</div>
 
-  <section id="">
-  </section>
+	  <div id="new-post">
+	  </div>
 
-  <section id="">
-  </section>
+	  <div id="events">
+	  </div>
 
+		<div id="my-profile">
+	  </div>
+
+		<div id="admin">
+	  </div>
+	</main>
+
+	<footer></footer>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
 </body>
 </html>
