@@ -19,7 +19,6 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-
   roles: {
     type:[String]
   },
@@ -43,7 +42,7 @@ const userSchema = new Schema({
     website:{
       type: String
     },
-    twitter_username:{
+    twitter:{
       type:String
     }
   },

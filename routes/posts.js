@@ -15,11 +15,10 @@ router
             if (r.author) {
               delete r.author.password;
               if (req.user.roles.indexOf('admin') === -1) {
-                if (r.author.email_hidden) delete r.author.email;
-                if (r.author.profile_twitter_hidden) delete r.author.profile_twitter_username;
+                if (r.author.hidden.email) delete r.author.profile.email;
+                if (r.author.hidden.twitter) delete r.author.profile.twitter;
               }
-              delete r.author.email_hidden;
-              delete r.author.profile_twitter_hidden;
+              delete r.author.hidden;
               delete r.author.agenda;
               delete r.author.roles;
             }
