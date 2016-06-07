@@ -17,12 +17,6 @@ const eventSchema = new Schema({
     type: [Schema.Types.ObjectId],
     ref: 'Topic'
   },
-  // maxAttendance: {
-  //   type: Number
-  // },
-  // currentAttendance: {
-  //   type: Number
-  // },
   location: {
     type: String
   }
