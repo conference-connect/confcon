@@ -29,7 +29,12 @@
 
   function makeNewPost(postData, callback){
     const tokenFromStorage = localStorage.token;
-    $.ajax({url:'/api/post/', headers: {'token': tokenFromStorage}}, {method:'POST', data: postData})
+    $.ajax({
+      url:'/api/post/',
+      type:'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(postData),
+      headers: {'token': tokenFromStorage}})
     .done( data => {
       var returnObject = new Post(data);
       callback(returnObject);
