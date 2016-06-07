@@ -19,13 +19,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  email: {
-    type:String
-  },
-  email_hidden: {
-    type: Boolean,
-    default: true
-  },
+
   roles: {
     type:[String]
   },
@@ -36,21 +30,32 @@ const userSchema = new Schema({
     type:Schema.Types.ObjectId,
     ref: 'Event'
   }],
-  profile_description:{
-    type: String
+  profile: {
+    email: {
+      type:String
+    },
+    description:{
+      type: String
+    },
+    image:{
+      type: Buffer
+    },
+    website:{
+      type: String
+    },
+    twitter_username:{
+      type:String
+    }
   },
-  profile_image:{
-    type: Buffer
-  },
-  profile_website:{
-    type: String
-  },
-  profile_twitter_username:{
-    type:String
-  },
-  profile_twitter_hidden:{
-    type: Boolean,
-    default: true
+  hidden: {
+    email: {
+      type: Boolean,
+      default: true
+    },
+    twitter: {
+      type: Boolean,
+      default: true
+    }
   }
 });
 
