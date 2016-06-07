@@ -9,7 +9,7 @@ describe('config model', () => {
   });
 
   it('validates with required fields', done => {
-    const config = new Config({name: 'test'});
+    const config = new Config({name: 'test', config_id: '1'});
     config.validate()
     .then(done)
     .catch(done);
