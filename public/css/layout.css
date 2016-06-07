@@ -1,0 +1,13 @@
+body {
+  padding: 25px;
+}
+
+/* ======== nav ======== */
+.nav-menu {
+  display: inline;
+  float: right;
+}
+
+.nav-menu a {
+  padding-right: 45px;
+}
