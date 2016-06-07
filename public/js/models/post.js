@@ -6,12 +6,18 @@
     }, this);
   }
 
+
   // const tokenForTesting = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3NTVmOTIyNGY4ZjgxNmZhYzRhYTY3OSIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTQ2NTI1MjU0OH0.EgUa-3c1YJdYJetW5q7WJC9galDbxxCVsqhjdSbI1iA';
+  Post.prototype.toHtml = function(){
+
+
+
+  };
 
   function retrieveAllPosts(callback){
-    const tokenForTesting = localStorage.token;
-    $.ajax({url:'/api/post/list', headers: {'token': tokenForTesting}}, {method:'GET'})
-    .done( (data, message, xhr) => {
+    const tokenFromStorage = localStorage.token;
+    $.ajax({url:'/api/post/list', headers: {'token': tokenFromStorage}}, {method:'GET'})
+    .done( data => {
       var newArray = data.map( (el) => {
         return new Post(el);
       });
@@ -23,17 +29,58 @@
     });
   }
 
-  function makeNewPost(){
-
+  function makeNewPost(postData, callback){
+    const tokenFromStorage = localStorage.token;
+    $.ajax({
+      url:'/api/post/',
+      type:'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(postData),
+      headers: {'token': tokenFromStorage}})
+    .done( data => {
+      var returnObject = new Post(data);
+      callback(returnObject);
+    })
+    .fail( () => {
+      console.log('failure to complete ajax in makeNewPost');
+      callback({});
+    });
   }
 
-  function editPost(){
-
+  function editPost(postID, postData, callback){
+    const tokenFromStorage = localStorage.token;
+    const updateUrl = `/api/post/${postID}`;
+    $.ajax({
+      url:updateUrl,
+      type:'PATCH',
+      contentType: 'application/json',
+      data: JSON.stringify(postData),
+      headers: {'token': tokenFromStorage}})
+    .done( data => {
+      var returnObject = new Post(data);
+      callback(returnObject);
+    })
+    .fail( () => {
+      console.log('failure to complete ajax in editPost');
+      callback({});
+    });
   }
 
-  function deletePost(){
-
-
+  function deletePost(postID, callback){
+    const tokenFromStorage = localStorage.token;
+    const deleteUrl = `/api/post/${postID}`;
+    $.ajax({
+      url:deleteUrl,
+      type:'DELETE',
+      headers: {'token': tokenFromStorage}})
+    .done( data => {
+      var returnObject = new Post(data);
+      callback(returnObject);
+    })
+    .fail( () => {
+      console.log('failure to complete ajax in deletePost');
+      callback({});
+    });
   }
 
 

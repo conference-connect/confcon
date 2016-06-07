@@ -12,6 +12,7 @@
     // $('#events').hide();
     // $('#my-profile').hide();
 
+
     retrieveAllPosts(function(arrayOfPosts){
       console.log(arrayOfPosts);
       arrayOfPosts.forEach(function(post){
@@ -19,6 +20,7 @@
         $('#all-posts').append(renderTemplate(post));
       });
     });
+
   }
 
 
