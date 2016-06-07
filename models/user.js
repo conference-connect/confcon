@@ -32,10 +32,10 @@ const userSchema = new Schema({
   organization: {
     type:String
   },
-  agenda:{
-    type:[Schema.Types.ObjectId],
+  agenda:[{
+    type:Schema.Types.ObjectId,
     ref: 'Event'
-  },
+  }],
   profile_description:{
     type: String
   },
