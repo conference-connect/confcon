@@ -1,4 +1,4 @@
-const Event = require('../models/event');
+const Event = require('../../models/event');
 
 describe('Event model', () => {
   it('requires title', done => {
