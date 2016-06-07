@@ -12,9 +12,10 @@
 
   };
 
-  const tokenForTesting = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3NTVmOTIyNGY4ZjgxNmZhYzRhYTY3OSIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTQ2NTI1MjU0OH0.EgUa-3c1YJdYJetW5q7WJC9galDbxxCVsqhjdSbI1iA';
+  // const tokenForTesting = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3NTVmOTIyNGY4ZjgxNmZhYzRhYTY3OSIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTQ2NTI1MjU0OH0.EgUa-3c1YJdYJetW5q7WJC9galDbxxCVsqhjdSbI1iA';
 
   function retrieveAllPosts(callback){
+    const tokenForTesting = localStorage.token;
     $.ajax({url:'/api/post/list', headers: {'token': tokenForTesting}}, {method:'GET'})
     .done( (data, message, xhr) => {
       var newArray = data.map( (el) => {
@@ -41,10 +42,6 @@
 
   }
 
-
-  // retrieveAllPosts( (arrayOfPosts) => {
-  //   console.log(arrayOfPosts);
-  // });
 
   module.Post = Post;
   module.retrieveAllPosts = retrieveAllPosts;
