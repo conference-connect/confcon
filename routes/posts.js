@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const bodyParser = require('body-parser').json();
 const Post = require('../models/post');
-const isAuth = require('../lib/ensureAuth');
 
 router
-  .get('/list', bodyParser, isAuth, (req, res, next) => {
+  .get('/list', bodyParser, (req, res, next) => {
     const query = req.query.type;
     Post.find(query)
       // .select('body author topics event link image')
@@ -37,18 +36,30 @@ router
   .patch('/:id', bodyParser, (req, res, next) => {
     if (req.params.id) {
       Post.findById(req.params.id)
+        .populate('author')
         .then(result => {
           if (result) {
-            new Post(Object.assign(result, req.body)).save()
-              .then(result => res.json(result))
-              .catch(err => next(err));
-          }
-        });
+            if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1)) {
+              new Post(Object.assign(result, req.body)).save()
+                .then(result => res.json(result))
+                .catch(err => next(err));
+            } else next({code: 403,error:'only post authors and admins may edit posts.'});
+          } else next({code: 404,error:'post not found'});
+        })
+        .catch(err => next(err));
     }
   })
   .delete('/:id', bodyParser, (req, res, next) => {
-    Post.findByIdAndRemove(req.params.id)
-      .then(result => res.json(result))
+    Post.findById(req.params.id)
+      .then(result => {
+        if (result) {
+          if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1)) {
+            Post.findByIdAndRemove(req.params.id)
+              .then(result => res.json(result))
+              .catch(err => next(err));
+          } else next({code: 403,error:'only post authors and admins may delete posts.'});
+        } else next({code: 404,error:'post not found'});
+      })
       .catch(err => next(err));
   });
 

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "env $(cat .env) node index.js",
     "test": "env $(cat .env) gulp test",
-    "dev": "env $(cat .env) gulp",
+    "dev": "env $(cat .env) nodemon index.js",
     "lint": "gulp lint"
   },
   "repository": {
