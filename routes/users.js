@@ -8,7 +8,7 @@ router
     User.findById(req.params.userId)
       .then( user => {
         if (!user) {
-          throw new Error ('invalid authentication');
+          next({code: 500, error: 'Authorization Failed'});
         }
 
         const role = req.params.role;
@@ -39,8 +39,8 @@ router
     .then(result => {
       delete result.password;
       if(result._id != req.user.id && req.user.roles.indexOf('admin') === -1 ){
-        if(result.email_hidden) delete result.email;
-        if(result.twitter_hidden) delete result.profile_twitter_username;
+        if(result.hidden.email) delete result.profile.email;
+        if(result.hidden.twitter) delete result.profile.twitter;
         delete result.agenda;
         delete result.roles;
       }
