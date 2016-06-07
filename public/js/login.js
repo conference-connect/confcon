@@ -37,7 +37,10 @@ function login(type){
     .send(cred)
     .end(function(err,res){
       if(!err && res.body && res.body.token) {
+
         localStorage.token = res.body.token;
+        delete res.body.token;
+        localStorage.user = JSON.stringify(res.body);
         window.location = '/';
       }
       else {
