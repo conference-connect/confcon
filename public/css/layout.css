@@ -11,3 +11,8 @@ body {
 .nav-menu a {
   padding-right: 45px;
 }
+
+/* ======== new Post ======== */
+#new-post {
+  padding-top: 35px;
+}
