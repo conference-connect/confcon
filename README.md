@@ -28,7 +28,7 @@
 [DELETE EVENT](#deleteevent)  
 [UPDATE EVENT](#updateevent)  
 
-[VIEW TOPIC](#viewtopic)
+[VIEW TOPIC](#viewtopic)  
 [CREATE TOPIC](#createtopic)  
 [DELETE TOPIC](#deletetopic)   
 [UPDATE TOPIC](#updatetopic)  
@@ -392,7 +392,7 @@ __Outputs:__
 ____
 
 <a name="viewevents"></a>  
-####VIEW EVENTS
+#### VIEW EVENTS  
 __URL:__ /api/event/list  
 __Method:__ GET  
 __Description:__ Returns a list event title and date, includes all events unless input has the optional filter parameter.  
@@ -426,8 +426,6 @@ __Outputs:__
 - date
 - speakers
 - topics
-- max_attendance
-- current_attendance
 - location
 
 ___
@@ -444,8 +442,6 @@ __Inputs:__
 - date
 - speakers (OPTIONAL)
 - topics (OPTIONAL)
-- max_attendance (OPTIONAL)
-- current_attendance (OPTIONAL)
 - location (OPTIONAL)
 
 __Outputs:__  
@@ -455,8 +451,6 @@ __Outputs:__
 - date
 - speakers
 - topics
-- max_attendance
-- current_attendance
 - location
 
 ___
@@ -478,8 +472,6 @@ __Outputs:__
 - date
 - speakers
 - topics
-- max_attendance
-- current_attendance
 - location
 
 ___
@@ -497,8 +489,6 @@ __Inputs:__
 - date (OPTIONAL)
 - speakers (OPTIONAL)
 - topics (OPTIONAL)
-- max_attendance (OPTIONAL)
-- current_attendance (OPTIONAL)
 - location (OPTIONAL)
 
 __Outputs:__  
@@ -508,14 +498,12 @@ __Outputs:__
 - date
 - speakers
 - topics
-- max_attendance
-- current_attendance
 - location
 
 ___
 
 <a name="viewtopic"></a>
-#### CREATE TOPIC  
+#### VIEW TOPICS  
 __URL:__ /api/topic  
 __Method:__ GET  
 __Description:__ Returns available topics.  
@@ -590,13 +578,36 @@ __Outputs:__
 ___
 
 <a name="updateconfig"></a>  
+#### VIEW CONFIG
+__URL:__ /api/config  
+__Method:__ GET   
+__Description:__ View configuration details  
+__Authorized roles:__ admin, attendee  
+__Inputs:__  
+__Outputs:__  
+
+- config_id
+- name
+- year
+- city
+- description
+- contact_email
+- contact_phone
+- contact_address
+- posts\_are\_public
+
+___
+
+
+<a name="updateconfig"></a>  
 #### UPDATE CONFIG
 __URL:__ /api/config  
 __Method:__ PATCH  
 __Description:__ Updates the conference site configuration details. Any fields submitted will be overwritten with the new info. Returns the updated Config.  
-__Authorized roles:__ admin  
+__Authorized roles:__ admin *--token of user making the request must be an admin role*    
 __Inputs:__
 
+- config_id *--use value of 1*
 - name (OPTIONAL)
 - year (OPTIONAL)
 - city (OPTIONAL)
@@ -608,6 +619,7 @@ __Inputs:__
 
 __Outputs:__
 
+- config_id
 - name
 - year
 - city

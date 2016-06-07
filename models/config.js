@@ -27,6 +27,11 @@ const configSchema = new Schema({
   posts_are_public: {
     type: Boolean,
     default: false
+  },
+  config_id: {
+    type: Number,
+    required: true,
+    unique: true
   }
 
 }, {
