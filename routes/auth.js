@@ -28,7 +28,7 @@ router
         user.generateHash(password);
         return user.save()
           .then(user => token.sign(user))
-          .then(token => res.json({token, id: user._id}));
+          .then(token => res.json({token, id: user._id, username: user.username, firstName: user.firstName, lastName: user.lastName}));
       })
       .catch(err => {
         next({
@@ -49,11 +49,8 @@ router
           return res.status(400).json({msg: 'Authentication failed.'});
         }
 
-        return token.sign(user);
-      })
-      .then(token => {
-        console.log('got here');
-        res.json({token});
+        return token.sign(user)
+          .then(token => res.json({token, id: user._id, username: user.username, firstName: user.firstName, lastName: user.lastName}));
       })
       .catch(next);
   });
