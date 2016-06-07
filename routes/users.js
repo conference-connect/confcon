@@ -35,12 +35,17 @@ router
   })
   .get('/:id', (req, res, next) =>{
     User.findById(req.params.id)
+    .lean()
     .then(result => {
-      const publicUser = result;
-      if(result.email_hidden){
-        publicUser.email = 'Email not available';
+      delete result.password;
+      if(result._id != req.user.id && req.user.roles.indexOf('admin') === -1 ){
+        if(result.email_hidden) delete result.email;
+        if(result.twitter_hidden) delete result.profile_twitter_username;
+        delete result.agenda;
+        delete result.roles;
       }
-      return publicUser;
+
+      return result;
     })
     .then(publicUser => res.json(publicUser))
     .catch(err => {
