@@ -10,10 +10,13 @@
 
     renderAllEvents () {
       API.getAll('api/event/list', Event, function(arrayOfEvents){
-        console.log(arrayOfEvents);
+        $('#all-events').empty();
         arrayOfEvents.forEach(function(event){
-
           $('#all-events').append(eventView.renderTemplate(event));
+          $(`#${event.id}`).on('click', (e)=>{
+            e.preventDefault();
+            API.delete ('/api/event/' + e.target.id, Post, eventView.renderAllEvents);
+          });
         });
       });
     },
@@ -28,7 +31,7 @@
       date: eventView.dom.form.eventdate.value
     };
     console.log(data);
-    API.post('api/event/', data, Post, postView.renderPage);
+    API.post('api/event/', data, Post, eventView.renderAllEvents);
   });
 
   module.eventView = eventView;
