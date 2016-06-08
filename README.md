@@ -127,15 +127,12 @@ ___
 
 <a name="deletepost"></a>  
 #### DELETE POST  
-__URL:__ /api/post  
+__URL:__ /api/post/<id>  *--pass the id of the post to be deleted as the path parameter*  
 __Method:__ DELETE  
 __Description:__ Deletes a specified message board post, returns the deleted post details.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee that created the post*    
 __Inputs:__  
-
-- id  *--id of the post to be deleted*
-
-__Outputs:__  
+__Outputs:__   
 
 - id
 - body
@@ -151,13 +148,12 @@ ___
 
 <a name="updatepost"></a>  
 #### UPDATE POST  
-__URL:__ /api/post  
+__URL:__ /api/post/<id>  *--pass the id of the post to be updated as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Updates the details of a message board post, returns updated post details. Whatever optional inputs are provided are the fields that will be updated. Fields that are not updated are left with their original values. It will automatically add a new entry to the edit_history array with a new timestamp.   
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee that created the post*     
 __Inputs:__  
 
-- id  *--id of the post to be updated*
 - body (OPTIONAL)  *--text body of message*
 - topic_ids (OPTIONAL)  *--array of topic ids*
 - event_id (OPTIONAL)  *--id of associated Event*
@@ -193,14 +189,11 @@ ___
 
 <a name="viewuserdetail"></a>  
 #### VIEW USER DETAIL
-__URL:__ /api/user  
+__URL:__ /api/user/<id>  *--pass the id of the user as the path parameter*    
 __Method:__ GET  
 __Description:__ Returns details for an specified user.  
 __Authorized roles:__ admin (all details), attendee (a censored list based on profile settings)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee to be updated to view full, uncensored details*  
 __Inputs:__  
-
-- id
-
 __Outputs:__  
 
 - id
@@ -256,14 +249,11 @@ ___
 
 <a name="deleteuser"></a>  
 #### DELETE USER
-__URL:__ /api/user  
+__URL:__ /api/user/<id>  *--pass the id of the user to be deleted as the path parameter*    
 __Method:__ DELETE  
 __Description:__ Deletes the specified user account. Returns the deleted user details.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee to be updated*  
 __Inputs:__   
-
-- id
-
 __Outputs:__
 
 - id
@@ -283,13 +273,12 @@ ____
 
 <a name="updateuser"></a>  
 #### UPDATE USER
-__URL:__ /api/user  
+__URL:__ /api/user/<id>  *--pass the id of the user to be updated as the path parameter*    
 __Method:__ PATCH      
 __Description:__ Updates a specified User account. Updates all optional fields included in the submission. Returns the updated User.    
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee to be updated*  
 __Inputs:__   
 
-- id
 - username (OPTIONAL)
 - password (OPTIONAL)  *--The password is encrypted before saved to database.*
 - email (OPTIONAL)
@@ -322,14 +311,11 @@ ___
 
 <a name="viewagenda"></a>  
 #### VIEW AGENDA
-__URL:__ /api/agenda  
+__URL:__ /api/agenda/<id>  *--pass the id of the specified user as the path parameter*    
 __Method:__ GET  
 __Description:__ Returns the list of favorited Events (the agenda) for a specified user.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee agenda*  
 __Inputs:__   
-
-- id  *--id of the specified User*
-
 __Outputs:__
 
 - id  *--id of the Event*
@@ -345,13 +331,12 @@ ___
 
 <a name="addagendaitem"></a>  
 #### ADD AGENDA ITEM
-__URL:__ /api/agenda  
+__URL:__ /api/agenda/<id>  *--pass the id of the specified user as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Returns the updated list of favorited Events (the agenda) for a specified user.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee agenda*  
 __Inputs:__   
 
-- id  *--id of the specified User*
 - event_id  *--id of the specified event to be added to the agenda*
 
 __Outputs:__
@@ -369,13 +354,12 @@ ___
 
 <a name="deleteagendaitem"></a>  
 #### DELETE AGENDA ITEM
-__URL:__ /api/agenda  
+__URL:__ /api/agenda/<id>  *--pass the id of the specified user as the path parameter*    
 __Method:__ DELETE    
 __Description:__ Returns the updated list of favorited Events (the agenda) for a specified user.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee agenda*  
 __Inputs:__   
 
-- id  *--id of the specified User*
 - event_id  *--id of the specified event to be removed from the agenda*
 
 __Outputs:__
@@ -411,14 +395,11 @@ ___
 
 <a name="vieweventdetail"></a>  
 #### VIEW EVENT DETAIL  
-__URL:__ /api/event  
+__URL:__ /api/event/<id>  *--pass the id of the event as the path parameter*    
 __Method:__ GET  
 __Description:__ Returns all detailed information for a given event.  
 __Authorized roles:__ admin, attendee    
 __Inputs:__  
-
-- id  *--id of event record*
-
 __Outputs:__  
 
 - id
@@ -457,14 +438,11 @@ ___
 
 <a name="deleteevent"></a>  
 #### DELETE EVENT
-__URL:__ /api/event  
+__URL:__ /api/event/<id>  *--pass the id of the event to be deleted as the path parameter*    
 __Method:__ DELETE   
 __Description:__ Deletes a specified event. Returns the deleted event details.  
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
 __Inputs:__  
-
-- id
-
 __Outputs:__  
 
 - id
@@ -478,13 +456,12 @@ ___
 
 <a name="updateevent"></a>  
 #### UPDATE EVENT
-__URL:__ /api/event  
+__URL:__ /api/event/<id>  *--pass the id of the event to be updated as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Updates a specified event. Updates all optional fields submitted. Returns the updated event details.  
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
 __Inputs:__  
 
-- id
 - title (OPTIONAL)
 - date (OPTIONAL)
 - speakers (OPTIONAL)
@@ -541,14 +518,11 @@ ___
 
 <a name="deletetopic"></a>  
 #### DELETE TOPIC
-__URL:__ /api/topic  
+__URL:__ /api/topic/<id>  *--pass the id of the topic to be deleted as the path parameter*    
 __Method:__ DELETE  
 __Description:__ Delete a specified topic. Returns the deleted topic.   
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
 __Inputs:__  
-
-- id
-
 __Outputs:__
 
 - id
@@ -559,13 +533,12 @@ ___
 
 <a name="updatetopic"></a>  
 #### UPDATE TOPIC
-__URL:__ /api/topic  
+__URL:__ /api/topic/<id>  *--pass the id of the topic to be updated as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Update a specified topic. It will updated whatever optional fields are provided. Returns the updated topic.   
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
 __Inputs:__  
 
-- id
 - title (OPTIONAL)
 - color (OPTIONAL)
 

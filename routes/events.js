@@ -57,8 +57,8 @@ router
   });
 })
 
-.patch('/', bodyParser, ensureRole('admin'), (req, res, next) => {
-  Event.findOneAndUpdate({_id: req.body.id} , req.body, {new: true})
+.patch('/:id', bodyParser, ensureRole('admin'), (req, res, next) => {
+  Event.findOneAndUpdate({_id: req.params.id} , req.body, {new: true})
   .then(eventItem => {
     res.json(eventToReturn(eventItem));
   })
