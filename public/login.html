@@ -24,11 +24,18 @@
     <section id="newuser">
       <h2>Enter your information to create a new account</h2>
       <form id="new-credentials" onsubmit="return false;">
-        <label for="username">username: </label><input name="username"><br>
-        <label for="password">password: </label><input name="password"><br>
-        <label for="firstName">First Name: </label><input name="firstName"><br>
-        <label for="lastName">Last Name: </label><input name="lastName"><br>
-        <label for="email">email: </label><input name="email"><br>
+        <label for="username">username: </label><input name="username" required><br>
+        <label for="password">password: </label><input name="password" required><br>
+        <label for="firstName">First Name: </label><input name="firstName" required><br>
+        <label for="lastName">Last Name: </label><input name="lastName" required><br>
+				<label for="organization">organization: </label><input name="organization"><br>
+        <label for="email">email: </label><input name="email"> <input type="checkbox" name="hiddenemail"><label for="hiddenemail"> hide email from public.<br>
+				<label for="twitter">Twitter handle: </label><input name="twitter"> <input type="checkbox" name="hiddentwitter"><label for="hiddentwitter"> hide Twitter handle from public.<br>
+				<label for="description">description: </label><input name="description"><br>
+				<label for="website">website: </label><input name="website"><br>
+				<label for"image">avatar: </label><input id="avatar" name="image" type="file" accept="image/*"><br>
+
+
         <button id="new-button">sign up</button>
     </section>
   </main>

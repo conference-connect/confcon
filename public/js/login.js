@@ -3,41 +3,57 @@ var request = superagent;
 var existing = document.getElementById('existing-credentials').elements;
 var newuser = document.getElementById('new-credentials').elements;
 var $error = $('#error');
-
-function getCredentials(type){
-  if (type === 'signup')
-    return {
-      username: newuser.username.value,
-      password: newuser.password.value,
-      firstName: newuser.firstName.value,
-      lastName: newuser.lastName.value,
-      email: newuser.email.value
-    };
-  else return {
-    username: existing.username.value,
-    password: existing.password.value
-  };
-}
+var input = document.getElementById('avatar');
+var reader = new FileReader();
 
 $('#showNew').on('click', function() {
   $('#existing').hide().siblings().show();
 });
 
-$('#existing-button').click( function() {
-  login('signin');
-});
-$('#new-button').click( function() {
-  login('signup');
-});
+$('#existing-button').click(signin);
+$('#new-button').click(signup);
 
-function login(type){
+function signin(){
   $error.text('');
-  const cred = getCredentials(type);
-  request.post('/' + type)
-    .send(cred)
+  var formData = {
+    username: existing.username.value,
+    password: existing.password.value
+  };
+  apiCall('/signin', formData);
+}
+
+
+function signup(){
+  $error.text('');
+  reader.onload = function(e) {
+    var formData = {
+      username: newuser.username.value,
+      password: newuser.password.value,
+      firstName: newuser.firstName.value,
+      lastName: newuser.lastName.value,
+      organization: newuser.organization.value,
+      profile: {
+        email: newuser.email.value,
+        description: newuser.description.value,
+        website: newuser.website.value,
+        twitter: newuser.twitter.value,
+        image: e.target.result
+      },
+      hidden: {
+        email: newuser.hiddenemail.value,
+        twitter: newuser.hiddentwitter.value
+      }
+    };
+    apiCall('/signup', formData);
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function apiCall(endpoint, data) {
+  request.post(endpoint)
+    .send(data)
     .end(function(err,res){
       if(!err && res.body && res.body.token) {
-
         localStorage.token = res.body.token;
         delete res.body.token;
         localStorage.user = JSON.stringify(res.body);
