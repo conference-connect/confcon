@@ -4,7 +4,6 @@
     renderTemplate (post) {
       var template = Handlebars.compile($('#post-template').text());
       var htmlObject = template(post);
-
       return htmlObject;
     },
     renderPage (){
@@ -13,10 +12,15 @@
       // $('#my-profile').hide();
 
       API.getAll('api/post/list', Post, function(arrayOfPosts){
-        console.log(arrayOfPosts);
+        $('#all-posts').empty();
         arrayOfPosts.forEach(function(post){
-
+          var date = post.createdAt;
+          // console.log(date);
           $('#all-posts').append(postView.renderTemplate(post));
+          $(`#${post._id}`).on('click', (e)=>{
+            e.preventDefault();
+            API.delete ('/api/post/' + e.target.id, Post, postView.renderPage);
+          });
         });
       });
     },

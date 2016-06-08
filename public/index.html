@@ -16,8 +16,9 @@
 	<script id="post-template" type="text/x-handlebars-template">
 		<article id="post">
 			<div class="row">
-				<p class="column one-quarter"><a href="" id="post-author">{{author.username}}</a>:&nbsp</p>
+				<p class="column one-quarter"><a href="" id="post-author">{{author.username}}</a>&nbsp;</p>
 				<p class ="column three-quarters" id="post-body">{{body}}</p>
+        <input id="{{_id}}" type="submit" value="delete">
 			</div>
 
 			<ul id="post-topics"></ul>
