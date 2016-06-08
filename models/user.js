@@ -37,7 +37,7 @@ const userSchema = new Schema({
       type: String
     },
     image:{
-      type: Buffer
+      type: String
     },
     website:{
       type: String
