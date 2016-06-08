@@ -6,7 +6,7 @@
     },this);
   }
 
-  function retrieveAllEvents(callback){
+  Event.retrieveAll = function(callback){
     const tokenFromStorage = localStorage.token;
     $.ajax({url:'/api/event/list', headers: {'token': tokenFromStorage}}, {method:'GET'})
     .done( data => {
@@ -19,9 +19,9 @@
       console.log('failure to complete ajax call in retrieveAllEvents');
       callback([]);
     });
-  }
+  };
 
-  function getEventDetail(eventID, callback){
+  Event.getDetail = function(eventID, callback){
     const tokenFromStorage = localStorage.token;
     const detailUrl = `/api/event/${eventID}`;
     $.ajax({url:detailUrl, headers: {'token': tokenFromStorage}}, {method:'GET'})
@@ -33,9 +33,9 @@
       console.log('failure to complete ajax call in getEventDetail');
       callback([]);
     });
-  }
+  };
 
-  function makeNewEvent(eventData, callback){
+  Event.makeNew = function(eventData, callback){
     const tokenFromStorage = localStorage.token;
     $.ajax({
       url:'/api/event/',
@@ -51,9 +51,9 @@
       console.log('failure to complete ajax in makeNewEvent');
       callback({});
     });
-  }
+  };
 
-  function editEvent(eventData, callback){
+  Event.edit = function(eventData, callback){
     const tokenFromStorage = localStorage.token;
     const updateUrl = '/api/event/';
     $.ajax({
@@ -70,9 +70,9 @@
       console.log('failure to complete ajax in editEvent');
       callback({});
     });
-  }
+  };
 
-  function deleteEvent(eventID, callback){
+  Event.delete = function(eventID, callback){
     const tokenFromStorage = localStorage.token;
     const deleteUrl = `/api/event/${eventID}`;
     $.ajax({
@@ -87,12 +87,7 @@
       console.log('failure to complete ajax in deleteEvent');
       callback({});
     });
-  }
+  };
 
-  module.retrieveAllEvents = retrieveAllEvents;
-  module.getEventDetail = getEventDetail;
-  module.makeNewEvent = makeNewEvent;
-  module.editEvent = editEvent;
-  module.deleteEvent = deleteEvent;
   module.Event = Event;
 })(window);

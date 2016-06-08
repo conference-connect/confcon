@@ -19,7 +19,10 @@
     "before": false,
     "after": false,
     "$": false,
-    "superagent": false
+    "superagent": false,
+    "Post": false,
+    "postView": false,
+    "Handlebars": false
   },
   "ecmaFeatures": {
     "modules": true,
