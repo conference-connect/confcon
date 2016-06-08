@@ -15,6 +15,7 @@
         callback([]);
       });
     },
+    
     getAll (url, Item, callback) {
       $.ajax({
         url: url,

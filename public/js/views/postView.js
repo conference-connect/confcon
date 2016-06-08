@@ -6,7 +6,7 @@
       var htmlObject = template(post);
       return htmlObject;
     },
-    renderPage (){
+    renderPage(){
       // $('#new-post').hide();
       // $('#events').hide();
       // $('#my-profile').hide();
@@ -15,17 +15,20 @@
         $('#all-posts').empty();
         arrayOfPosts.forEach(function(post){
           post.createdAt = moment(post.createdAt).format('HH:MM on MM-DD-YY');
+
           $('#all-posts').append(postView.renderTemplate(post));
           $(`#${post._id}`).on('click', (e)=>{
             e.preventDefault();
             API.delete ('/api/post/' + e.target.id, Post, postView.renderPage);
           });
         });
+        userView.renderUser();
       });
     },
     dom: {
       form: document.getElementById('new-post-form').elements
     }
+
   };
 
   $('#new-post-submit').click(function () {
