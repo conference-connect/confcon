@@ -12,7 +12,7 @@
       // $('#events').hide();
       // $('#my-profile').hide();
 
-      API.retrieveAll('api/post/list', Post, function(arrayOfPosts){
+      API.getAll('api/post/list', Post, function(arrayOfPosts){
         console.log(arrayOfPosts);
         arrayOfPosts.forEach(function(post){
 
@@ -37,7 +37,7 @@
 
   //TODO add filter by topics
   //TODO add user contact info
-  
+
 
   module.postView = postView;
 })(window);

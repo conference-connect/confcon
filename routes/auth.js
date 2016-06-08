@@ -2,8 +2,12 @@ const router = require('express').Router();
 const bodyParser = require('body-parser').json();
 const User = require('../models/user');
 const token = require('../lib/token');
+const ensureAuth = require('../lib/ensureAuth');
 
 router
+  .get('/validate', ensureAuth, (req,res) => {
+    res.json({ valid: true });
+  })
   .post('/signup', bodyParser, (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;

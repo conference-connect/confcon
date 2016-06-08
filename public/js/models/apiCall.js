@@ -1,7 +1,7 @@
 (function(module){
 
   var API = {
-    retrieveOne (url, Item, callback) {
+    getOne (url, Item, callback) {
       $.ajax({
         url: url,
         type: 'GET',
@@ -11,11 +11,11 @@
         callback(returnObject);
       })
       .fail(function(){
-        console.log('RetrieveAll: failure to complete ajax call to ' + url);
+        console.log('getOne: failure to complete ajax call to ' + url);
         callback([]);
       });
     },
-    retrieveAll (url, Item, callback) {
+    getAll (url, Item, callback) {
       $.ajax({
         url: url,
         type: 'GET',
@@ -27,11 +27,11 @@
         callback(newArray);
       })
       .fail(function(){
-        console.log('RetrieveAll: failure to complete ajax call to ' + url);
+        console.log('getAll: failure to complete ajax call to ' + url);
         callback([]);
       });
     },
-    makeNew (url, data, Item, callback){
+    post (url, data, Item, callback){
       $.ajax({
         url: url,
         type: 'POST',
@@ -43,11 +43,11 @@
         callback(returnObject);
       })
       .fail(function(){
-        console.log('makeNew: failure to complete ajax call to ' + url);
+        console.log('Post: failure to complete ajax call to ' + url);
         callback({});
       });
     },
-    edit (url, data, Item, callback) {
+    patch (url, data, Item, callback) {
       $.ajax({
         url: url,
         type:'PATCH',
@@ -59,7 +59,7 @@
         callback(returnObject);
       })
       .fail(function(){
-        console.log('Edit: failure to complete ajax call to ' + url);
+        console.log('Patch: failure to complete ajax call to ' + url);
         callback({});
       });
     },

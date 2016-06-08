@@ -1,20 +1,17 @@
 (function (module){
 
   var login = {
-    apiCall (endpoint, data) {
-      request.post(endpoint)
-      .send(data)
-      .end(function(err,res){
-        if(!err && res.body && res.body.token) {
-          localStorage.token = res.body.token;
-          delete res.body.token;
-          localStorage.user = JSON.stringify(res.body);
-          window.location = '/';
-        }
-        else {
-          $error.text(res.body ? res.body.msg : err);
-        }
-      });
+    setLocalStorage (data) {
+      console.log(data);
+      if(data && data.token) {
+        localStorage.token = data.token;
+        delete data.token;
+        localStorage.user = JSON.stringify(data);
+        window.location = '/';
+      }
+      else {
+        $error.text(data ? data.msg :'');
+      }
     },
     signin () {
       $error.text('');
@@ -22,37 +19,37 @@
         username: existing.username.value,
         password: existing.password.value
       };
-      login.apiCall('/signin', formData);
+      API.post('/signin', formData, User, login.setLocalStorage);
     },
     signup () {
       $error.text('');
-      reader.onload = function(e) {
-        var formData = {
-          username: newuser.username.value,
-          password: newuser.password.value,
-          firstName: newuser.firstName.value,
-          lastName: newuser.lastName.value,
-          organization: newuser.organization.value,
-          profile: {
-            email: newuser.email.value,
-            description: newuser.description.value,
-            website: newuser.website.value,
-            twitter: newuser.twitter.value,
-            image: e.target.result
-          },
-          hidden: {
-            // TODO set these as boolean values based on checkboxes.
-            email: newuser.hiddenemail.value === 'on',
-            twitter: newuser.hiddentwitter.value === 'on'
-          }
-        };
-        login.apiCall('/signup', formData);
+      var formData = {
+        username: newuser.username.value,
+        password: newuser.password.value,
+        firstName: newuser.firstName.value,
+        lastName: newuser.lastName.value,
+        organization: newuser.organization.value,
+        profile: {
+          email: newuser.email.value,
+          description: newuser.description.value,
+          website: newuser.website.value,
+          twitter: newuser.twitter.value,
+        },
+        hidden: {
+          // TODO set these as boolean values based on checkboxes.
+          email: newuser.hiddenemail.value === 'on',
+          twitter: newuser.hiddentwitter.value === 'on'
+        }
       };
-      reader.readAsDataURL(input.files[0]);
+      if (input.files[0]) {
+        reader.onload = function(e) {
+          formData.profile.image = e.target.result
+          API.post('/signup', formData, User, login.setLocalStorage);
+        };
+        reader.readAsDataURL(input.files[0]);
+      } else API.post('/signup', formData, User, login.setLocalStorage);
     }
   };
-
-  var request = superagent;
 
   var existing = document.getElementById('existing-credentials').elements;
   var newuser = document.getElementById('new-credentials').elements;
@@ -60,14 +57,12 @@
   var input = document.getElementById('avatar');
   var reader = new FileReader();
 
-  $('#showNew').on('click', function() {
+  $('#showNew').click(function() {
     $('#existing').hide().siblings().show();
   });
 
   $('#existing-button').click(login.signin);
   $('#new-button').click(login.signup);
-
-
 
   module.login = login;
 
