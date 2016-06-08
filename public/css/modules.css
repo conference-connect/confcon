@@ -9,5 +9,13 @@ float icons right
 
 */
 
+/* ======== user modal ======== */
+
+.user-website,
+.user-email,
+.user-twitter {
+  font-size: 3em;
+  padding-right: 35px;
+}
 
 /* ======== footer ======== */
