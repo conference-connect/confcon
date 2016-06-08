@@ -14,10 +14,10 @@
 	<link rel="stylesheet" href="css/modules.css">
 
 	<script id="post-template" type="text/x-handlebars-template">
-		<article id="post">
+		<article class="post">
 			<div class="row">
-				<p class="column one-quarter"><a href="" id="post-author">{{author.username}}</a>:&nbsp</p>
-				<p class ="column three-quarters" id="post-body">{{body}}</p>
+				<a href="#" class="post-author" data="{{author._id}}">{{author.username}}</a>
+				<p class ="column three-quarters" class="post-body">{{body}}</p>
 			</div>
 
 			<ul id="post-topics"></ul>
@@ -41,7 +41,7 @@
 	</header>
 
   <main>
-		<section id="all-posts"></section>
+		<section id="all-posts" class="user-btn-handler"></section>
 
 	  <section id="new-post">
 			<form id="new-post-form" onsubmit="return false;">
@@ -84,7 +84,7 @@
 	<script>
 		postView.renderPage();
 		eventView.renderAllEvents();
-		userView.renderUser();
+
 
 	</script>
 </body>

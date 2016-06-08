@@ -1,12 +1,25 @@
 (function(module){
+
   var userView = {
     renderUser(){
-      User.getOne('5755f285c096bc9a20e91cff', function(user){
-        console.log(user);
+      //on link click
+        //grab user id affiliated with that post's user
+      $('.user-btn-handler').on('click','a', function(e){
+        e.preventDefault();
+        var userId = $(this).attr('data');
+
+        //retrieve user data
+        var url = `/users/${userId}`;
+        API.retrieveOne(url, User, function(user){
+          console.log(user);
+        });
       });
+
+
+
+      //populate user data onto a modal window solution (to be coded)
     }
   };
 
   module.userView = userView;
-
 })(window);
