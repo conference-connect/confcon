@@ -16,8 +16,9 @@
 	<script id="post-template" type="text/x-handlebars-template">
 		<article id="post">
 			<div class="row">
-				<p class="column one-quarter"><a href="" id="post-author">{{author.username}}</a>:&nbsp</p>
+				<p class="column one-quarter"><a href="" id="post-author">{{author.username}}</a>&nbsp;</p>
 				<p class ="column three-quarters" id="post-body">{{body}}</p>
+        <input id="{{_id}}" type="submit" value="delete">
 			</div>
 
 			<ul id="post-topics"></ul>
@@ -93,6 +94,7 @@
 	</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
+  <script src="./lib/moment.min.js"></script>
 	<script src="./lib/jquery-2.2.4.min.js" type="text/javascript"></script>
 	<script src="./lib/handlebars.js" type="text/javascript"></script>
   <script src="./js/models/apiCall.js" type="text/javascript"></script>

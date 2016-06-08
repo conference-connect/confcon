@@ -23,7 +23,8 @@
     "Post": false,
     "postView": false,
     "Handlebars": false,
-    "API": false
+    "API": false,
+    "moment": false
   },
   "ecmaFeatures": {
     "modules": true,
