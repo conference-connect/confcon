@@ -14,7 +14,7 @@
 
   };
 
-  function retrieveAllPosts(callback){
+  Post.retrieveAll = function (callback){
     const tokenFromStorage = localStorage.token;
     $.ajax({url:'/api/post/list', headers: {'token': tokenFromStorage}}, {method:'GET'})
     .done( data => {
@@ -27,9 +27,9 @@
       console.log('failure to complete ajax call in retrieveAllPosts');
       callback([]);
     });
-  }
+  };
 
-  function makeNewPost(postData, callback){
+  Post.makeNew = function(postData, callback){
     const tokenFromStorage = localStorage.token;
     $.ajax({
       url:'/api/post/',
@@ -45,9 +45,9 @@
       console.log('failure to complete ajax in makeNewPost');
       callback({});
     });
-  }
+  };
 
-  function editPost(postID, postData, callback){
+  Post.edit = function(postID, postData, callback){
     const tokenFromStorage = localStorage.token;
     const updateUrl = `/api/post/${postID}`;
     $.ajax({
@@ -64,9 +64,9 @@
       console.log('failure to complete ajax in editPost');
       callback({});
     });
-  }
+  };
 
-  function deletePost(postID, callback){
+  Post.delete = function(postID, callback){
     const tokenFromStorage = localStorage.token;
     const deleteUrl = `/api/post/${postID}`;
     $.ajax({
@@ -81,13 +81,8 @@
       console.log('failure to complete ajax in deletePost');
       callback({});
     });
-  }
-
+  };
 
   module.Post = Post;
-  module.retrieveAllPosts = retrieveAllPosts;
-  module.makeNewPost = makeNewPost;
-  module.editPost = editPost;
-  module.deletePost = deletePost;
 
 })(window);

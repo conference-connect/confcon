@@ -1,12 +1,14 @@
 (function (module){
 
-  function renderAllEvents(){
+  var eventView = {};
 
-    retrieveAllEvents(function(arrayOfEvents){
+  eventView.renderAllEvents = function(){
+
+    Event.retrieveAll(function(arrayOfEvents){
       console.log(arrayOfEvents);
     });
 
-  }
+  };
 
-  module.renderAllEvents = renderAllEvents;
+  module.eventView = eventView;
 })(window);

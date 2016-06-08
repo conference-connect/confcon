@@ -1,27 +1,27 @@
 (function (module){
 
-  function renderTemplate(post){
-    var template = Handlebars.compile($('#post-template').text());
-    var htmlObject = template(post);
+  var postView = {
+    renderTemplate (post) {
+      var template = Handlebars.compile($('#post-template').text());
+      var htmlObject = template(post);
 
-    return htmlObject;
-  }
+      return htmlObject;
+    },
+    renderPage (){
+      // $('#new-post').hide();
+      // $('#events').hide();
+      // $('#my-profile').hide();
 
-  function renderPage(){
-    // $('#new-post').hide();
-    // $('#events').hide();
-    // $('#my-profile').hide();
+      Post.retrieveAll(function(arrayOfPosts){
+        console.log(arrayOfPosts);
+        arrayOfPosts.forEach(function(post){
 
-
-    retrieveAllPosts(function(arrayOfPosts){
-      console.log(arrayOfPosts);
-      arrayOfPosts.forEach(function(post){
-
-        $('#all-posts').append(renderTemplate(post));
+          $('#all-posts').append(postView.renderTemplate(post));
+        });
       });
-    });
 
-  }
+    }
+  };
 
 
 
@@ -29,6 +29,5 @@
   //TODO
   //
 
-  module.renderPage = renderPage;
-  module.renderTemplate = renderTemplate;
+  module.postView = postView;
 })(window);
