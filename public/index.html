@@ -26,6 +26,17 @@
   	</article>
 	</script>
 
+	<script id="event-template" type="text/x-handlerbars-template">
+		<article id="event">
+			<div class="row">
+				<p class="column four-quarter"><b>{{title}}</b><br />
+				date: {{date}} <br />
+				speakers: {{speakers}}<br />
+				location: {{location}}</p>
+			</div>
+		</article>
+	</script>
+
 </head>
 
 <body>
@@ -63,6 +74,16 @@
 		<section id="admin">
       <section id="admin-users"></section>
       <section id="admin-events"></section>
+				<h1>Events</h1>
+
+				<form id="new-event-form" onsubmit="return false;">
+					<textarea name="eventtitle" type="text">Enter a new event title</textarea>
+					<textarea name="eventdate" type="text">Event date</textarea><br />
+					<button id="new-event-submit" class="event-btn" type="submit">submit</button>
+				</form>
+
+					<div id="all-events">
+					</div>
       <section id="admin-topics"></section>
 	  </section>
 	</main>
