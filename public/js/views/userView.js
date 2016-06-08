@@ -11,12 +11,15 @@
         //retrieve user data
         var url = `/users/${userId}`;
         API.getOne(url, User, function(user){
-          console.log(user);
+
+          //populate user data onto modal window
+          $('.modal-title').text(user.firstName + ' ' + user.lastName);
+          
         });
       });
-      //populate user data onto a modal window solution
-      // $('.user-modal').on('shown.bs.modal', function () {
-      //   $('#myInput').focus();
+
+
+
 
     }
   };
