@@ -36,8 +36,8 @@
   });
 
   //TODO add filter by topics
-  //TODO
-  //
+  //TODO add user contact info
+  
 
   module.postView = postView;
 })(window);
