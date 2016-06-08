@@ -19,11 +19,21 @@
           $('#all-posts').append(postView.renderTemplate(post));
         });
       });
-
+    },
+    dom: {
+      form: document.getElementById('new-post-form').elements
     }
   };
 
-
+  $('#new-post-submit').click(function () {
+    var user = JSON.parse(localStorage.user);
+    var data = {
+      body: postView.dom.form.postmsg.value,
+      author: user.id
+    };
+    console.log(data);
+    Post.makeNew(data, postView.renderPage);
+  });
 
   //TODO add filter by topics
   //TODO

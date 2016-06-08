@@ -16,7 +16,7 @@
 	<script id="post-template" type="text/x-handlebars-template">
 		<div id="post">
 			<div class="row">
-				<p class="column one-quarter"><a href="" id="post-author">{{author}}</a>:&nbsp</p>
+				<p class="column one-quarter"><a href="" id="post-author">{{author.username}}</a>:&nbsp</p>
 				<p class ="column three-quarters" id="post-body">{{body}}</p>
 			</div>
 
@@ -46,11 +46,11 @@
 
 	  <div id="new-post">
 
-			<form action="" method="POST">
+			<form id="new-post-form" onsubmit="return false;">
 
-				<textarea id ="post-msg" type="text">Type a message!</textarea><br>
-				<button class="post-btn" type="submit">submit</button>
-				<button class="post-btn"type="reset">clear</button>
+				<textarea name="postmsg" type="text">Type a message!</textarea><br>
+				<button id="new-post-submit" class="post-btn" type="submit">submit</button>
+				<button class="post-btn" type="reset">clear</button>
 
 			</form>
 
