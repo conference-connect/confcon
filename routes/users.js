@@ -34,7 +34,7 @@ router
       });
   })
 
-  .get('/list', (req, res, next) => {
+  .get('/list', ensureRole('admin'), (req, res, next) => {
     User.find()
     .then( users => {
       res.json(users.map( el =>{
