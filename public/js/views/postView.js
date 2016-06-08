@@ -32,7 +32,7 @@
       author: user.id
     };
     console.log(data);
-    API.makeNew('api/post/', data, Post, postView.renderPage);
+    API.post('api/post/', data, Post, postView.renderPage);
   });
 
   //TODO add filter by topics
