@@ -40,8 +40,9 @@ function signup(){
         image: e.target.result
       },
       hidden: {
-        email: newuser.hiddenemail.value,
-        twitter: newuser.hiddentwitter.value
+        // TODO set these as boolean values based on checkboxes.
+        email: newuser.hiddenemail.value === 'on',
+        twitter: newuser.hiddentwitter.value === 'on'
       }
     };
     apiCall('/signup', formData);
