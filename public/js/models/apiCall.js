@@ -1,6 +1,20 @@
 (function(module){
 
   var API = {
+    retrieveOne (url, Item, callback) {
+      $.ajax({
+        url: url,
+        type: 'GET',
+        headers: {token: localStorage.token}})
+      .done(function(data){
+        var returnObject = new Item(data);
+        callback(returnObject);
+      })
+      .fail(function(){
+        console.log('RetrieveAll: failure to complete ajax call to ' + url);
+        callback([]);
+      });
+    }
     retrieveAll (url, Item, callback) {
       $.ajax({
         url: url,
