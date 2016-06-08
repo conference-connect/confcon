@@ -12,7 +12,7 @@
       // $('#events').hide();
       // $('#my-profile').hide();
 
-      Post.retrieveAll(function(arrayOfPosts){
+      API.retrieveAll('api/post/list', Post, function(arrayOfPosts){
         console.log(arrayOfPosts);
         arrayOfPosts.forEach(function(post){
 
@@ -32,7 +32,7 @@
       author: user.id
     };
     console.log(data);
-    Post.makeNew(data, postView.renderPage);
+    API.makeNew('api/post/', data, Post, postView.renderPage);
   });
 
   //TODO add filter by topics

@@ -22,7 +22,8 @@
     "superagent": false,
     "Post": false,
     "postView": false,
-    "Handlebars": false
+    "Handlebars": false,
+    "API": false
   },
   "ecmaFeatures": {
     "modules": true,

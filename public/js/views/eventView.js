@@ -2,7 +2,7 @@
 
   var eventView = {
     renderAllEvents () {
-      Event.retrieveAll(function(arrayOfEvents){
+      API.retrieveAll('api/event/list', Event, function(arrayOfEvents){
         console.log(arrayOfEvents);
       });
     }

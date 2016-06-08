@@ -178,7 +178,7 @@ ___
 
 <a name="viewusers"></a>  
 #### VIEW USERS  
-__URL:__ /api/userlist  
+__URL:__ /api/user/list  
 __Method:__ GET  
 __Description:__ Returns a list of attendees.  
 __Authorized roles:__ admin, attendee     
