@@ -22,11 +22,7 @@ router
       next({code: 404, error: 'No events found'});
     }
     res.json(events.map(el => {
-      return {
-        id: el._id,
-        title: el.title,
-        date: el.date
-      };
+      return eventToReturn(el);
     }));
   })
   .catch( () => {
