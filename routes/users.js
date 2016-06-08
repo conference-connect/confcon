@@ -33,6 +33,25 @@ router
         });
       });
   })
+
+  .get('/list', (req, res, next) => {
+    User.find()
+    .then( users => {
+      res.json(users.map( el =>{
+        return {
+          id: el['_id'],
+          username: el.username,
+          organization: el.organization};
+      }));
+    })
+    .catch( err => {
+      next({code: 500,
+        msg: 'unable to return users',
+        error: err
+      });
+    });
+  })
+
   .get('/:id', (req, res, next) =>{
     User.findById(req.params.id)
     .lean()
