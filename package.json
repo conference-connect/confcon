@@ -30,6 +30,7 @@
   "dependencies": {
     "bcrypt": "^0.8.6",
     "body-parser": "^1.15.1",
+    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "grant-express": "^3.6.2",

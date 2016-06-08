@@ -14,10 +14,11 @@
           console.log(user);
         });
       });
+      //populate user data onto a modal window solution
+      $('.user-modal').on('shown.bs.modal', function () {
+        $('#myInput').focus();
+      });
 
-
-
-      //populate user data onto a modal window solution (to be coded)
     }
   };
 
