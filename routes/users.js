@@ -76,7 +76,6 @@ router
     });
   })
   .patch('/:id', bodyParser, (req, res, next) => {
-    console.log('whoa');
     if (req.params.id) {
       User.findById(req.params.id)
         .then(result => {

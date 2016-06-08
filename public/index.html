@@ -26,12 +26,22 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        					<h4 class="modal-title">{{author.firstName}} {{author.lastName}}</h4>
+									<h4 class="modal-title"></h4>
       				</div>
       			<div class="modal-body">
-        			<ul class="user-contact">
+							<div class="row">
+								<div class="column half user-img-container"><!--user-img goes here--></div>
+								<div class="column half">
+									<h5 class="user-org"></h5>
+									<a class="user-website" href=""><i class="fa fa-laptop"></i></a>
+									<a class="user-email" href=""><i class="fa fa-envelope-o"></i></a>
+									<a class="user-twitter" href=""><i class="fa fa-twitter-square"></i></a>
+								</div>
+							</div>
+
+        			<!-- <ul class="user-contact">
 								<li>{{author.email}}</li>
-							</ul>
+							</ul> -->
       			</div>
       			<div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
