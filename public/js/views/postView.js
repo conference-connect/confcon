@@ -14,8 +14,7 @@
       API.getAll('api/post/list', Post, function(arrayOfPosts){
         $('#all-posts').empty();
         arrayOfPosts.forEach(function(post){
-          var date = post.createdAt;
-          // console.log(date);
+          post.createdAt = moment(post.createdAt).format('HH:MM on MM-DD-YY');
           $('#all-posts').append(postView.renderTemplate(post));
           $(`#${post._id}`).on('click', (e)=>{
             e.preventDefault();
