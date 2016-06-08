@@ -27,9 +27,9 @@ router
   });
 })
 
-.patch('/', bodyParser, (req, res, next) => {
+.patch('/:id', bodyParser, (req, res, next) => {
   User.findByIdAndUpdate(
-    req.body.id,
+    req.params.id,
     {$addToSet: {agenda: req.body.event_id}},
     {safe: true, new: true})
     .populate('agenda')
@@ -42,9 +42,9 @@ router
     });
 })
 
-.delete('/', bodyParser, (req, res, next) => {
+.delete('/:id', bodyParser, (req, res, next) => {
   User.findByIdAndUpdate(
-    req.body.id,
+    req.params.id,
     {$pull: {agenda: req.body.event_id}},
     {safe: true, new: true})
     .populate('agenda')
