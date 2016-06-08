@@ -13,8 +13,10 @@
         API.getOne(url, User, function(user){
 
           //populate user data onto modal window
-          $('.modal-title').text(user.firstName + ' ' + user.lastName);
+          $('.modal-title').text(`${user.firstName} ${user.lastName}`);
+          $('.modal-body').html(`<h6>${user.organization}</h6>`);
           
+
         });
       });
 
