@@ -7,9 +7,8 @@ function getToken() {
         .get('/validate')
 				.set('token', token)
 				.end(function(err) {
-          if (err) reject('invalid token');
-          else resolve(token);
-
+  if (err) reject('invalid token');
+  else resolve(token);
 				});
     }
   });
@@ -23,3 +22,5 @@ function validateToken (callback) {
       window.location = 'login.html';
     });
 }
+
+validateToken.shutuplint = true;

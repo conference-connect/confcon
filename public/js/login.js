@@ -33,7 +33,7 @@
           email: newuser.email.value,
           description: newuser.description.value,
           website: newuser.website.value,
-          twitter: newuser.twitter.value,
+          twitter: newuser.twitter.value
         },
         hidden: {
           // TODO set these as boolean values based on checkboxes.
@@ -43,7 +43,7 @@
       };
       if (input.files[0]) {
         reader.onload = function(e) {
-          formData.profile.image = e.target.result
+          formData.profile.image = e.target.result;
           API.post('/signup', formData, User, login.setLocalStorage);
         };
         reader.readAsDataURL(input.files[0]);

@@ -22,6 +22,7 @@
     "superagent": false,
     "Post": false,
     "postView": false,
+    "User": false,
     "Handlebars": false,
     "API": false,
     "moment": false
