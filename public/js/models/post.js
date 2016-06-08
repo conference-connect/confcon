@@ -1,7 +1,7 @@
 (function(module){
   //Post constructor
   function Post(obj){
-    Object.keys(obj).forEach((item)=> {
+    Object.keys(obj).forEach(function(item){
       this[item] = obj[item];
     }, this);
   }
@@ -17,13 +17,13 @@
   Post.retrieveAll = function (callback){
     const tokenFromStorage = localStorage.token;
     $.ajax({url:'/api/post/list', headers: {'token': tokenFromStorage}}, {method:'GET'})
-    .done( data => {
-      var newArray = data.map( (el) => {
+    .done(function(data){
+      var newArray = data.map(function(el){
         return new Post(el);
       });
       callback(newArray);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax call in retrieveAllPosts');
       callback([]);
     });
@@ -37,11 +37,11 @@
       contentType: 'application/json',
       data: JSON.stringify(postData),
       headers: {'token': tokenFromStorage}})
-    .done( data => {
+    .done(function(data){
       var returnObject = new Post(data);
       callback(returnObject);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax in makeNewPost');
       callback({});
     });
@@ -56,11 +56,11 @@
       contentType: 'application/json',
       data: JSON.stringify(postData),
       headers: {'token': tokenFromStorage}})
-    .done( data => {
+    .done(function(data){
       var returnObject = new Post(data);
       callback(returnObject);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax in editPost');
       callback({});
     });
@@ -73,11 +73,11 @@
       url:deleteUrl,
       type:'DELETE',
       headers: {'token': tokenFromStorage}})
-    .done( data => {
+    .done(function(data){
       var returnObject = new Post(data);
       callback(returnObject);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax in deletePost');
       callback({});
     });

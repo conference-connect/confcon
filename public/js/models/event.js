@@ -9,13 +9,13 @@
   Event.retrieveAll = function(callback){
     const tokenFromStorage = localStorage.token;
     $.ajax({url:'/api/event/list', headers: {'token': tokenFromStorage}}, {method:'GET'})
-    .done( data => {
-      var newArray = data.map( (el) => {
+    .done(function(data){
+      var newArray = data.map(function(el){
         return new Event(el);
       });
       callback(newArray);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax call in retrieveAllEvents');
       callback([]);
     });
@@ -25,11 +25,11 @@
     const tokenFromStorage = localStorage.token;
     const detailUrl = `/api/event/${eventID}`;
     $.ajax({url:detailUrl, headers: {'token': tokenFromStorage}}, {method:'GET'})
-    .done( data => {
+    .done(function(data){
       var eventDetail = new Event(data);
       callback(eventDetail);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax call in getEventDetail');
       callback([]);
     });
@@ -43,11 +43,11 @@
       contentType: 'application/json',
       data: JSON.stringify(eventData),
       headers: {'token': tokenFromStorage}})
-    .done( data => {
+    .done(function(data){
       var returnObject = new Event(data);
       callback(returnObject);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax in makeNewEvent');
       callback({});
     });
@@ -62,11 +62,11 @@
       contentType: 'application/json',
       data: JSON.stringify(eventData),
       headers: {'token': tokenFromStorage}})
-    .done( data => {
+    .done(function(data){
       var returnObject = new Event(data);
       callback(returnObject);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax in editEvent');
       callback({});
     });
@@ -79,11 +79,11 @@
       url:deleteUrl,
       type:'DELETE',
       headers: {'token': tokenFromStorage}})
-    .done( data => {
+    .done(function(data){
       var returnObject = new Event(data);
       callback(returnObject);
     })
-    .fail( () => {
+    .fail(function(){
       console.log('failure to complete ajax in deleteEvent');
       callback({});
     });
