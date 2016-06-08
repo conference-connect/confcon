@@ -390,6 +390,9 @@ __Outputs:__
 - id
 - title  
 - date  
+- speakers
+- topics  
+- location  
 
 ___
 

@@ -31,9 +31,9 @@
 		<article id="event">
 			<div class="row">
 				<p class="column four-quarter"><b>{{title}}</b><br />
-				date: {{date}} <br />
-				speakers: {{speakers}}<br />
+				time/date: {{date}} <br />
 				location: {{location}}<br />
+				speakers: {{speakers}}<br />
 				<input id="{{id}}" type="submit" value="delete"></p>
 			</div>
 		</article>
@@ -80,7 +80,9 @@
 
 				<form id="new-event-form" onsubmit="return false;">
 					<textarea name="eventtitle" type="text">Enter a new event title</textarea>
-					<textarea name="eventdate" type="text">Event date</textarea><br />
+					<textarea name="eventdate" type="datetime">Event date (such as 2016-06-08 19:30:00)</textarea>
+					<textarea name="eventspeakers" type="text">Enter speaker names</textarea>
+					<textarea name="eventlocation" type="text">Enter location</textarea><br />
 					<button id="new-event-submit" class="event-btn" type="submit">submit</button>
 				</form>
 
