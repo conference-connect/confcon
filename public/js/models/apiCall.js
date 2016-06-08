@@ -14,7 +14,7 @@
         console.log('RetrieveAll: failure to complete ajax call to ' + url);
         callback([]);
       });
-    }
+    },
     retrieveAll (url, Item, callback) {
       $.ajax({
         url: url,
@@ -77,8 +77,6 @@
         callback({});
       });
     }
-
-
   };
 
   module.API = API;
