@@ -119,6 +119,7 @@
 		<section id="posts">
 			<h1>Posts</h1>
 			<section id="all-posts" class="user-btn-handler">
+
 			</section>
 
 			<section id="new-post">
@@ -307,7 +308,7 @@
 	<script src="./js/views/navView.js" type="text/javascript"></script>
 	<script>
 		validateToken(function(user) {
-			postView.renderPage();
+			postView.renderPage(postView.perPage,postView.currentPage);
 			postView.populateEventSelector();
 			adminTopicsView.renderAllAdminTopics();
 			adminView.renderAdmin(user.admin);
