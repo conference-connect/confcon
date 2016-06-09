@@ -16,15 +16,30 @@
           console.log(event);
           event.date = moment(event.date).format('HH:mm on MM-DD-YY');
           $('#events').append(eventsView.renderTemplate(event));
-  
         });
-
+        eventsView.addToAgenda();
       });
+    },
+
+    //agenda control
+    addToAgenda(){
+      $('.agenda-btn-handler').on('click', '.agenda-btn', function(e){
+        e.preventDefault();
+        var eventId = $(this).attr('data');
+        var userId = userView.userId();
+
+        var url = '/api/users/:' + userId;
+
+        API.patch(url, eventId, User, function(agendaArray){
+          
+        });
+      });
+
+    },
+
+    renderAgenda(){
+      //API call --> get logged in user's agenda: GET users/:id
     }
-
-
-    //favorites control
-
   };
 
   module.eventsView = eventsView;
