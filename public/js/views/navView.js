@@ -11,6 +11,9 @@
         $('#admin-nav-link').hide();
         $('#admin').hide();
       }
+    },
+    standardColors: {
+      thing: 'that'
     }
 
   };
