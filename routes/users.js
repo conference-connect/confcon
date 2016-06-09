@@ -58,8 +58,8 @@ router
     .then(result => {
       delete result.password;
       if(result._id != req.user.id && req.user.roles.indexOf('admin') === -1 ){
-        if(result.hidden.email && result.profile.email) delete result.profile.email;
-        if(result.hidden.twitter && result.profile.twitter) delete result.profile.twitter;
+        if(result.hidden.email && result.profile_email) delete result.profile_email;
+        if(result.hidden.twitter && result.profile_twitter) delete result.profile_twitter;
         delete result.agenda;
         delete result.roles;
       }
