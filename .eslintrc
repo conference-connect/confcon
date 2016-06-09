@@ -19,7 +19,6 @@
     "before": false,
     "after": false,
     "$": false,
-    "superagent": false,
     "Post": false,
     "postView": false,
     "User": false,
