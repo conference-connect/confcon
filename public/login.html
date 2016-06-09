@@ -4,6 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Login</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="lib/font-awesome.min.css">
+  <link rel="stylesheet" href="lib/pills.min.css">
+
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/layout.css">
+	<link rel="stylesheet" href="css/modules.css">
   <link rel="stylesheet" href="css/login.css" type="text/css">
 </head>
 <body>
@@ -11,32 +20,84 @@
   <main>
   	<section id="existing">
   		<h2>Log in with username/password</h2>
-  		<form id="existing-credentials" onsubmit="return false;">
-        <label for="username">username: </label><input name="username"><br>
-  			<label for="password">password: </label><input name="password"><br>
-				<button id="existing-button">sign in</button>
-  			<div id="in-error"></div>
-  		</form>
-      <p>
-        Don't have an account?  <button id="showNew">Create Account</button>
+  		<form id="existing-credentials" onsubmit="return false;" class="form-horizontal">
+				<div class="row">
+					<div class="column half">
+        		<label for="username" class="sr-only">Username</label><input name="username" class="form-control" placeholder="username"><br>
+					</div>
+					<div class="column half">
+						<label for="password" class="sr-only">Password</label><input name="password" class="form-control" placeholder="password"><br>
+					</div>
+				<div class="row">
+					<div class="column whole">
+						<button id="existing-button">Sign In</button>
+		  			<div id="in-error"></div><br>
+						<button id="showNew">Create Account</button>
+					</div>
+				</div>
+	  	</form>
+
   	</section>
 
     <section id="newuser">
       <h2>Enter your information to create a new account</h2>
-      <form id="new-credentials" onsubmit="return false;">
-        <label for="username">username: </label><input name="username" required><br>
-        <label for="password">password: </label><input name="password" required><br>
-        <label for="firstName">First Name: </label><input name="firstName" required><br>
-        <label for="lastName">Last Name: </label><input name="lastName" required><br>
-				<label for="organization">organization: </label><input name="organization"><br>
-        <label for="email">email: </label><input name="email"> <input type="checkbox" name="hiddenemail"><label for="hiddenemail"> hide email from public.<br>
-				<label for="twitter">Twitter handle: </label><input name="twitter"> <input type="checkbox" name="hiddentwitter"><label for="hiddentwitter"> hide Twitter handle from public.<br>
-				<label for="description">description: </label><input name="description"><br>
-				<label for="website">website: </label><input name="website"><br>
-				<label for"image">avatar: </label><input id="avatar" name="image" type="file" accept="image/*"><br>
+      <form id="new-credentials" onsubmit="return false;" class="form-horizontal">
+				<div class="row">
+					<div class="column half">
+		        <label for="username" class="sr-only">Username</label>
+						<input name="username" class="form-control"required placeholder="Username" required><br>
+					</div>
+					<div class="column half">
+		        <label for="password" class="sr-only">Password</label>
+						<input name="password" class="form-control"required placeholder="Password" required><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="column half">
+		        <label for="firstName" class="sr-only">First Name</label>
+						<input name="firstName" class="form-control"required placeholder="First Name" required><br>
+					</div>
+					<div class="column half">
+		        <label for="lastName" class="sr-only">Last Name</label>
+						<input name="lastName" class="form-control"required placeholder="Last Name" required><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="column half">
+						<label for="organization" class="sr-only">Organization</label>
+						<input name="organization" class="form-control"required placeholder="Organization"><br>
+					</div>
+					<div class="column half">
+						<label for="website" class="sr-only">Website</label>
+						<input name="website" class="form-control"required placeholder="Your Website"><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="column half">
+		        <label for="email" class="sr-only">Email</label>
+						<input name="email" class="form-control"required placeholder="Email">
+						<label for="hiddenemail">Keep private</label>
+						<input type="checkbox" name="hiddenemail">
+					</div>
+					<div class="column half">
+						<label for="twitter" class="sr-only">Twitter username</label>
+						<input name="twitter" class="form-control"required placeholder="Twitter username">
+						<label for="hiddentwitter">Keep private</label>
+						<input type="checkbox" name="hiddentwitter">
+					</div>
+				</div>
 
+				<div class="row">
+					<div class="column whole">
+						<label for="description" class="sr-only">Description</label>
+						<textarea name="description" class="form-control"required placeholder="Tell us about yourself"></textarea>
+					</div>
+				</div>
 
-        <button id="new-button">sign up</button>
+				<label for="image">Upload a Photo</label>
+				<input id="avatar" name="image" type="file" accept="image/*"><br>
+
+        <button id="new-button">Sign Up</button>
 			</form>
     </section>
   </main>
