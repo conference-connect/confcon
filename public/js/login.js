@@ -41,6 +41,7 @@
           twitter: newuser.hiddentwitter.value === 'on'
         }
       };
+
       if (input.files[0]) {
         reader.onload = function(e) {
           formData.profile.image = e.target.result;
