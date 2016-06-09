@@ -11,7 +11,6 @@
       var template = Handlebars.compile($('#post-selector-template').text());
       API.getAll('api/event/list', Event, function(events) {
         events.forEach(function (e) {
-          console.log(e);
           optionTag = template(e);
           $('#postEventSelector').append(optionTag);
         });
