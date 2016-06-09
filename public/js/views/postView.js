@@ -21,7 +21,7 @@
             API.delete ('/api/post/' + e.target.id, Post, postView.renderPage);
           });
         });
-        userView.renderUser();
+        window.userView.renderUser();
       });
     },
     dom: {
