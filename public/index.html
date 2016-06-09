@@ -75,6 +75,16 @@
 		</article>
 	</script>
 
+	<script id="topic-template" type="text/x-handlebars-templat">
+		<article id="topic">
+			<div class="row">
+				<p class="column four-quarter"><b>{{title}}</b><br />
+					<input in="{{id}}edit" type="submit" value="edit">
+					<input id="{{id}}" type="submit" value="delete"><p>
+			</div>
+		</article>
+	</script>
+
 </head>
 
 <body>
@@ -173,22 +183,46 @@
 	  </section>
 
 		<section id="admin">
-      <section id="admin-users"></section>
-      <section id="admin-events"></section>
-				<h1>Events</h1>
+			<h1>Admin Settings</h1>
+			<section id="admin-users" class="admin-section">
+				<a href="#"><h2>Users</h2></a>
+				<div class="toggle-visible">
+					Content
+				</div>
+			</section>
 
-				<form id="new-event-form" onsubmit="return false;">
-					<textarea name="eventtitle" type="text" placeholder="Enter a new event title"></textarea>
-					<textarea name="eventdate" type="datetime" placeholder="Event date (such as 2016-06-08 19:30:00)"></textarea>
-					<textarea name="eventspeakers" type="text" placeholder="Enter speaker names"></textarea>
-					<textarea name="eventlocation" type="text" placeholder="Enter location"></textarea><br />
-					<button id="new-event-submit" class="event-btn" type="submit">submit</button>
-				</form>
-
+			<section id="admin-events" class="admin-section">
+				<a href="#"><h2>Events</h2></a>
+				<div class="toggle-visible">
+					<form id="new-event-form" onsubmit="return false;">
+						<textarea name="eventtitle" type="text" placeholder="Enter a new event title"></textarea>
+						<textarea name="eventdate" type="datetime" placeholder="Event date (such as 2016-06-08 19:30:00)"></textarea>
+						<textarea name="eventspeakers" type="text" placeholder="Enter speaker names"></textarea>
+						<textarea name="eventlocation" type="text" placeholder="Enter location"></textarea><br />
+						<button id="new-event-submit" class="event-btn" type="submit">submit</button>
+					</form>
 					<div id="all-events">
 					</div>
-      <section id="admin-topics"></section>
-	  </section>
+				</div>
+			</section>
+
+			<section id="admin-topics" class="admin-section">
+				<a href="#"><h2>Topics</h2></a>
+				<div class="toggle-visible">
+					Content
+					<div id="all-topics">
+					</div>
+				</div>
+			</section>
+
+			<section id="admin-config" class="admin-section">
+				<a href="#"><h2>Config</h2></a>
+				<div class="toggle-visible">
+					content
+				</div>
+			</section>
+
+		</section>
 	</main>
 
 	<footer>
@@ -204,13 +238,17 @@
   <script src="./js/models/apiCall.js" type="text/javascript"></script>
 	<script src="./js/models/constructors.js" type="text/javascript"></script>
   <script src="./js/views/postView.js" type="text/javascript"></script>
-	<script src="./js/views/eventView.js" type="text/javascript"></script>
+	<script src="./js/views/adminEventsView.js" type="text/javascript"></script>
+	<script src="./js/views/adminTopicsView.js" type="text/javascript"></script>
 	<script src="./js/views/userView.js" type="text/javascript"></script>
+	<script src="./js/views/adminView.js" type="text/javascript"></script>
 	<script src="js/auth.js"></script>
 	<script>
 		validateToken(function() {
 			postView.renderPage();
-			eventView.renderAllEvents();
+			adminEventsView.renderAllAdminEvents();
+			adminTopicsView.renderAllAdminTopics();
+			adminView.renderAdmin();
 		});
 
 	</script>
