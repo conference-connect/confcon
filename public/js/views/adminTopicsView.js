@@ -42,7 +42,7 @@
             $groupRow.append('<button data-id="' + topic.id + '" class=\'edit-topic-submit\' class=\'topic-btn\' type=\'submit\'>update</button>');
             $groupRow.append('<button class=\'edit-topic-cancel\' class=\'topic-btn\' type=\'submit\'>cancel</button>');
             $(e.target).after($begin);
-            adminTopicsView.dom.editform = document.getElementById('edit-topic-form').elements
+            adminTopicsView.dom.editform = document.getElementById('edit-topic-form').elements;
           });
         });
 
