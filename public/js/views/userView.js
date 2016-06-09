@@ -12,26 +12,44 @@
         var url = `/users/${userId}`;
         API.getOne(url, User, function(user){
           console.log(user);
-          if(!user.organization){
-            user.organization ='Organization Unknown';
-          }
-
-          if(!user.profile){
-            $('.user-img-container').html('<img src="./img/user-img-default.jpg">');
-          } else {
-            $('.user-img-container').html(`<img src="${user.profile_image}"`);
-          }
 
           //populate user data onto modal window
           $('.modal-title').text(`${user.firstName} ${user.lastName}`);
-          $('.user-org').text(user.organization);
+          if(!user.organization){
+            user.organization ='Organization Unknown';
+          } else {
+            $('.user-org').text(user.organization);
+          }
 
+          if(!user.profile_image){
+            $('.user-img-container').html('<img src="./img/user-img-default.jpg">');
+          } else {
+            $('.user-img-container').html('<img src="' + user.profile_image +'">');
+          }
 
-          //TODO create better handling for hidden/unspecified contact info
-          $('.user-website').attr('href', `http://${user.profile_website}`);
-          $('.user-email').attr('href', `mailto:${user.profile_email}`);
-          $('.user-twitter').attr('href', `http://twitter.com/${user.profile_twitter}`);
+          if(!user.profile_website || user.profile_website === undefined){
+            $('.user-website').css('color', '#d3d3d3');
+            $('.user-website').removeAttr('target href');
+          } else {
+            $('.user-website').css('color', '#00CDCD');
+            $('.user-website').attr('href', `http://${user.profile_website}`).attr('target', 'blank');
+          }
 
+          if(!user.profile_email || user.profile_email === undefined){
+            $('.user-email').css('color', '#d3d3d3');
+            $('.user-email').removeAttr('target href');
+          } else {
+            $('.user-email').css('color', '#00CDCD');
+            $('.user-email').attr('href', `mailto:${user.profile_email}`).attr('target', 'blank');
+          }
+
+          if(!user.profile_twitter || user.profile_twitter === undefined){
+            $('.user-twitter').css('color', '#d3d3d3');
+            $('.user-twitter').removeAttr('target href');
+          } else {
+            $('.user-twitter').css('color', '#00CDCD');
+            $('.user-twitter').attr('href', `http://twitter.com/${user.profile_twitter}`).attr('target', 'blank');
+          }
         });
       });
     },
