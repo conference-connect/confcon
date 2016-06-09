@@ -75,18 +75,30 @@ router
       });
     });
   })
-  .patch('/:id', bodyParser, (req, res, next) => {
-    if (req.params.id) {
-      User.findById(req.params.id)
-        .then(result => {
-          if (result) {
-            new User(Object.assign(result, req.body)).save()
-              .then(result => res.json(result))
-              .catch(err => next(err));
-          }
-        });
-    }
+
+  .patch('/:id', bodyParser, ensureRole('admin'), (req, res, next) => {
+    User.findOneAndUpdate({_id: req.params.id} , req.body, {new: true})
+    .then(userItem => {
+      res.json(userItem);
+    })
+    .catch( () => {
+      next({code: 500, error: 'Unable to update user'});
+    });
   })
+
+  // .patch('/:id', bodyParser, (req, res, next) => {
+  //   if (req.params.id) {
+  //     User.findById(req.params.id)
+  //       .then(result => {
+  //         if (result) {
+  //           new User(Object.assign(result, req.body)).save()
+  //             .then(result => res.json(result))
+  //             .catch(err => next(err));
+  //         }
+  //       });
+  //   }
+  // })
+
   .delete('/:id', ensureRole('admin'), (req, res, next) => {
     User.findByIdAndRemove(req.params.id)
     .then(result => res.json(result))

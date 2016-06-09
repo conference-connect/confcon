@@ -17,9 +17,9 @@
           // Append each event to the list
           $('#all-events').append(adminEventsView.renderTemplate(event));
           // Delete button
-          $(`#${event.id}`).on('click', (e)=>{
+          $(`#${event.id}`).on('click', function(e){
             e.preventDefault();
-            API.delete ('/api/event/' + e.target.id, Event, adminEventsView.renderAllAdminEvents);
+            API.delete('/api/event/' + e.target.id, Event, adminEventsView.renderAllAdminEvents);
           });
           // Edit button
           $(`#${event.id}edit`).on('click', function(e){
@@ -27,12 +27,12 @@
             // Hide the edit button when tapped
             $(e.target).hide();
             // Show edit boxes
-            var $begin = $("<form id='edit-event-form' onsubmit='return false;'></form>");
+            var $begin = $('<form id=\'edit-event-form\' onsubmit=\'return false;\'></form>');
             $begin.append('<textarea name=\'eventtitle\' type=\'text\'>' + event.title + '</textarea>');
             $begin.append('<textarea name=\'eventdate\' type=\'datetime\'>' + unformattedDate + '</textarea>');
-    				$begin.append('<textarea name=\'eventspeakers\' type=\'text\'>' + event.speakers + '</textarea>');
-    				$begin.append('<textarea name=\'eventlocation\' type=\'text\'>' + event.location + '</textarea><br />');
-    				$begin.append('<button data-id="' + event.id + '" class=\'edit-event-submit\' class=\'event-btn\' type=\'submit\'>update</button>');
+            $begin.append('<textarea name=\'eventspeakers\' type=\'text\'>' + event.speakers + '</textarea>');
+            $begin.append('<textarea name=\'eventlocation\' type=\'text\'>' + event.location + '</textarea><br />');
+            $begin.append('<button data-id="' + event.id + '" class=\'edit-event-submit\' class=\'event-btn\' type=\'submit\'>update</button>');
             $begin.append('<button class=\'edit-event-cancel\' class=\'event-btn\' type=\'submit\'>cancel</button>');
             $(e.target).after($begin);
           });
@@ -41,7 +41,7 @@
         // Handle changes from edit button
         $('#all-events').on('click', 'button', function(e){
           if ($(e.target).hasClass('edit-event-submit')){
-            e.preventDefault;
+            e.preventDefault();
             var data = {
               title: $(e.target).prev().prev().prev().prev().prev().val(),
               date: $(e.target).prev().prev().prev().prev().val(),
