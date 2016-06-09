@@ -50,9 +50,9 @@
 
 			<div class ="column four-fifths">
 				<p class="post-body">{{body}}</p>
-				<ul id="post-topics"></ul>
+				<ul class="post-topics"></ul>
 				{{#each topics}}
-				<li class="topic-color-{{color}}">{{title}}</li>
+				<li data-id="{{_id}}" class="topic-color-{{color}}">{{title}}</li>
 				{{/each}}
 				<div id="post-event">{{event.title}}</div>
 				<div id="post-timestamp">Posted at: {{createdAt}}</div>
@@ -136,12 +136,26 @@
 
 		</div>
 		<h1 class="nav-logo">Conf-Con</h1>
+
+		<form id="filter-topic" onsubmit="return false;" class="form-horizontal">
+			<div class="form-group row">
+				<div class="column one-fourth">
+					<div class="filter-topic-dropdown">
+						<select id="filter-topic-dropdown" name="filtertopic" class="form-control">
+							<option value="">-- Filter by Topic --</option>
+						</select><a href="#" id="filter-topic-clear">clear</a>
+					</div>
+				</div>
+			</div>
+		</form>
+
 	</header>
 
   <main>
 		<section id="posts">
 			<h1>Posts</h1>
 			<section id="all-posts" class="user-btn-handler">
+
 			</section>
 
 			<section id="new-post">
@@ -334,7 +348,7 @@
 	<script src="./js/views/eventsView.js" type="text/javascript"></script>
 	<script>
 		validateToken(function(user) {
-			postView.renderPage();
+			postView.renderPage(postView.perPage,postView.currentPage);
 			postView.populateEventSelector();
 			eventsView.renderAllEvents();
 

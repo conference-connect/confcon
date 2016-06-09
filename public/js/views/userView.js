@@ -86,6 +86,12 @@
           alert('profile updated!');
         });
       }
+    },
+    userId () {
+      if (localStorage.user) {
+        var data = JSON.parse(localStorage.user);
+        return data.id;
+      }
     }
   };
 
