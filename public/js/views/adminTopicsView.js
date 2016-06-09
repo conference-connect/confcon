@@ -39,9 +39,9 @@
 
         // Handle change from edit button
         $('#all-topics').on('click', 'button', function(e){
+          e.preventDefault();
 
           if ($(e.target).hasClass('edit-topic-submit')){
-            e.preventDefault();
             var data = {
               title: $(e.target).prev().prev().prev().val(),
               color: $(e.target).prev().prev().val()
@@ -52,8 +52,8 @@
 
           // Show edit button and remove edit boxes
           if ($(e.target).hasClass('edit-topic-cancel')){
-            $(e.target).parent().prev().show();
-            $(e.target).parent().remove();
+            $(e.target).parent().parent().prev().show();
+            $(e.target).parent().parent().remove();
           }
         });
       });

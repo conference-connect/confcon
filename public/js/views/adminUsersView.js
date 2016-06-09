@@ -38,10 +38,10 @@
           });
         });
 
-        // Hanlde changes from edit button
+        // Handle changes from edit button
         $('#all-users').on('click', 'button', function(e){
+          e.preventDefault();
           if ($(e.target).hasClass('edit-user-submit')){
-            e.preventDefault();
             var data = {
               username: $(e.target).prev().prev().val()
             };
