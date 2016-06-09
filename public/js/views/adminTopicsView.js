@@ -1,19 +1,24 @@
 (function(module){
 
   var adminTopicsView = {
-    renderTemplate (event) {
+    renderTemplate (topic) {
       var template = Handlebars.compile($('#topic-template').text());
-      var htmlObject = template(event);
+      var htmlObject = template(topic);
       return htmlObject;
     },
+    // renderDropDownTemplate (topic){
+    //
+    // },
 
     renderAllAdminTopics() {
       API.getAll('api/topic/list', window.Topic, function(arrayOfTopics){
         $('#all-topics').off('click');
         $('#all-topics').empty();
         arrayOfTopics.forEach(function(topic){
-          // Append each topic to the list
+          // Append each topic to the Admin list
           $('#all-topics').append(adminTopicsView.renderTemplate(topic));
+          // Append each topic to the new post drop down list
+          $('#topics-drop-down').append('<option value="' + topic.id + '">' + topic.title + '</option>');
           // Delete button
           $(`#${topic.id}`).on('click', function(e){
             e.preventDefault();

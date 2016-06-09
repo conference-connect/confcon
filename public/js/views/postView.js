@@ -32,9 +32,13 @@
 
   $('#new-post-submit').click(function () {
     var user = JSON.parse(localStorage.user);
+
+    const arrayOfTopics = getSelectValues(postView.dom.form.newposttopics) || [];
+
     var data = {
       body: postView.dom.form.postmsg.value,
-      author: user.id
+      author: user.id,
+      topics: arrayOfTopics
     };
     $('#new-post-form').find('textarea').val('');
     API.post('api/post/', data, Post, postView.renderPage);
@@ -42,7 +46,20 @@
 
   //TODO add filter by topics
   //TODO add user contact info
+  function getSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
 
+    for (var i=0, iLen=options.length; i<iLen; i++) {
+      opt = options[i];
+
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+      }
+    }
+    return result;
+  }
 
   module.postView = postView;
 })(window);

@@ -17,10 +17,10 @@ const postSchema = new Schema({
   image: {
     type: Buffer
   },
-  topics: {
+  topics: [{
     type: Schema.Types.ObjectId,
     ref: 'Topic'
-  },
+  }],
   event: {
     type: Schema.Types.ObjectId,
     ref: 'Event'
