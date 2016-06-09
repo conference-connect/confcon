@@ -35,13 +35,14 @@
             var $groupRow = $('<div class=\'form-group row\'></div>');
             $begin.append($groupRow);
             $groupRow.append('<textarea name=\'topictitle\' type=\'text\' class=\'form-control\'>' + topic.title + '</textarea>');
-            var $selectGroup = $('<select name="topictitle" class="form-control">');
+            var $selectGroup = $('<select name="topiccolor" class="form-control">');
             selectHtml($selectGroup);
             $groupRow.append($selectGroup);
             // $groupRow.append('<textarea name=\'topiccolor\' type=\'text\' class=\'form-control\'>' + topic.color + '</textarea><br />');
             $groupRow.append('<button data-id="' + topic.id + '" class=\'edit-topic-submit\' class=\'topic-btn\' type=\'submit\'>update</button>');
             $groupRow.append('<button class=\'edit-topic-cancel\' class=\'topic-btn\' type=\'submit\'>cancel</button>');
             $(e.target).after($begin);
+            adminTopicsView.dom.editform = document.getElementById('edit-topic-form').elements
           });
         });
 
@@ -51,8 +52,8 @@
 
           if ($(e.target).hasClass('edit-topic-submit')){
             var data = {
-              title: $(e.target).prev().prev().val(),
-              color: $(e.target).prev().val()
+              title: adminTopicsView.dom.editform.topictitle.value,
+              color: adminTopicsView.dom.editform.topiccolor.value
             };
             const path = 'api/topic/' + $(e.target).data('id');
             API.patch(path, data, window.Topic, adminTopicsView.renderAllAdminTopics);
