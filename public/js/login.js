@@ -29,21 +29,17 @@
         firstName: newuser.firstName.value,
         lastName: newuser.lastName.value,
         organization: newuser.organization.value,
-        profile: {
-          email: newuser.email.value,
-          description: newuser.description.value,
-          website: newuser.website.value,
-          twitter: newuser.twitter.value
-        },
-        hidden: {
-          email: newuser.hiddenemail.checked,
-          twitter: newuser.hiddentwitter.checked
-        }
+        profile_email: newuser.email.value,
+        profile_description: newuser.description.value,
+        profile_website: newuser.website.value,
+        profile_twitter: newuser.twitter.value,
+        hidden_email: newuser.hiddenemail.checked,
+        hidden_twitter: newuser.hiddentwitter.checked
       };
 
       if (input.files[0]) {
         reader.onload = function(e) {
-          formData.profile.image = e.target.result;
+          formData.profile_image = e.target.result;
           API.post('/signup', formData, User, login.setLocalStorage);
         };
         reader.readAsDataURL(input.files[0]);

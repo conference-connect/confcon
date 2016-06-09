@@ -29,32 +29,28 @@ const userSchema = new Schema({
     type:Schema.Types.ObjectId,
     ref: 'Event'
   }],
-  profile: {
-    email: {
-      type:String
-    },
-    description:{
-      type: String
-    },
-    image:{
-      type: String
-    },
-    website:{
-      type: String
-    },
-    twitter:{
-      type:String
-    }
+  profile_email: {
+    type:String
   },
-  hidden: {
-    email: {
-      type: Boolean,
-      default: true
-    },
-    twitter: {
-      type: Boolean,
-      default: true
-    }
+  profile_description:{
+    type: String
+  },
+  profile_image:{
+    type: String
+  },
+  profile_website:{
+    type: String
+  },
+  profile_twitter:{
+    type:String
+  },
+  hidden_email: {
+    type: Boolean,
+    default: true
+  },
+  hidden_twitter: {
+    type: Boolean,
+    default: true
   }
 });
 

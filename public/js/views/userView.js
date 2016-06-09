@@ -33,35 +33,58 @@
       });
     },
     updateUser () {
-      var edituser = document.getElementById('edit-profile').elements;
+      var form = document.getElementById('edit-profile');
+      var edituser = form.elements;
       var input = document.getElementById('avatar');
       var reader = new FileReader();
       var formData = {
         firstName: edituser.firstName.value,
         lastName: edituser.lastName.value,
         organization: edituser.organization.value,
-        profile: {
-          email: edituser.email.value,
-          description: edituser.description.value,
-          website: edituser.website.value,
-          twitter: edituser.twitter.value
-        },
-        hidden: {
-          // TODO set these as boolean values based on checkboxes.
-          email: edituser.hiddenemail.checked,
-          twitter: edituser.hiddentwitter.checked
-        }
+        profile_email: edituser.email.value,
+        profile_description: edituser.description.value,
+        profile_website: edituser.website.value,
+        profile_twitter: edituser.twitter.value,
+        hidden_email: edituser.hiddenemail.checked,
+        hidden_twitter: edituser.hiddentwitter.checked
       };
+      deleteEmptyProperties(formData, true);
       var userData = JSON.parse(localStorage.user);
       if (input.files[0]) {
         reader.onload = function(e) {
-          formData.profile.image = e.target.result;
-          API.patch('/users/'+userData.id, formData, User, function() {alert('profile updated!');});
+          formData.profile_image = e.target.result;
+          API.patch('/users/'+userData.id, formData, User, function() {
+            form.reset();
+            alert('profile updated!');
+          });
         };
         reader.readAsDataURL(input.files[0]);
-      } else API.patch('/users/'+userData.id, formData, User, function() {alert('profile updated!');} );
+      } else {
+        API.patch('/users/'+userData.id, formData, User, function() {
+          form.reset();
+          alert('profile updated!');
+        });
+      }
     }
   };
+
+
+  function deleteEmptyProperties(obj, recurse) {
+    var allEmpty = true;
+    for (var i in obj) {
+      if (obj[i] === '') {
+        delete obj[i];
+      } else {
+        allEmpty = false;
+        if (recurse && typeof obj[i] === 'object') {
+          if (deleteEmptyProperties(obj[i], recurse)) delete obj[i];
+        }
+      }
+    }
+    return allEmpty;
+  }
+
+
 
   $('#edit-profile-button').click(userView.updateUser);
   module.userView = userView;
