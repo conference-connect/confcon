@@ -6,13 +6,14 @@
       var htmlObject = template(post);
       return htmlObject;
     },
-    populateSelector () {
+    populateEventSelector () {
       var optionTag = '';
+      postView.dom.$pse.empty();
       var template = Handlebars.compile($('#post-selector-template').text());
       API.getAll('api/event/list', Event, function(events) {
         events.forEach(function (e) {
           optionTag = template(e);
-          $('#postEventSelector').append(optionTag);
+          postView.dom.$pse.append(optionTag);
         });
       });
     },
@@ -36,7 +37,8 @@
       });
     },
     dom: {
-      form: document.getElementById('new-post-form').elements
+      form: document.getElementById('new-post-form').elements,
+      $pse: $('#postEventSelector')
     }
 
   };
