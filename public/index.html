@@ -51,6 +51,9 @@
 			<div class ="column four-fifths">
 				<p class="post-body">{{body}}</p>
 				<ul id="post-topics"></ul>
+				{{#each topics}}
+				<li class="topic-color-{{color}}">{{title}}</li>
+				{{/each}}
 				<div id="post-event">{{event.title}}</div>
 				<div id="post-timestamp">Posted at: {{createdAt}}</div>
 				<input id="{{_id}}" type="submit" value="delete">
@@ -145,7 +148,7 @@
 							</div>
 
 						</div>
-						
+
 					</div>
 				</form>
 
@@ -306,10 +309,10 @@
 		validateToken(function(user) {
 			postView.renderPage();
 			postView.populateEventSelector();
+			adminTopicsView.renderAllAdminTopics();
 			adminView.renderAdmin(user.admin);
 			if (user.admin) {
 				adminEventsView.renderAllAdminEvents();
-				adminTopicsView.renderAllAdminTopics();
 				adminUsersView.renderAllAdminUsers();
 			}
 			navView.renderNavView(user.admin);
