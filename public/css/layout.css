@@ -1,0 +1,21 @@
+body {
+  padding: 25px;
+}
+/* ======== default margin and padding ======== */
+input[type="submit"]{
+  margin-top: 10px;
+}
+/* ======== nav ======== */
+.nav-menu {
+  display: inline;
+  float: right;
+}
+
+.nav-menu a {
+  padding-right: 45px;
+}
+
+/* ======== new Post ======== */
+#new-post {
+  padding-top: 35px;
+}

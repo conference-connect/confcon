@@ -1,0 +1,71 @@
+/* ======== colors ======== */
+body {
+  color: #fff;
+  background-color: #363636;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #FF4C4C;
+}
+
+/* ======== fonts ======== */
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+  font-size: 1em;
+  font-weight: 100;
+  font-family: 'Varela Round', sans-serif;
+}
+
+/* ======== elements ======== */
+a,
+a:visited {
+  color: #00CDCD;
+}
+
+a:hover,
+a:active {
+  color: #FF4C4C;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  border: 1px #00CDCD solid;
+  border-radius: 6px;
+  background-color: #00CDCD;
+  color: #fff;
+}
+
+button:hover {
+  border: 1px #fff solid;
+  background-color: #fff;
+  color: #FF4C4C;
+}
+
+input[type="submit"]{
+  border: 1px #FF4C4C solid;
+  border-radius: 6px;
+  background-color: #363636;
+  color: #FF4C4C;
+}
+
+input[type="submit"]:hover {
+  background-color: #FF4C4C;
+  color: #363636;
+}

@@ -17,7 +17,14 @@
     "beforeEach": false,
     "afterEach": false,
     "before": false,
-    "after": false
+    "after": false,
+    "$": false,
+    "Post": false,
+    "postView": false,
+    "User": false,
+    "Handlebars": false,
+    "API": false,
+    "moment": false
   },
   "ecmaFeatures": {
     "modules": true,

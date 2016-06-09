@@ -1,0 +1,84 @@
+/* ======== nav ======== */
+
+.nav-menu a {
+  font-size: 2em;
+}
+/*
+icon size
+float icons right
+
+*/
+
+/* ======== user modal ======== */
+/*.modal-header{
+
+  background-color: #00CDCD;
+  border-radius: 6px 6px 0px 0px;
+}
+
+.modal-header h4 {
+  color: #363636;
+}*/
+
+.user-website,
+.user-email,
+.user-twitter {
+  font-size: 3em;
+  padding-right: 35px;
+}
+
+.modal-footer button {
+  border: 1px #00CDCD solid;
+  border-radius: 6px;
+  background-color: #00CDCD;
+  color: #fff;
+}
+
+.modal-footer button:hover {
+  border: 1px #FF4C4C solid;
+  background-color: #FF4C4C;
+  color: #fff;
+}
+
+/* ======== posts ======== */
+.post{
+  border-bottom: 1px dotted #00CDCD;
+}
+
+.post-body {
+  font-size: 1.25em;
+}
+
+/* ======== topic colors ======== */
+
+.topic-color-red {
+  color: #EF401A;
+}
+
+.topic-color-blue {
+  color: #1A98EF;
+}
+.topic-color-green {
+  color: #22D55D;
+}
+
+.topic-color-orange {
+  color: #F7A321;
+}
+
+.topic-color-purple {
+  color: #BD21F7;
+}
+
+.topic-color-brown {
+  color: #A86909;
+}
+
+.topic-color-yellow {
+  color: #F7ED0D;
+}
+
+/* ======== footer ======== */
+footer {
+  text-align: center;
+}
