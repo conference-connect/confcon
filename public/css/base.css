@@ -1,37 +1,55 @@
-/* ======== font size and types ======== */
+/* ======== colors ======== */
+body {
+  color: #fff;
+  background-color: #363636;
+}
 
 h1,
 h2,
 h3,
 h4 {
-  font-size: 2em;
+  color: #FF4C4C;
+}
+
+/* ======== fonts ======== */
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Montserrat', sans-serif;
 }
 
 p {
-  font-size: 1.25em;
+  font-size: 1em;
+  font-weight: 100;
   font-family: 'Varela Round', sans-serif;
 }
 
-/* ======== background color ======== */
-
-/* ======== default margin and padding ======== */
-
 /* ======== elements ======== */
-
-/* a,
-a:visited,
-a:hover,
-a:active */
-
-/* ul, li */
-
-/* ======== buttons ======== */
-button {
-  border: 1px #000 solid;
-  border-radius: 6px;
-  background-color: #fff;
-  color: #000;
+a,
+a:visited {
+  color: #00CDCD;
 }
 
-/* ========  ======== */
+a:hover,
+a:active {
+  color: #FF4C4C;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  border: 1px #FF4C4C solid;
+  border-radius: 6px;
+  background-color: #FF4C4C;
+  color: #fff;
+}
+
+input[type="submit"]{
+  border: 1px #FF4C4C solid;
+  border-radius: 6px;
+  background-color: #363636;
+  color: #FF4C4C;
+}

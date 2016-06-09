@@ -1,7 +1,10 @@
 body {
   padding: 25px;
 }
-
+/* ======== default margin and padding ======== */
+input[type="submit"]{
+  margin-top: 10px;
+}
 /* ======== nav ======== */
 .nav-menu {
   display: inline;
