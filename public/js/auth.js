@@ -1,15 +1,19 @@
 function getToken() {
   return new Promise(function (resolve, reject) {
     const token = localStorage.token;
-    if (!token) reject('no token found');
-    else {
-      superagent
-        .get('/validate')
-				.set('token', token)
-				.end(function(err) {
-  if (err) reject('invalid token');
-  else resolve(token);
-				});
+    if (!token) {
+      reject('no token found');
+    } else {
+      $.ajax({
+        url: '/validate',
+        type: 'GET',
+        headers: {token: token}})
+      .done(function(data) {
+        resolve(data);
+      })
+      .fail(function() {
+        reject('invalid token');
+      });
     }
   });
 }

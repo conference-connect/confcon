@@ -36,9 +36,8 @@
           twitter: newuser.twitter.value
         },
         hidden: {
-          // TODO set these as boolean values based on checkboxes.
-          email: newuser.hiddenemail.value === 'on',
-          twitter: newuser.hiddentwitter.value === 'on'
+          email: newuser.hiddenemail.checked,
+          twitter: newuser.hiddentwitter.checked
         }
       };
 
