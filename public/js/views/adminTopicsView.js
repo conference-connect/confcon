@@ -19,6 +19,8 @@
           $('#all-topics').append(adminTopicsView.renderTemplate(topic));
           // Append each topic to the new post drop down list
           $('#topics-drop-down').append('<option value="' + topic.id + '">' + topic.title + '</option>');
+          // Append topics to filter drop down list
+          $('#filter-topic-dropdown').append('<option value="' + topic.id +'">' + topic.title + '</option>');
           // Delete button
           $(`#${topic.id}`).on('click', function(e){
             e.preventDefault();
