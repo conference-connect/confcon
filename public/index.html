@@ -64,8 +64,8 @@
 			<div class="row">
 				<p class="column four-quarter"><b>{{title}}</b><br />
 				time/date: {{date}} <br />
-				location: {{location}}<br />
 				speakers: {{speakers}}<br />
+				location: {{location}}<br />
 				<input id="{{id}}edit" type="submit" value="edit">
 				<input id="{{id}}" type="submit" value="delete"></p>
 			</div>
@@ -223,9 +223,15 @@
 			<section id="admin-topics" class="admin-section">
 				<a href="#"><h2>Topics</h2></a>
 				<div class="toggle-visible">
-					<form id="new-topic-form" onsubmit="return false;">
-						<textarea name="topictitle" type="text" placeholder="Enter a new topic"></textarea>
-						<textarea name="topiccolor" type="text" placeholder="Choose a color"></textarea><br />
+					<form id="new-topic-form" onsubmit="return false;" class="form-horizontal">
+						<div class="form-group row">
+							<div class="column one-fourth">
+								<textarea name="topictitle" type="text" placeholder="Enter a new topic" class="form-control"></textarea>
+							</div>
+							<div class="column one-fourth">
+								<textarea name="topiccolor" type="text" placeholder="Choose a color" class="form-control"></textarea><br />
+							</div>
+						</div>
 						<button id="new-topic-submit" class="topic-btn" type="submit">submit</button>
 					</form>
 					<div id="all-topics">

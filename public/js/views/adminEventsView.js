@@ -27,13 +27,15 @@
             // Hide the edit button when tapped
             $(e.target).hide();
             // Show edit boxes
-            var $begin = $('<form id=\'edit-event-form\' onsubmit=\'return false;\'></form>');
-            $begin.append('<textarea name=\'eventtitle\' type=\'text\'>' + event.title + '</textarea>');
-            $begin.append('<textarea name=\'eventdate\' type=\'datetime\'>' + unformattedDate + '</textarea>');
-            $begin.append('<textarea name=\'eventspeakers\' type=\'text\'>' + event.speakers + '</textarea>');
-            $begin.append('<textarea name=\'eventlocation\' type=\'text\'>' + event.location + '</textarea><br />');
-            $begin.append('<button data-id="' + event.id + '" class=\'edit-event-submit\' class=\'event-btn\' type=\'submit\'>update</button>');
-            $begin.append('<button class=\'edit-event-cancel\' class=\'event-btn\' type=\'submit\'>cancel</button>');
+            var $begin = $('<form id=\'edit-event-form\' onsubmit=\'return false; class=\'form-horizontal\'></form>');
+            var $groupRow = $('<div class=\'form-group row\'></div>');
+            $begin.append($groupRow);
+            $groupRow.append('<textarea name=\'eventtitle\' type=\'text\' class=\'form-control\'>' + event.title + '</textarea>');
+            $groupRow.append('<textarea name=\'eventdate\' type=\'datetime\' class=\'form-control\'>' + unformattedDate + '</textarea>');
+            $groupRow.append('<textarea name=\'eventspeakers\' type=\'text\' class=\'form-control\'>' + event.speakers + '</textarea>');
+            $groupRow.append('<textarea name=\'eventlocation\' type=\'text\' class=\'form-control\'>' + event.location + '</textarea><br />');
+            $groupRow.append('<button data-id="' + event.id + '" class=\'edit-event-submit\' class=\'event-btn\' type=\'submit\'>update</button>');
+            $groupRow.append('<button class=\'edit-event-cancel\' class=\'event-btn\' type=\'submit\'>cancel</button>');
             $(e.target).after($begin);
           });
         });
