@@ -262,13 +262,14 @@
 	<script src="./js/views/adminView.js" type="text/javascript"></script>
 	<script src="./js/auth.js" type="text/javascript"></script>
 	<script>
-		console.log(validateToken(function() {
+		validateToken(function(user) {
+			console.log(user.admin);
 			postView.renderPage();
 			adminEventsView.renderAllAdminEvents();
 			adminTopicsView.renderAllAdminTopics();
 			adminUsersView.renderAllAdminUsers();
 			adminView.renderAdmin();
-		}));
+		});
 
 	</script>
 </body>

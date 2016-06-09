@@ -6,7 +6,11 @@ const ensureAuth = require('../lib/ensureAuth');
 
 router
   .get('/validate', ensureAuth, (req,res) => {
-    res.json({ valid: true });
+    const message = {
+      valid: true
+    };
+    if (req.user.roles.indexOf('admin') > -1) message.admin = true;
+    res.json(message);
   })
   .post('/signup', bodyParser, (req, res, next) => {
     const username = req.body.username;
