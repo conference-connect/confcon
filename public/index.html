@@ -59,6 +59,10 @@
   	</article>
 	</script>
 
+	<script id="post-selector-template" type="text/x-handlebars-template">
+	  <option value="{{id}}">{{title}}</option>
+	</script>
+
 	<script id="event-template" type="text/x-handlerbars-template">
 		<article id="event">
 			<div class="row">
@@ -120,10 +124,19 @@
 					<div class="form-group row">
 						<div class="column whole">
 							<textarea name="postmsg" type="text" class="form-control" placeholder="Type a message!"></textarea><br>
+						</div>
+					<div class="form-group row">
+						<div class="column one-third">
 							<button id="new-post-submit" class="post-btn" type="submit">submit</button>
 							<button class="post-btn" type="reset">clear</button>
 						</div>
-					<div>
+						<div class="column one-third">
+							<select class="form-control " id="postEventSelector" name="event">
+				        <option value="">-- Choose an event --</option>
+				      </select>
+						</div>
+					</div>
+					</div>
 				</form>
 
 		  </section>
@@ -282,6 +295,7 @@
 	<script>
 		validateToken(function(user) {
 			postView.renderPage();
+			postView.populateSelector();
 			adminEventsView.renderAllAdminEvents();
 			adminTopicsView.renderAllAdminTopics();
 			adminUsersView.renderAllAdminUsers();
