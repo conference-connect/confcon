@@ -1,3 +1,4 @@
+
 ## Vision
 Our application will serve as a modern message board for attendees at conferences and conventions that can be customized to a host organizations's branding and needs.
 
@@ -57,25 +58,3 @@ Up until first alpha release and date
 ## Operations
 -Master schedule with succinct event data
 -Users can add or remove events from a list of favorites
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-random notes:
-
-DG  foreach results if isUser(token) editable = true
