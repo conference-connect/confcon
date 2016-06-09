@@ -38,6 +38,7 @@
             $groupRow.append('<button data-id="' + event.id + '" class=\'edit-event-submit\' class=\'event-btn\' type=\'submit\'>update</button>');
             $groupRow.append('<button class=\'edit-event-cancel\' class=\'event-btn\' type=\'submit\'>cancel</button>');
             $(e.target).after($begin);
+            adminEventsView.dom.editform = document.getElementById('edit-event-form').elements;
           });
         });
 
@@ -46,10 +47,10 @@
           e.preventDefault();
           if ($(e.target).hasClass('edit-event-submit')){
             var data = {
-              title: $(e.target).prev().prev().prev().prev().prev().val(),
-              date: $(e.target).prev().prev().prev().prev().val(),
-              speakers: $(e.target).prev().prev().prev().val(),
-              location: $(e.target).prev().prev().val()
+              title: adminEventsView.dom.editform.eventtitle.value,
+              date: adminEventsView.dom.editform.eventdate.value,
+              speakers: adminEventsView.dom.editform.eventspeakers.value,
+              location: adminEventsView.dom.editform.eventlocation.value
             };
             const path = 'api/event/' + $(e.target).data('id');
             API.patch(path, data, Event, adminEventsView.renderAllAdminEvents);
