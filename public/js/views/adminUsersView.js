@@ -35,6 +35,7 @@
             $groupRow.append('<button data-id="' + user.id + '" class=\'edit-user-submit\' class=\'user-btn\' type=\'submit\'>update</button>');
             $groupRow.append('<button class=\'edit-user-cancel\' class=\'user-btn\' type=\'submit\'>cancel</button>');
             $(e.target).after($begin);
+            adminUsersView.editform = document.getElementById('edit-user-form').elements;
           });
         });
 
@@ -43,7 +44,7 @@
           e.preventDefault();
           if ($(e.target).hasClass('edit-user-submit')){
             var data = {
-              username: $(e.target).prev().prev().val()
+              username: adminUsersView.editform.userusername.value
             };
             const path = '/users/' + $(e.target).data('id');
             API.patch(path, data, User, adminUsersView.renderAllAdminUsers);
