@@ -64,7 +64,7 @@
         organization: edituser.organization.value,
         profile_email: edituser.email.value,
         profile_description: edituser.description.value,
-        profile_website: edituser.website.value,
+        profile_website: edituser.website.value.replace(/^https?\:\/\//i, ''),
         profile_twitter: edituser.twitter.value,
         hidden_email: edituser.hiddenemail.checked,
         hidden_twitter: edituser.hiddentwitter.checked

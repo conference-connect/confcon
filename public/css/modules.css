@@ -49,6 +49,35 @@ float icons right
   font-size: 1.25em;
 }
 
+/* ======== topic colors ======== */
+
+.topic-color-red {
+  color: #EF401A;
+}
+
+.topic-color-blue {
+  color: #1A98EF;
+}
+.topic-color-green {
+  color: #22D55D;
+}
+
+.topic-color-orange {
+  color: #F7A321;
+}
+
+.topic-color-purple {
+  color: #BD21F7;
+}
+
+.topic-color-brown {
+  color: #A86909;
+}
+
+.topic-color-yellow {
+  color: #F7ED0D;
+}
+
 /* ======== footer ======== */
 footer {
   text-align: center;
