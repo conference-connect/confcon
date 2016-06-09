@@ -28,7 +28,7 @@
         arrayOfPosts.forEach(function(post){
           post.createdAt = moment(post.createdAt).format('HH:mm on MM-DD-YY');
           $('#all-posts').append(postView.renderPostTemplate(post));
-          $(`#${post._id}`).on('click', (e)=>{
+          $(`#${post._id}`).on('click', function(e){
             e.preventDefault();
             API.delete ('/api/post/' + e.target.id, Post, postView.renderPage);
           });

@@ -20,7 +20,7 @@ function getToken() {
 
 function validateToken (callback) {
   getToken()
-    .then(callback, err => {
+    .then(callback, function(err) {
       console.log(err);
       localStorage.removeItem('token');
       window.location = 'login.html';
