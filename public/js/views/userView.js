@@ -31,12 +31,39 @@
 
         });
       });
-
-
-
-
+    },
+    updateUser () {
+      var edituser = document.getElementById('edit-profile').elements;
+      var input = document.getElementById('avatar');
+      var reader = new FileReader();
+      var formData = {
+        firstName: edituser.firstName.value,
+        lastName: edituser.lastName.value,
+        organization: edituser.organization.value,
+        profile: {
+          email: edituser.email.value,
+          description: edituser.description.value,
+          website: edituser.website.value,
+          twitter: edituser.twitter.value
+        },
+        hidden: {
+          // TODO set these as boolean values based on checkboxes.
+          email: edituser.hiddenemail.checked,
+          twitter: edituser.hiddentwitter.checked
+        }
+      };
+      var userData = JSON.parse(localStorage.user);
+      console.log(formData);
+      if (input.files[0]) {
+        reader.onload = function(e) {
+          formData.profile.image = e.target.result;
+          API.patch('/users/'+userData.id, formData, User, function() {alert('profile updated!');});
+        };
+        reader.readAsDataURL(input.files[0]);
+      } else API.patch('/users/'+userData.id, formData, User, function() {alert('profile updated!');} );
     }
   };
 
+  $('#edit-profile-button').click(userView.updateUser);
   module.userView = userView;
 })(window);
