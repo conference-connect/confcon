@@ -31,7 +31,7 @@
         organization: newuser.organization.value,
         profile_email: newuser.email.value,
         profile_description: newuser.description.value,
-        profile_website: newuser.website.value,
+        profile_website: newuser.website.value.replace(/^https?\:\/\//i, ''),
         profile_twitter: newuser.twitter.value,
         hidden_email: newuser.hiddenemail.checked,
         hidden_twitter: newuser.hiddentwitter.checked
