@@ -58,9 +58,9 @@
     API.post('api/post/', data, Post, postView.renderPage);
   });
 
-  //TODO add filter by topics
-  //TODO add user contact info
-  
+  //DONE add filter by topics
+  //DONE add user contact info
+
   function getSelectValues(select) {
     var result = [];
     var options = select && select.options;

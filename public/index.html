@@ -70,8 +70,8 @@
 				time/date: {{date}} <br />
 				speakers: {{speakers}}<br />
 				location: {{location}}<br />
-				<input id="{{id}}edit" type="submit" value="edit">
-				<input id="{{id}}" type="submit" value="delete"></p>
+				<input id="{{id}}edit" class="admin-input" type="submit" value="edit">
+				<input id="{{id}}" class="admin-input" type="submit" value="delete"></p>
 			</div>
 		</article>
 	</script>
@@ -145,7 +145,7 @@
 							</div>
 
 						</div>
-						
+
 					</div>
 				</form>
 
@@ -153,6 +153,7 @@
 		</section>
 
 	  <section id="events">
+
 	  </section>
 
 		<section id="my-profile">
@@ -302,10 +303,12 @@
 	<script src="./js/views/adminView.js" type="text/javascript"></script>
 	<script src="./js/auth.js" type="text/javascript"></script>
 	<script src="./js/views/navView.js" type="text/javascript"></script>
+	<script src="./js/views/eventsView.js" type="text/javascript"></script>
 	<script>
 		validateToken(function(user) {
 			postView.renderPage();
 			postView.populateEventSelector();
+			eventsView.renderAllEvents();
 			adminView.renderAdmin(user.admin);
 			if (user.admin) {
 				adminEventsView.renderAllAdminEvents();
