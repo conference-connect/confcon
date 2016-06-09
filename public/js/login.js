@@ -40,6 +40,7 @@
           twitter: newuser.hiddentwitter.checked
         }
       };
+
       if (input.files[0]) {
         reader.onload = function(e) {
           formData.profile.image = e.target.result;

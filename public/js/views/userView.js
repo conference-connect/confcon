@@ -53,7 +53,6 @@
         }
       };
       var userData = JSON.parse(localStorage.user);
-      console.log(formData);
       if (input.files[0]) {
         reader.onload = function(e) {
           formData.profile.image = e.target.result;
