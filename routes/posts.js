@@ -14,10 +14,13 @@ router
           results.forEach(r => {
             if (r.author) {
               delete r.author.password;
-              if (r.author.profile && req.user.roles.indexOf('admin') === -1) {
-                if (r.author.hidden){
-                  if (r.author.hidden.email) delete r.author.profile.email;
-                  if (r.author.hidden.twitter) delete r.author.profile.twitter;
+              if (r.author.profile){
+                delete r.author.profile.image;
+                if (req.user.roles.indexOf('admin') === -1) {
+                  if (r.author.hidden){
+                    if (r.author.hidden.email) delete r.author.profile.email;
+                    if (r.author.hidden.twitter) delete r.author.profile.twitter;
+                  }
                 }
               }
               delete r.author.hidden;
