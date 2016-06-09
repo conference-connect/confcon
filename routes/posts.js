@@ -5,31 +5,13 @@ const Post = require('../models/post');
 router
   .get('/list', bodyParser, (req, res, next) => {
     Post.find({})
-      .populate('author')
+      .populate('author', '_id username')
       .populate('topics')
       .populate('event')
       .lean()
       .then(results => {
-        if (results.length > 0) {
-          results.forEach(r => {
-            if (r.author) {
-              delete r.author.password;
-              if (r.author.profile){
-                delete r.author.profile.image;
-                if (req.user.roles.indexOf('admin') === -1) {
-                  if (r.author.hidden){
-                    if (r.author.hidden.email) delete r.author.profile.email;
-                    if (r.author.hidden.twitter) delete r.author.profile.twitter;
-                  }
-                }
-              }
-              delete r.author.hidden;
-              delete r.author.agenda;
-              delete r.author.roles;
-            }
-          });
-          res.json(results);
-        } else next({code: 404,error:'no posts found'});
+        if (results.length > 0) res.json(results);
+        else next({code: 404,error:'no posts found'});
       })
 
       .catch(err => next(err));
