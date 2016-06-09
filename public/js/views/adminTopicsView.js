@@ -26,20 +26,22 @@
             // Hide the edit button when tapped
             $(e.target).hide();
             // Show edit boxes
-            var $begin = $('<form id=\'edit-topic-form\' onsubmit=\'return false;\'></form>');
-            $begin.append('<textarea name=\'topictitle\' type=\'text\'>' + topic.title + '</textarea>');
-            $begin.append('<textarea name=\'topiccolor\' type=\'text\'>' + topic.color + '</textarea><br />');
-            $begin.append('<button data-id="' + topic.id + '" class=\'edit-topic-submit\' class=\'topic-btn\' type=\'submit\'>update</button>');
-            $begin.append('<button class=\'edit-topic-cancel\' class=\'topic-btn\' type=\'submit\'>cancel</button>');
+            var $begin = $('<form id=\'edit-topic-form\' onsubmit=\'return false; class=\'form-horizontal\'></form>');
+            var $groupRow = $('<div class=\'form-group row\'></div>');
+            $begin.append($groupRow);
+            $groupRow.append('<textarea name=\'topictitle\' type=\'text\' class=\'form-control\'>' + topic.title + '</textarea>');
+            $groupRow.append('<textarea name=\'topiccolor\' type=\'text\' class=\'form-control\'>' + topic.color + '</textarea><br />');
+            $groupRow.append('<button data-id="' + topic.id + '" class=\'edit-topic-submit\' class=\'topic-btn\' type=\'submit\'>update</button>');
+            $groupRow.append('<button class=\'edit-topic-cancel\' class=\'topic-btn\' type=\'submit\'>cancel</button>');
             $(e.target).after($begin);
           });
         });
 
         // Handle change from edit button
         $('#all-topics').on('click', 'button', function(e){
+          e.preventDefault();
 
           if ($(e.target).hasClass('edit-topic-submit')){
-            e.preventDefault();
             var data = {
               title: $(e.target).prev().prev().prev().val(),
               color: $(e.target).prev().prev().val()
@@ -50,8 +52,8 @@
 
           // Show edit button and remove edit boxes
           if ($(e.target).hasClass('edit-topic-cancel')){
-            $(e.target).parent().prev().show();
-            $(e.target).parent().remove();
+            $(e.target).parent().parent().prev().show();
+            $(e.target).parent().parent().remove();
           }
         });
       });
