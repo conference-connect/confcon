@@ -7,7 +7,8 @@
 
   <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" href="lib/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="lib/font-awesome.min.css">
   <link rel="stylesheet" href="lib/pills.min.css">
 
   <link rel="stylesheet" href="css/base.css">
@@ -111,18 +112,60 @@
 
 		<section id="my-profile">
 			<h1>Edit user profile</h1>
-			<form id="edit-profile" onsubmit="return false;">
-				<h3>Enter new data for fields you would like to change</h3>
-				<label for="username">username: </label><input name="username" required><br>
-				<label for="password">password: </label><input name="password"><br>
-				<label for="firstName">First Name: </label><input name="firstName" ><br>
-				<label for="lastName">Last Name: </label><input name="lastName" ><br>
-				<label for="organization">organization: </label><input name="organization"><br>
-				<label for="email">email: </label><input name="email"><input type="checkbox" name="hiddenemail"><label for="hiddenemail"> hide email from public.<br>
-				<label for="twitter">Twitter handle: </label><input name="twitter"> <input type="checkbox" name="hiddentwitter"><label for="hiddentwitter"> hide Twitter handle from public.<br>
-				<label for="description">description: </label><input name="description"><br>
-				<label for="website">website: </label><input name="website"><br>
-				<label for"image">avatar: </label><input id="avatar" name="image" type="file" accept="image/*"><br>
+			<form id="edit-profile" onsubmit="return false;" class="form-horizontal">
+				<!-- <h3>Enter new data for fields you would like to change</h3> -->
+				<div class="form-group row">
+					<div class="column half">
+						<label for="username" class="sr-only">Username</label>
+						<input name="username" class="form-control"required placeholder="Username">
+					</div>
+					<div class="column half">
+						<label for="password" class="sr-only">Password </label>
+						<input name="password" class="form-control" placeholder="Password">
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="column half">
+						<label for="firstName" class="sr-only">First Name</label>
+						<input name="firstName" class="form-control" placeholder="First Name">
+					</div>
+					<div class="column half">
+						<label for="lastName" class="sr-only">Last Name</label>
+						<input name="lastName" class="form-control" placeholder="Last Name">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="column half">
+						<label for="organization" class="sr-only">Organization</label>
+						<input name="organization" class="form-control" placeholder="Organization">
+					</div>
+					<div class="column half">
+						<label for="website" class="sr-only">Website</label>
+						<input name="website" class="form-control" placeholder="Your Website">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="column half">
+						<label for="email" class="sr-only">Email</label>
+						<input name="email" class="form-control" placeholder="Email">
+						<label for="hiddenemail">Keep Private &nbsp;</label><input type="checkbox" name="hiddenemail">
+					</div>
+					<div class="column half">
+						<label for="twitter" class="sr-only">Twitter username</label>
+						<input name="twitter" class="form-control" placeholder="Twitter username">
+						<label for="hiddentwitter">Keep Private &nbsp;</label><input type="checkbox" name="hiddentwitter">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="column whole">
+						<label for="description" class="sr-only">Bio</label>
+						<textarea name="description" class="form-control" placeholder="Tell us a little about yourself."></textarea>
+					</div>
+				</div>
+					<label for"image">Upload a Photo</label><input id="avatar" name="image" type="file" accept="image/*">
 
 
 				<button id="edit-profile-button">Submit</button>
