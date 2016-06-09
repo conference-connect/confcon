@@ -7,7 +7,8 @@ body {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   color: #FF4C4C;
 }
 
@@ -36,6 +37,10 @@ a:active {
   color: #FF4C4C;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 ul {
   list-style-type: none;
 }
@@ -47,9 +52,20 @@ button {
   color: #fff;
 }
 
+button:hover {
+  border: 1px #fff solid;
+  background-color: #fff;
+  color: #FF4C4C;
+}
+
 input[type="submit"]{
   border: 1px #FF4C4C solid;
   border-radius: 6px;
   background-color: #363636;
   color: #FF4C4C;
+}
+
+input[type="submit"]:hover {
+  background-color: #FF4C4C;
+  color: #363636;
 }

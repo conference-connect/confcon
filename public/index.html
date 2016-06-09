@@ -19,7 +19,7 @@
 		<article class="post">
 			<div class="row">
 
-				<p class="column one-quarter"><a href="#" class="post-author" data="{{author._id}}" data-toggle="modal" data-target="#user-modal">{{author.username}}</a>:&nbsp;</p>
+				<h4 class="column one-fifth"><a href="#" class="post-author" data="{{author._id}}" data-toggle="modal" data-target="#user-modal">{{author.username}}</a></h4>
 
 				<!--bootstrap modal -->
 				<div id="user-modal" class="modal fade">
@@ -39,10 +39,6 @@
 									<a class="user-twitter" href=""><i class="fa fa-twitter-square"></i></a>
 								</div>
 							</div>
-
-        			<!-- <ul class="user-contact">
-								<li>{{author.email}}</li>
-							</ul> -->
       			</div>
       			<div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -50,15 +46,16 @@
 						</div>
 						</div>
 					</div>
-				</div>
+				</div><!--end of modal window-->
 
-				<p class ="column three-quarters" class="post-body">{{body}}</p>
+			<div class ="column four-fifths">
+				<p class="post-body">{{body}}</p>
+				<ul id="post-topics"></ul>
+				<div id="post-event">{{event.title}}</div>
+				<div id="post-timestamp">Posted at: {{createdAt}}</div>
 				<input id="{{_id}}" type="submit" value="delete">
 			</div>
 
-			<ul id="post-topics"></ul>
-			<div id="post-event">{{event.title}}</div>
-			<div id="post-timestamp">Posted at: {{createdAt}}</div>
   	</article>
 	</script>
 

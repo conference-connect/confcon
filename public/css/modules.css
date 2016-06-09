@@ -17,4 +17,16 @@ float icons right
   padding-right: 35px;
 }
 
+/* ======== posts ======== */
+.post{
+  border-bottom: 1px dotted #00CDCD;
+}
+
+.post-body {
+  font-size: 1.25em;
+}
+
 /* ======== footer ======== */
+footer {
+  text-align: center;
+}
