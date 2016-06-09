@@ -69,6 +69,29 @@
 	<script id="event-template" type="text/x-handlerbars-template">
 		<article id="event">
 			<div class="row">
+			<div class="column one-fifth">
+				<a class="agenda-btn"><i class="fa fa-calendar-plus-o"></i></a>
+			</div>
+				<div class="column one-fifth">
+					<h5>{{title}}</h5>
+				</div>
+				<div class="column one-fifth">
+					<p>{{date}}</p>
+				</div>
+				<div class="column one-fifth">
+					<p>{{location}}</p>
+				</div>
+				<div class="column one-fifth">
+					<p>{{speakers}}</p>
+				</div>
+			</div>
+		</article>
+
+	</script>
+
+	<script id="event-template-admin" type="text/x-handlerbars-template">
+		<article id="event">
+			<div class="row">
 				<p class="column four-quarter"><b>{{title}}</b><br />
 				time/date: {{date}} <br />
 				speakers: {{speakers}}<br />
@@ -155,9 +178,11 @@
 		  </section>
 		</section>
 
-	  <section id="events">
-
-	  </section>
+	  <section id="events-wrapper">
+			<section id="events">
+				<h1>Events</h1>
+	  	</section>
+		</section>
 
 		<section id="my-profile">
 			<h1>Edit user profile</h1>

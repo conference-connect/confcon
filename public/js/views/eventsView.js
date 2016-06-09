@@ -16,7 +16,7 @@
           console.log(event);
           event.date = moment(event.date).format('HH:mm on MM-DD-YY');
           $('#events').append(eventsView.renderTemplate(event));
-          $('.admin-input').remove();
+  
         });
 
       });
