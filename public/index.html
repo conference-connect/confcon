@@ -79,8 +79,8 @@
 		<article id="topic">
 			<div class="row">
 				<p class="column four-quarter"><b>{{title}}</b><br />
-					<input in="{{id}}edit" type="submit" value="edit">
-					<input id="{{id}}" type="submit" value="delete"><p>
+					<input id="{{id}}edit" class="topic-edit-btn" type="submit" value="edit">
+					<input id="{{id}}" class="topic-delete-btn" type="submit" value="delete"><p>
 			</div>
 		</article>
 	</script>
@@ -209,7 +209,11 @@
 			<section id="admin-topics" class="admin-section">
 				<a href="#"><h2>Topics</h2></a>
 				<div class="toggle-visible">
-					Content
+					<form id="new-topic-form" onsubmit="return false;">
+						<textarea name="topictitle" type="text" placeholder="Enter a new topic"></textarea>
+						<textarea name="topiccolor" type="text" placeholder="Choose a color"></textarea><br />
+						<button id="new-topic-submit" class="topic-btn" type="submit">submit</button>
+					</form>
 					<div id="all-topics">
 					</div>
 				</div>

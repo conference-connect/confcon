@@ -9,6 +9,7 @@
 
     renderAllAdminEvents () {
       API.getAll('api/event/list', Event, function(arrayOfEvents){
+        $('#all-events').off('click');
         $('#all-events').empty();
         arrayOfEvents.forEach(function(event){
           var unformattedDate = event.date;
