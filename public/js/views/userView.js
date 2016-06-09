@@ -4,7 +4,7 @@
     renderUser(){
       //on link click
         //grab user id affiliated with that post's user
-      $('.user-btn-handler').on('click','a', function(e){
+      $('.user-btn-handler').on('click','.post-author', function(e){
         e.preventDefault();
         var userId = $(this).attr('data');
 
@@ -18,16 +18,19 @@
 
           if(!user.profile){
             $('.user-img-container').html('<img src="./img/user-img-default.jpg">');
+          } else {
+            $('.user-img-container').html(`<img src="${user.profile_image}"`);
           }
 
           //populate user data onto modal window
           $('.modal-title').text(`${user.firstName} ${user.lastName}`);
           $('.user-org').text(user.organization);
 
+
           //TODO create better handling for hidden/unspecified contact info
-          $('.user-website').attr('href', user.profile.website);
-          $('.user-email').attr('href', user.profile.email);
-          $('.user-twitter').attr('href', user.profile.twitter);
+          $('.user-website').attr('href', `http://${user.profile_website}`);
+          $('.user-email').attr('href', `mailto:${user.profile_email}`);
+          $('.user-twitter').attr('href', `http://twitter.com/${user.profile_twitter}`);
 
         });
       });
