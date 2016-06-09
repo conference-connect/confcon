@@ -36,7 +36,7 @@
       body: postView.dom.form.postmsg.value,
       author: user.id
     };
-    console.log(data);
+    $('#new-post-form').find('textarea').val('');
     API.post('api/post/', data, Post, postView.renderPage);
   });
 
