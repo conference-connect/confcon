@@ -20,6 +20,7 @@
           $(`#${event.id}`).on('click', function(e){
             e.preventDefault();
             API.delete('/api/event/' + e.target.id, Event, adminEventsView.renderAllAdminEvents);
+            postView.populateEventSelector();
           });
           // Edit button
           $(`#${event.id}edit`).on('click', function(e){
@@ -75,6 +76,7 @@
       speakers: [adminEventsView.dom.form.eventspeakers.value]
     };
     API.post('api/event/', data, Event, adminEventsView.renderAllAdminEvents);
+    postView.populateEventSelector();
   });
 
   module.adminEventsView = adminEventsView;
