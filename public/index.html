@@ -296,10 +296,12 @@
 		validateToken(function(user) {
 			postView.renderPage();
 			postView.populateEventSelector();
-			adminEventsView.renderAllAdminEvents();
-			adminTopicsView.renderAllAdminTopics();
-			adminUsersView.renderAllAdminUsers();
-			adminView.renderAdmin();
+			adminView.renderAdmin(user.admin);
+			if (user.admin) {
+				adminEventsView.renderAllAdminEvents();
+				adminTopicsView.renderAllAdminTopics();
+				adminUsersView.renderAllAdminUsers();
+			}
 			navView.renderNavView(user.admin);
 		});
 
