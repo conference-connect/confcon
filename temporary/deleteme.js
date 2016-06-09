@@ -35,3 +35,10 @@ $('#topics-drop-down').append('<option value="' + topic.id + '">' + topic.title 
 <select id="topics-drop-down" name="newposttopics" class="form-control" multiple size="2">
   <!-- <option value="red">Red</option> -->
 </select><br>
+
+
+//_______ change in post.js
+topics: [{
+  type: Schema.Types.ObjectId,
+  ref: 'Topic'
+}],

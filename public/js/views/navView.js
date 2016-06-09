@@ -1,7 +1,6 @@
 (function(module){
 
   var navView = {
-
     renderNavView (isAdmin){
 
       if (isAdmin){
@@ -12,12 +11,19 @@
         $('#admin').hide();
       }
     },
+    logout () {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location = 'login.html';
+    },
     standardColors: {
       thing: 'that'
+
     }
 
   };
 
+  $('#logout').click(navView.logout);
   module.navView = navView;
 
 })(window);
