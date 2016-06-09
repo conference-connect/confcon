@@ -184,26 +184,10 @@
 		<section id="admin">
 
       <section id="admin-users"></section>
-      <section id="admin-events"></section>
-				<h1>Events</h1>
+      <!-- <section id="admin-events"></section>
+				<h1>Events</h1> -->
 
-				<form id="new-event-form" onsubmit="return false;" class="form-horizontal">
-					<div class="form-group row">
-						<div class="column one-fourth">
-							<textarea name="eventtitle" type="text" placeholder="Enter a new event title" class="form-control"></textarea>
-						</div>
-						<div class="column one-fourth">
-							<textarea name="eventdate" type="datetime" placeholder="Event date (such as 2016-06-08 19:30:00)" class="form-control"></textarea>
-						</div>
-						<div class="column one-fourth">
-							<textarea name="eventspeakers" type="text" placeholder="Enter speaker names" class="form-control"></textarea>
-						</div>
-						<div class="column one-fourth">
-							<textarea name="eventlocation" type="text" placeholder="Enter location" class="form-control"></textarea><br />
-						</div>
-					</div>
-					<button id="new-event-submit" class="event-btn" type="submit">submit</button>
-				</form>
+
 <!-- =======
 merge conflict ???
 			<h1>Admin Settings</h1>
@@ -218,13 +202,32 @@ merge conflict ???
 			<section id="admin-events" class="admin-section">
 				<a href="#"><h2>Events</h2></a>
 				<div class="toggle-visible">
-					<form id="new-event-form" onsubmit="return false;">
+					<!-- <form id="new-event-form" onsubmit="return false;">
 						<textarea name="eventtitle" type="text" placeholder="Enter a new event title"></textarea>
 						<textarea name="eventdate" type="datetime" placeholder="Event date (such as 2016-06-08 19:30:00)"></textarea>
 						<textarea name="eventspeakers" type="text" placeholder="Enter speaker names"></textarea>
 						<textarea name="eventlocation" type="text" placeholder="Enter location"></textarea><br />
 						<button id="new-event-submit" class="event-btn" type="submit">submit</button>
+					</form> -->
+
+					<form id="new-event-form" onsubmit="return false;" class="form-horizontal">
+						<div class="form-group row">
+							<div class="column one-fourth">
+								<textarea name="eventtitle" type="text" placeholder="Enter a new event title" class="form-control"></textarea>
+							</div>
+							<div class="column one-fourth">
+								<textarea name="eventdate" type="datetime" placeholder="Event date (such as 2016-06-08 19:30:00)" class="form-control"></textarea>
+							</div>
+							<div class="column one-fourth">
+								<textarea name="eventspeakers" type="text" placeholder="Enter speaker names" class="form-control"></textarea>
+							</div>
+							<div class="column one-fourth">
+								<textarea name="eventlocation" type="text" placeholder="Enter location" class="form-control"></textarea><br />
+							</div>
+						</div>
+						<button id="new-event-submit" class="event-btn" type="submit">submit</button>
 					</form>
+
 					<div id="all-events">
 					</div>
 				</div>
