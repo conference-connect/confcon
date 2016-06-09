@@ -75,7 +75,7 @@
 	<script id="topic-template" type="text/x-handlebars-template">
 		<article id="topic">
 			<div class="row">
-				<p class="column four-quarter"><b>{{title}}</b><br />
+				<p class="column four-quarter"><b class=topic-color-{{color}}>{{title}}</b><br />
 					<input id="{{id}}edit" class="topic-edit-btn" type="submit" value="edit">
 					<input id="{{id}}" class="topic-delete-btn" type="submit" value="delete"><p>
 			</div>
@@ -232,7 +232,15 @@
 								<textarea name="topictitle" type="text" placeholder="Enter a new topic" class="form-control"></textarea>
 							</div>
 							<div class="column one-fourth">
-								<textarea name="topiccolor" type="text" placeholder="Choose a color" class="form-control"></textarea><br />
+								<select id="topic-color-dropdown" name="topiccolor" class="form-control">
+        					<option value="red">Red</option>
+									<option value="blue">Blue</option>
+									<option value="orange">Orange</option>
+									<option value="yellow">Yellow</option>
+									<option value="brown">Brown</option>
+									<option value="purple">Purple</option>
+									<option value="green">Green</option>
+      					</select>
 							</div>
 						</div>
 						<button id="new-topic-submit" class="topic-btn" type="submit">submit</button>

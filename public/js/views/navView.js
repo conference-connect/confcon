@@ -15,6 +15,10 @@
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location = 'login.html';
+    },
+    standardColors: {
+      thing: 'that'
+
     }
 
   };
