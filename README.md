@@ -1,5 +1,22 @@
 # confcon
 
+## Installation  
+Clone the repository and run:
+
+    npm install  
+Set the following environment variables:
+
+- MONGO_URI -- should point to a mongoDB connection.  Ex:  mongodb://localhost/conference-connect
+- APP_SECRET -- a string used to generate tokens
+- PORT -- what port you would the app to run on.  The default if none is specified is 9000.  This can also be specified in the command line as an option to index.js.
+
+Then, run:
+
+    npm start
+
+
+
+
 ## Things you can do with the REST API
 
 [VALIDATE](#validate)  
@@ -621,3 +638,8 @@ __Outputs:__
 - posts\_are\_public
 
 ___
+
+
+Tests are available:
+
+    npm test

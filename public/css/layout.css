@@ -12,10 +12,16 @@ input[type="submit"]{
 }
 
 .nav-menu a {
-  padding-right: 45px;
+  padding-right: 15px;
 }
 
 /* ======== new Post ======== */
 #new-post {
   padding-top: 35px;
+}
+
+@media(min-width: 768px){
+  .nav-menu a {
+    padding-right: 30px;
+  }
 }

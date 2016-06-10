@@ -41,6 +41,7 @@ router
         return {
           id: el['_id'],
           username: el.username,
+          roles: el.roles,
           organization: el.organization};
       }));
     })
@@ -91,6 +92,11 @@ router
       User.findById(req.params.id)
         .then(result => {
           if (result) {
+            if (req.body.password) {
+              const password = req.body.password;
+              delete req.body.password;
+              result.generateHash(password);
+            }
             Object.assign(result, req.body);
             result.save()
               .then(result => res.json(result))
