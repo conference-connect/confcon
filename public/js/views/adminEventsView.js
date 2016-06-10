@@ -2,7 +2,7 @@
 
   var adminEventsView = {
     renderTemplate (event) {
-      var template = Handlebars.compile($('#event-template').text());
+      var template = Handlebars.compile($('#event-template-admin').text());
       var htmlObject = template(event);
       return htmlObject;
     },
