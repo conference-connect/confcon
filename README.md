@@ -127,7 +127,7 @@ ___
 
 <a name="deletepost"></a>  
 #### DELETE POST  
-__URL:__ /api/post/<id>  *--pass the id of the post to be deleted as the path parameter*  
+__URL:__ /api/post/\<id\>  *--pass the id of the post to be deleted as the path parameter*  
 __Method:__ DELETE  
 __Description:__ Deletes a specified message board post, returns the deleted post details.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee that created the post*    
@@ -148,7 +148,7 @@ ___
 
 <a name="updatepost"></a>  
 #### UPDATE POST  
-__URL:__ /api/post/<id>  *--pass the id of the post to be updated as the path parameter*    
+__URL:__ /api/post/\<id\>  *--pass the id of the post to be updated as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Updates the details of a message board post, returns updated post details. Whatever optional inputs are provided are the fields that will be updated. Fields that are not updated are left with their original values. It will automatically add a new entry to the edit_history array with a new timestamp.   
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee that created the post*     
@@ -189,7 +189,7 @@ ___
 
 <a name="viewuserdetail"></a>  
 #### VIEW USER DETAIL
-__URL:__ /api/user/<id>  *--pass the id of the user as the path parameter*    
+__URL:__ /api/user/\<id\>  *--pass the id of the user as the path parameter*    
 __Method:__ GET  
 __Description:__ Returns details for an specified user.  
 __Authorized roles:__ admin (all details), attendee (a censored list based on profile settings)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee to be updated to view full, uncensored details*  
@@ -249,7 +249,7 @@ ___
 
 <a name="deleteuser"></a>  
 #### DELETE USER
-__URL:__ /api/user/<id>  *--pass the id of the user to be deleted as the path parameter*    
+__URL:__ /api/user/\<id\>  *--pass the id of the user to be deleted as the path parameter*    
 __Method:__ DELETE  
 __Description:__ Deletes the specified user account. Returns the deleted user details.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee to be updated*  
@@ -273,7 +273,7 @@ ____
 
 <a name="updateuser"></a>  
 #### UPDATE USER
-__URL:__ /api/user/<id>  *--pass the id of the user to be updated as the path parameter*    
+__URL:__ /api/user/\<id\>  *--pass the id of the user to be updated as the path parameter*    
 __Method:__ PATCH      
 __Description:__ Updates a specified User account. Updates all optional fields included in the submission. Returns the updated User.    
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee to be updated*  
@@ -311,7 +311,7 @@ ___
 
 <a name="viewagenda"></a>  
 #### VIEW AGENDA
-__URL:__ /api/agenda/<id>  *--pass the id of the specified user as the path parameter*    
+__URL:__ /api/agenda/\<id\>  *--pass the id of the specified user as the path parameter*    
 __Method:__ GET  
 __Description:__ Returns the list of favorited Events (the agenda) for a specified user.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee agenda*  
@@ -331,7 +331,7 @@ ___
 
 <a name="addagendaitem"></a>  
 #### ADD AGENDA ITEM
-__URL:__ /api/agenda/<id>  *--pass the id of the specified user as the path parameter*    
+__URL:__ /api/agenda/\<id\>  *--pass the id of the specified user as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Returns the updated list of favorited Events (the agenda) for a specified user.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee agenda*  
@@ -354,7 +354,7 @@ ___
 
 <a name="deleteagendaitem"></a>  
 #### DELETE AGENDA ITEM
-__URL:__ /api/agenda/<id>  *--pass the id of the specified user as the path parameter*    
+__URL:__ /api/agenda/\<id\>  *--pass the id of the specified user as the path parameter*    
 __Method:__ DELETE    
 __Description:__ Returns the updated list of favorited Events (the agenda) for a specified user.  
 __Authorized roles:__ admin, (attendee)  *--token of user making the request must be an admin role, or possess the same id as that of the attendee agenda*  
@@ -398,7 +398,7 @@ ___
 
 <a name="vieweventdetail"></a>  
 #### VIEW EVENT DETAIL  
-__URL:__ /api/event/<id>  *--pass the id of the event as the path parameter*    
+__URL:__ /api/event/\<id\>  *--pass the id of the event as the path parameter*    
 __Method:__ GET  
 __Description:__ Returns all detailed information for a given event.  
 __Authorized roles:__ admin, attendee    
@@ -441,7 +441,7 @@ ___
 
 <a name="deleteevent"></a>  
 #### DELETE EVENT
-__URL:__ /api/event/<id>  *--pass the id of the event to be deleted as the path parameter*    
+__URL:__ /api/event/\<id\>  *--pass the id of the event to be deleted as the path parameter*    
 __Method:__ DELETE   
 __Description:__ Deletes a specified event. Returns the deleted event details.  
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
@@ -459,7 +459,7 @@ ___
 
 <a name="updateevent"></a>  
 #### UPDATE EVENT
-__URL:__ /api/event/<id>  *--pass the id of the event to be updated as the path parameter*    
+__URL:__ /api/event/\<id\>  *--pass the id of the event to be updated as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Updates a specified event. Updates all optional fields submitted. Returns the updated event details.  
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
@@ -521,7 +521,7 @@ ___
 
 <a name="deletetopic"></a>  
 #### DELETE TOPIC
-__URL:__ /api/topic/<id>  *--pass the id of the topic to be deleted as the path parameter*    
+__URL:__ /api/topic/\<id\>  *--pass the id of the topic to be deleted as the path parameter*    
 __Method:__ DELETE  
 __Description:__ Delete a specified topic. Returns the deleted topic.   
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
@@ -536,7 +536,7 @@ ___
 
 <a name="updatetopic"></a>  
 #### UPDATE TOPIC
-__URL:__ /api/topic/<id>  *--pass the id of the topic to be updated as the path parameter*    
+__URL:__ /api/topic/\<id\>  *--pass the id of the topic to be updated as the path parameter*    
 __Method:__ PATCH  
 __Description:__ Update a specified topic. It will updated whatever optional fields are provided. Returns the updated topic.   
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
