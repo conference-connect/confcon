@@ -10,6 +10,19 @@
         $('#admin-nav-link').hide();
         $('#admin').hide();
       }
+
+      // Handle changes in main navView
+      $('.nav-menu').off('click');
+      $('.nav-menu').on('click', 'a', function (e){
+        e.preventDefault();
+        var anchor = $(this).data('anchor');
+        $('.main-nav').hide();
+        $('#'+anchor).show();
+      });
+
+      // Initially hide sections except for posts
+      $('.main-nav').hide();
+      $('#posts-wrapper').show();
     },
     logout () {
       localStorage.removeItem('token');
