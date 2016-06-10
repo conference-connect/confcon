@@ -65,6 +65,8 @@
         postView.currentPage++;
         $('#currentPage').text(postView.currentPage+1);
         postView.renderPage(postView.perPage, postView.currentPage, adminFlag);
+        // Reset the topic filter drop down
+        $('#filter-topic-dropdown :nth-child(1)').prop('selected', true);
       }
     },
     prevPage(e) {
@@ -73,10 +75,12 @@
         postView.currentPage--;
         $('#currentPage').text(postView.currentPage+1);
         postView.renderPage(postView.perPage, postView.currentPage, adminFlag);
+        // Reset the topic filter drop down
+        $('#filter-topic-dropdown :nth-child(1)').prop('selected', true);
       }
     },
     currentPage: 0,
-    perPage: 10
+    perPage: 30
 
   };
 
