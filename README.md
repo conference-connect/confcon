@@ -14,6 +14,7 @@ Then, run:
 
     npm start
 
+The default user is Admin and the default password is 'password'. You are encouraged to create a new user, set it as admin, and delete Admin immediately.
 
 
 
