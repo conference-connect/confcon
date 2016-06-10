@@ -13,6 +13,7 @@
     // calendar-times-o my-agenda
 
     renderAllEvents(){
+      $('.my-agenda').hide();
       API.getAll('api/event/list', Event, function(arrayOfEvents){
         postView.populateEventSelector (arrayOfEvents);
         $('#all-events').empty();
@@ -80,14 +81,7 @@
         $('.my-agenda').hide();
         $('.all-events').show();
       });
-    },
-
-    renderEventsPage(){
-      $('.my-agenda').hide();
-      eventsView.renderAllEvents();
-      eventsView.toggleEventsAgenda();
     }
-
   };
 
   module.eventsView = eventsView;

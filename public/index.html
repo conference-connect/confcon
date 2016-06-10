@@ -461,8 +461,8 @@
 		validateToken(function(user) {
 			postView.getPostCount();
 			postView.renderPage(postView.perPage,postView.currentPage, user.admin);
-			postView.populateEventSelector();
-			eventsView.renderEventsPage();
+			eventsView.renderAllEvents();
+			eventsView.toggleEventsAgenda();
 
 			adminTopicsView.renderAllAdminTopics();
 			adminConfigView.renderAllAdminConfigs();
