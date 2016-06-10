@@ -49,19 +49,20 @@
         type: 'GET',
         headers: {token: localStorage.token}})
       .done(function(data){
-        console.log(data);
         postView.postCount = data;
       });
     },
     nextPage() {
-      if (postView.currentPage <= Math.floor(postView.postCount/postView.perPage)) {
+      if (postView.currentPage <= Math.floor(postView.postCount/postView.perPage) -1) {
         postView.currentPage++;
+        $('#currentPage').val(postView.currentPage);
         postView.renderPage(postView.perPage,postView.currentPage);
       }
     },
     prevPage() {
       if (postView.currentPage > 0) {
         postView.currentPage--;
+        $('#currentPage').val(postView.currentPage);
         postView.renderPage(postView.perPage,postView.currentPage);
       }
     },
