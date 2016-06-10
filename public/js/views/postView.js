@@ -19,7 +19,7 @@
     },
 
     // takes two parameters, posts per page, and page number
-    renderPage(perPage, page){
+    renderPage(perPage, page, isAdmin){
       // $('#new-post').hide();
       // $('#events').hide();
       // $('#my-profile').hide();
@@ -36,6 +36,8 @@
             API.delete ('/api/post/' + e.target.id, Post, callback);
           });
         });
+        // Hide delete button on posts if not Admin
+        if (!isAdmin) $('.hide-from-public').hide();
         window.userView.renderUser();
       });
     },

@@ -48,16 +48,17 @@
 					</div>
 				</div><!--end of modal window-->
 
-			<div class ="column four-fifths">
-				<p class="post-body">{{body}}</p>
-				<ul class="post-topics"></ul>
-				{{#each topics}}
-				<li data-id="{{_id}}" class="topic-color-{{color}}">{{title}}</li>
-				{{/each}}
-				<div id="post-event">{{event.title}}</div>
-				<div id="post-timestamp">Posted at: {{createdAt}}</div>
-				<input id="{{_id}}" type="submit" value="delete">
-			</div>
+				<div class ="column four-fifths">
+					<p class="post-body">{{body}}</p>
+					<div id="post-event">{{event.title}}</div>
+					<div id="post-timestamp">Posted at: {{createdAt}}</div>
+					<input class="hide-from-public" id="{{_id}}" type="submit" value="delete">
+					<ul class="post-topics">
+						{{#each topics}}
+						<li data-id="{{_id}}" class="post-topic-tag topic-color-{{color}}">{{title}}&nbsp;</li>
+						{{/each}}
+					</ul>
+				</div>
 
   	</article>
 	</script>
@@ -105,7 +106,7 @@
 	<script id="topic-template" type="text/x-handlebars-template">
 		<article id="topic">
 			<div class="row">
-				<p class="column four-quarter"><b class=topic-color-{{color}}>{{title}}</b><br />
+				<p class="column four-quarter"><b class="topic-textcolor-{{color}}">{{title}}</b><br />
 					<input id="{{id}}edit" class="topic-edit-btn" type="submit" value="edit">
 					<input id="{{id}}" class="topic-delete-btn" type="submit" value="delete"><p>
 			</div>
@@ -352,7 +353,7 @@
 	<script>
 		validateToken(function(user) {
 			postView.getPostCount();
-			postView.renderPage(postView.perPage,postView.currentPage);
+			postView.renderPage(postView.perPage,postView.currentPage, user.admin);
 
 			postView.populateEventSelector();
 			eventsView.renderAllEvents();
