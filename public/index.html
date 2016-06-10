@@ -187,7 +187,37 @@
 			<a href="#"><i id="logout" class="fa fa-sign-out" title="Logout"></i></a>
 
 		</div>
-		<h1 class="nav-logo">Conf-Con</h1>
+		<h4 class="nav-logo">Conference-Connect</h4>
+		<a href="#" data-toggle="modal" data-target="#config-modal" id="conf-logo-link"><h2 id="conf-logo"></h2></a>
+
+		<!--bootstrap modal -->
+		<div id="config-modal" class="modal fade">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h3 class="modal-title-config"></h3>
+					</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="column whole">
+							<h5 class="config-description"></h5>
+							<h5 class="config-city"></h5>
+							<h5 class="config-email"></h5>
+							<h5 class="config-phone"></h5>
+							<h5 class="config-address"></h5>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+				</div>
+				</div>
+			</div>
+		</div><!--end of modal window-->
+
+
 	</header>
 
 	<main>
