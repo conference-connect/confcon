@@ -9,6 +9,10 @@ float icons right
 
 */
 
+#conf-logo {
+  color: #00CDCD;
+}
+
 /* ======== user modal ======== */
 .user-website,
 .user-email,
