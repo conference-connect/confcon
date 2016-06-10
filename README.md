@@ -638,3 +638,8 @@ __Outputs:__
 - posts\_are\_public
 
 ___
+
+
+Tests are available:
+
+    npm test
