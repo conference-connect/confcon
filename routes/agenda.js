@@ -42,7 +42,7 @@ router
     });
 })
 
-.delete('/:id', bodyParser, (req, res, next) => {
+.patch('/delete/:id', bodyParser, (req, res, next) => {
   User.findByIdAndUpdate(
     req.params.id,
     {$pull: {agenda: req.body.event_id}},
