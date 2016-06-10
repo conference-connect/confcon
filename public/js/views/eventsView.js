@@ -11,6 +11,7 @@
     //get all events
     renderAllEvents(){
       API.getAll('api/event/list', Event, function(arrayOfEvents){
+        postView.populateEventSelector (arrayOfEvents);
         $('#all-events').empty();
         arrayOfEvents.forEach(function(event){
           event.date = moment(event.date).format('HH:mm on MM-DD-YY');
