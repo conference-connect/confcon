@@ -22,23 +22,23 @@
 
     //agenda control
     addToAgenda(){
-      $('.agenda-btn-handler').on('click', '.agenda-btn', function(e){
+      $('.agenda-btn-handler').on('click', '.add-agenda-btn', function(e){
         e.preventDefault();
         var eventId = $(this).attr('data');
-
         var userId = window.userView.userId();
         var url = '/api/agenda/' + userId;
-        console.log(url);
+
         API.patch(url, {'event_id':eventId}, Event, function(agendaArray){
           console.log(agendaArray);
+          //TODO change cal btn to cal_check when added to agenda
         });
+        $(this).children('i').removeClass('fa-calendar-plus-o').addClass('fa-calendar-check-o');
       });
 
-      //TODO change cal btn to cal_check when added to agenda
-      //TODO set up agenda view controls
     },
 
     renderAgenda(){
+      //TODO set up agenda view controls
       //API call --> get logged in user's agenda: GET users/:id
     }
   };
