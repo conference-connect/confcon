@@ -20,10 +20,13 @@ Scheduling is a huge problem (but not in our MVP)
 
 
 ## Proposed Solution (summary)
-
+Single-page app providing communication amongst conference hosts and attendees,
 
 ## Scope (features list)
-
+- Posts.  User contributed data, may associate with topics and events.
+- Events: Admin generated data, users may select events to attend and associate events with posts
+- Topics: Admin generated data, users may flag posts with specific topics
+- Agenda: User generated data, from events a user chooses to select
 
 ## Milestones
 Up until first alpha release and date
@@ -38,7 +41,7 @@ Up until first alpha release and date
 - 10-Fri:
 
 ## Strategy
-1. Create a chat-style message board in which conference attendees' posts appear in a single location but are easily filtered by topics of interest.
+1. Create a chat-style message board in which conference attendees' posts appear in a single location but are easily filtered by topics of interest.  
 ### Operations
 -Master message board of posts
 -Message board is filterable by topic
@@ -47,13 +50,13 @@ Up until first alpha release and date
 -User can return to past posts and edit/delete their content
 
 ## Strategy
-2. API endpoints can be used by a host organization to build a custom UI in addition to using our application's built-in UI.
+2. API endpoints can be used by a host organization to build a custom UI in addition to using our application's built-in UI.  
 ### Operations
 -API is clearly documented for ease of adaptation
 -Test suite for API is included for ease of use
 
 ## Strategy
-3. Conference schedule with favoriting capabilities
+3. Conference schedule with favoriting capabilities  
 ## Operations
 -Master schedule with succinct event data
 -Users can add or remove events from a list of favorites
