@@ -61,7 +61,7 @@
     },
     nextPage(e) {
       e.preventDefault();
-      if (postView.currentPage < postView.numPages) {
+      if (postView.currentPage < postView.numPages-1) {
         postView.currentPage++;
         $('#currentPage').text(postView.currentPage+1);
         postView.renderPage(postView.perPage, postView.currentPage, adminFlag);
