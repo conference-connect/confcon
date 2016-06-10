@@ -26,12 +26,12 @@
       $('.agenda-btn-handler').on('click', '.agenda-btn', function(e){
         e.preventDefault();
         var eventId = $(this).attr('data');
-        var userId = userView.userId();
 
-        var url = '/api/users/:' + userId;
+        var userId = window.userView.userId();
+        var url = '/api/agenda/:' + userId;
 
-        API.patch(url, eventId, User, function(agendaArray){
-          
+        API.patch(url, {event_id: eventId}, Event, function(agendaArray){
+          console.log(agendaArray);
         });
       });
 
