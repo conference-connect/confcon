@@ -70,8 +70,8 @@
 
   };
 
-  $('#next-page').click(nextPage);
-  $('#prev-page').click(prevPage);
+  $('#next-page').click(postView.nextPage);
+  $('#prev-page').click(postView.prevPage);
 
   $('#new-post-submit').click(function () {
     var user = JSON.parse(localStorage.user);
