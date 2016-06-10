@@ -25,7 +25,7 @@ router
       .lean()
       .sort({createdAt: -1})
       .limit(req.params.perPage)
-      .skip(page)
+      .skip(page * req.params.perPage)
       .then(results => {
         if (results.length > 0) res.json(results);
         else next({code: 404,error:'no posts found'});

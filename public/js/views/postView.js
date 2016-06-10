@@ -19,7 +19,7 @@
     },
 
     // takes two parameters, posts per page, and page number
-    renderPage(perPage, page, isAdmin){
+    renderPage(perPage, page){
       // $('#new-post').hide();
       // $('#events').hide();
       // $('#my-profile').hide();
@@ -29,6 +29,7 @@
         arrayOfPosts.reverse();
         arrayOfPosts.forEach(function(post){
           post.createdAt = moment(post.createdAt).format('HH:mm on MM-DD-YY');
+          $('#currentPage').text(postView.currentPage+1);
           $('#all-posts').append(postView.renderPostTemplate(post));
           $(`#${post._id}`).on('click', function(e){
             e.preventDefault();
@@ -36,8 +37,6 @@
             API.delete ('/api/post/' + e.target.id, Post, callback);
           });
         });
-        // Hide delete button on posts if not Admin
-        if (!isAdmin) $('.hide-from-public').hide();
         window.userView.renderUser();
       });
     },
@@ -52,19 +51,24 @@
         headers: {token: localStorage.token}})
       .done(function(data){
         postView.postCount = data;
+        postView.numPages = Math.ceil(postView.postCount/postView.perPage);
+        $('#numPages').text(postView.numPages);
       });
+
     },
-    nextPage() {
-      if (postView.currentPage <= Math.floor(postView.postCount/postView.perPage) -1) {
+    nextPage(e) {
+      e.preventDefault();
+      if (postView.currentPage < postView.numPages) {
         postView.currentPage++;
-        $('#currentPage').val(postView.currentPage);
+        $('#currentPage').text(postView.currentPage+1);
         postView.renderPage(postView.perPage,postView.currentPage);
       }
     },
-    prevPage() {
+    prevPage(e) {
+      e.preventDefault();
       if (postView.currentPage > 0) {
         postView.currentPage--;
-        $('#currentPage').val(postView.currentPage);
+        $('#currentPage').text(postView.currentPage+1);
         postView.renderPage(postView.perPage,postView.currentPage);
       }
     },
@@ -88,11 +92,11 @@
       event: postView.dom.form.postEventSelector.value
     };
     $('#new-post-form').find('textarea').val('');
+    postView.postCount++;
     function callback() {postView.renderPage(postView.perPage,postView.currentPage); }
     API.post('api/post/', data, Post, callback);
   });
 
-  //TODO add filter by topics
   //TODO add user contact info
 
   function getSelectValues(select) {
