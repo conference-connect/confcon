@@ -27,10 +27,12 @@
             e.preventDefault();
             // Hide the edit button when tapped
             $(e.target).hide();
+
             // Show edit form
             var $begin = $('<form id=\'edit-user-form\' onsubmit=\'return false; class=\'form-horizontal\'></form>');
             var $groupRow = $('<div class=\'form-group row\'></div>');
             $begin.append($groupRow);
+            $groupRow.append('<textarea name=\'userroles\' type=\'text\' class=\'form-control\' placeholder=\'add "admin" for full privileges\'>' + user.roles + '</textarea>');
             $groupRow.append('<textarea name=\'userusername\' type=\'text\' class=\'form-control\'>' + user.username + '</textarea><br />');
             $groupRow.append('<button data-id="' + user.id + '" class=\'edit-user-submit\' class=\'user-btn\' type=\'submit\'>update</button>');
             $groupRow.append('<button class=\'edit-user-cancel\' class=\'user-btn\' type=\'submit\'>cancel</button>');
@@ -44,7 +46,8 @@
           e.preventDefault();
           if ($(e.target).hasClass('edit-user-submit')){
             var data = {
-              username: adminUsersView.editform.userusername.value
+              username: adminUsersView.editform.userusername.value,
+              roles: adminUsersView.editform.userroles.value ? [adminUsersView.editform.userroles.value] : []
             };
             const path = '/users/' + $(e.target).data('id');
             API.patch(path, data, User, adminUsersView.renderAllAdminUsers);
