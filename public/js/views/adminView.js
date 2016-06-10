@@ -11,8 +11,6 @@
       // Initially have section hidden
       $('.toggle-visible').toggle();
     }
-
-
   };
 
   module.adminView = adminView;
