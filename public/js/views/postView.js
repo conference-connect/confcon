@@ -43,10 +43,35 @@
       form: document.getElementById('new-post-form').elements,
       $pse: $('#postEventSelector')
     },
+    getPostCount() {
+      $.ajax({
+        url: '/api/post/postcount',
+        type: 'GET',
+        headers: {token: localStorage.token}})
+      .done(function(data){
+        console.log(data);
+        postView.postCount = data;
+      });
+    },
+    nextPage() {
+      if (postView.currentPage <= Math.floor(postView.postCount/postView.perPage)) {
+        postView.currentPage++;
+        postView.renderPage(postView.perPage,postView.currentPage);
+      }
+    },
+    prevPage() {
+      if (postView.currentPage > 0) {
+        postView.currentPage--;
+        postView.renderPage(postView.perPage,postView.currentPage);
+      }
+    },
     currentPage: 0,
     perPage: 10
 
   };
+
+  $('#next-page').click(nextPage);
+  $('#prev-page').click(prevPage);
 
   $('#new-post-submit').click(function () {
     var user = JSON.parse(localStorage.user);
@@ -64,8 +89,8 @@
     API.post('api/post/', data, Post, callback);
   });
 
-  //DONE add filter by topics
-  //DONE add user contact info
+  //TODO add filter by topics
+  //TODO add user contact info
 
   function getSelectValues(select) {
     var result = [];

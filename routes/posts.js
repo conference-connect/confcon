@@ -33,6 +33,13 @@ router
 
       .catch(err => next(err));
   })
+  .get('/postcount', bodyParser, (req, res, next) => {
+    Post.find()
+      .then(results => {
+        res.json(results.length);
+      })
+      .catch(err => next(err));
+  })
   .post('/', bodyParser, (req, res, next) => {
     new Post(req.body).save()
       .then(result => res.json(result))
