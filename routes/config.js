@@ -10,7 +10,7 @@ function configToReturn(configData){
     name: configData.name,
     year: configData.year,
     city: configData.city,
-    description: configData.descrition,
+    description: configData.description,
     contact_email: configData.contact_email,
     contact_phone: configData.contact_phone,
     contact_address: configData.contact_address,

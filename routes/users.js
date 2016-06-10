@@ -41,6 +41,7 @@ router
         return {
           id: el['_id'],
           username: el.username,
+          roles: el.roles,
           organization: el.organization};
       }));
     })

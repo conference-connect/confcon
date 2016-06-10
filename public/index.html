@@ -5,11 +5,16 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Conference-Connect</title>
 
-  <link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Varela+Round' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="lib/font-awesome.min.css">
-  <link rel="stylesheet" href="lib/pills.min.css">
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+	<!-- local link for dev -->
+	<link rel="stylesheet" href="lib/bootstrap.min.css" type="text/css">
+	<!-- -->
+	<!-- CDN link for deployment
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" type="text/css">
+	-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Varela+Round" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="lib/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="lib/pills.min.css" type="text/css">
 
   <link rel="stylesheet" href="css/base.css">
 	<link rel="stylesheet" href="css/layout.css">
@@ -123,49 +128,49 @@
 	</script>
 
 	<script id="config-template" type="text/x-handlerbars-template">
-	<article id="config">
-	<form id="edit-config" onsubmit="return false;" class="form-horizontal">
+		<article id="config">
+			<form id="edit-config" onsubmit="return false;" class="form-horizontal">
 
-		<div class="form-group row">
-			<div class="column one-third">
-				<label for="name" class="sr-only">{{name}}</label>
-				<input name="name" class="form-control" placeholder="Conference Name" value="{{name}}">
-			</div>
-			<div class="column one-third">
-				<label for="year" class="sr-only">{{year}}</label>
-				<input name="year" class="form-control" placeholder="Year" value="{{year}}">
-			</div>
-			<div class="column one-third">
-				<label for="city" class="sr-only">{{city}}</label>
-				<input name="city" class="form-control" placeholder="City" value="{{city}}">
-			</div>
-		</div>
+				<div class="form-group row">
+					<div class="column one-third">
+						<label for="name" class="sr-only">{{name}}</label>
+						<input name="name" class="form-control" placeholder="Conference Name" value="{{name}}">
+					</div>
+					<div class="column one-third">
+						<label for="year" class="sr-only">{{year}}</label>
+						<input name="year" class="form-control" placeholder="Year" value="{{year}}">
+					</div>
+					<div class="column one-third">
+						<label for="city" class="sr-only">{{city}}</label>
+						<input name="city" class="form-control" placeholder="City" value="{{city}}">
+					</div>
+				</div>
 
-		<div class="form-group row">
-			<div class="column one-third">
-				<label for="contact_email" class="sr-only">{{contact_email}}</label>
-				<input name="contact_email" class="form-control" placeholder="Email" value="{{contact_email}}">
-			</div>
-			<div class="column one-third">
-				<label for="contact_phone" class="sr-only">{{contact_phone}}</label>
-				<input name="contact_phone" class="form-control" placeholder="Phone" value="{{contact_phone}}">
-			</div>
-			<div class="column one-third">
-				<label for="contact_address" class="sr-only">{{contact_address}}</label>
-				<input name="contact_address" class="form-control" placeholder="Address" value="{{contact_address}}">
-			</div>
-		</div>
+				<div class="form-group row">
+					<div class="column one-third">
+						<label for="contact_email" class="sr-only">{{contact_email}}</label>
+						<input name="contact_email" class="form-control" placeholder="Email" value="{{contact_email}}">
+					</div>
+					<div class="column one-third">
+						<label for="contact_phone" class="sr-only">{{contact_phone}}</label>
+						<input name="contact_phone" class="form-control" placeholder="Phone" value="{{contact_phone}}">
+					</div>
+					<div class="column one-third">
+						<label for="contact_address" class="sr-only">{{contact_address}}</label>
+						<input name="contact_address" class="form-control" placeholder="Address" value="{{contact_address}}">
+					</div>
+				</div>
 
-		<div class="form-group row">
-			<div class="column whole">
-				<label for="description" class="sr-only">{{description}}</label>
-				<textarea name="description" class="form-control" placeholder="Conference description">{{description}}</textarea>
-			</div>
-		</div>
+				<div class="form-group row">
+					<div class="column whole">
+						<label for="description" class="sr-only">{{description}}</label>
+						<textarea name="description" class="form-control" placeholder="Conference description">{{description}}</textarea>
+					</div>
+				</div>
 
-		<button id="edit-config-button">Submit</button>
-	</form>
-	</article>
+				<button id="edit-config-button">Submit</button>
+			</form>
+		</article>
 	</script>
 
 </head>
@@ -182,7 +187,37 @@
 			<a href="#"><i id="logout" class="fa fa-sign-out" title="Logout"></i></a>
 
 		</div>
-		<h1 class="nav-logo">Conf-Con</h1>
+		<h4 class="nav-logo">Conference-Connect</h4>
+		<a href="#" data-toggle="modal" data-target="#config-modal" id="conf-logo-link"><h2 id="conf-logo"></h2></a>
+
+		<!--bootstrap modal -->
+		<div id="config-modal" class="modal fade">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h3 class="modal-title-config"></h3>
+					</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="column whole">
+							<h5 class="config-description"></h5>
+							<h5 class="config-city"></h5>
+							<h5 class="config-email"></h5>
+							<h5 class="config-phone"></h5>
+							<h5 class="config-address"></h5>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+				</div>
+				</div>
+			</div>
+		</div><!--end of modal window-->
+
+
 	</header>
 
 	<main>
@@ -390,31 +425,37 @@
 		<h5>© Team dav^3</h5>
 	</footer>
 
+	<!-- CDN links for deployment
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	-->
 
-  <script src="./lib/moment.min.js" type="text/javascript"></script>
-	<script src="./lib/jquery-2.2.4.min.js" type="text/javascript"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script src="./lib/handlebars.js" type="text/javascript"></script>
-  <script src="./js/models/apiCall.js" type="text/javascript"></script>
-	<script src="./js/models/constructors.js" type="text/javascript"></script>
-  <script src="./js/views/postView.js" type="text/javascript"></script>
-	<script src="./js/views/adminEventsView.js" type="text/javascript"></script>
-	<script src="./js/views/adminTopicsView.js" type="text/javascript"></script>
-	<script src="./js/views/adminUsersView.js" type="text/javascript"></script>
-	<script src="./js/views/adminConfigView.js" type="text/javascript"></script>
-	<script src="./js/views/userView.js" type="text/javascript"></script>
-	<script src="./js/views/adminView.js" type="text/javascript"></script>
-	<script src="./js/auth.js" type="text/javascript"></script>
-	<script src="./js/views/navView.js" type="text/javascript"></script>
-	<script src="./js/views/eventsView.js" type="text/javascript"></script>
+	<!-- Local links for dev -->
+  <script src="/lib/moment.min.js" type="text/javascript"></script>
+	<script src="/lib/jquery-2.2.4.min.js" type="text/javascript"></script>
+	<script src="/lib/handlebars.min.js" type="text/javascript"></script>
+	<script src="/lib/bootstrap.min.js" type="text/javascript"></script>
+	<!-- -->
+
+  <script src="/js/models/apiCall.js" type="text/javascript"></script>
+	<script src="/js/models/constructors.js" type="text/javascript"></script>
+  <script src="/js/views/postView.js" type="text/javascript"></script>
+	<script src="/js/views/adminEventsView.js" type="text/javascript"></script>
+	<script src="/js/views/adminTopicsView.js" type="text/javascript"></script>
+	<script src="/js/views/adminUsersView.js" type="text/javascript"></script>
+	<script src="/js/views/adminConfigView.js" type="text/javascript"></script>
+	<script src="/js/views/userView.js" type="text/javascript"></script>
+	<script src="/js/views/adminView.js" type="text/javascript"></script>
+	<script src="/js/views/navView.js" type="text/javascript"></script>
+	<script src="/js/views/eventsView.js" type="text/javascript"></script>
+	<script src="/js/auth.js" type="text/javascript"></script>
 	<script>
 		validateToken(function(user) {
 			postView.getPostCount();
 			postView.renderPage(postView.perPage,postView.currentPage, user.admin);
-
-			postView.populateEventSelector();
 			eventsView.renderAllEvents();
-
 			adminTopicsView.renderAllAdminTopics();
 			adminConfigView.renderAllAdminConfigs();
 			adminView.renderAdmin(user.admin);
