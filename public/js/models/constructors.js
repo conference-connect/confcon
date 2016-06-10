@@ -24,8 +24,15 @@
     }, this);
   }
 
+  function Config(obj){
+    Object.keys(obj).forEach(function(el){
+      this[el] = obj[el];
+    }, this);
+  }
+
   module.User = User;
   module.Post = Post;
   module.Event = Event;
   module.Topic = Topic;
+  module.Config = Config;
 })(window);

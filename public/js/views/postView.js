@@ -1,5 +1,7 @@
 (function (module){
 
+  var adminFlag = false;
+
   var postView = {
     renderPostTemplate (post) {
       var template = Handlebars.compile($('#post-template').text());
@@ -10,6 +12,7 @@
       var optionTag = '';
       postView.dom.$pse.empty();
       var template = Handlebars.compile($('#post-selector-template').text());
+      postView.dom.$pse.append(template({title: ''}));
       API.getAll('api/event/list', Event, function(events) {
         events.forEach(function (e) {
           optionTag = template(e);
@@ -18,8 +21,10 @@
       });
     },
 
-    // takes two parameters, posts per page, and page number
-    renderPage(perPage, page){
+    // takes three parameters, posts per page, page number and isAdmin
+    renderPage(perPage, page, isAdmin){
+      adminFlag = isAdmin;
+
       // $('#new-post').hide();
       // $('#events').hide();
       // $('#my-profile').hide();
@@ -33,7 +38,7 @@
           $('#all-posts').append(postView.renderPostTemplate(post));
           $(`#${post._id}`).on('click', function(e){
             e.preventDefault();
-            function callback() {postView.renderPage(postView.perPage,postView.currentPage); }
+            function callback() {postView.renderPage(postView.perPage,postView.currentPage, isAdmin); }
             API.delete ('/api/post/' + e.target.id, Post, callback);
           });
         });
@@ -61,7 +66,7 @@
       if (postView.currentPage < postView.numPages) {
         postView.currentPage++;
         $('#currentPage').text(postView.currentPage+1);
-        postView.renderPage(postView.perPage,postView.currentPage);
+        postView.renderPage(postView.perPage, postView.currentPage, adminFlag);
       }
     },
     prevPage(e) {
@@ -69,7 +74,7 @@
       if (postView.currentPage > 0) {
         postView.currentPage--;
         $('#currentPage').text(postView.currentPage+1);
-        postView.renderPage(postView.perPage,postView.currentPage);
+        postView.renderPage(postView.perPage, postView.currentPage, adminFlag);
       }
     },
     currentPage: 0,
@@ -85,15 +90,26 @@
 
     const arrayOfTopics = getSelectValues(postView.dom.form.newposttopics) || [];
 
+    var eventValue = postView.dom.form.postEventSelector.value;
+    if (eventValue === '') eventValue = null;
+
     var data = {
       body: postView.dom.form.postmsg.value,
       author: user.id,
       topics: arrayOfTopics,
-      event: postView.dom.form.postEventSelector.value
+      event: eventValue
     };
     $('#new-post-form').find('textarea').val('');
+
     postView.postCount++;
-    function callback() {postView.renderPage(postView.perPage,postView.currentPage); }
+    function callback() {postView.renderPage(postView.perPage, postView.currentPage, adminFlag); }
+    $('#topics-drop-down').children().prop('selected', false);
+    function callback() {
+      postView.renderPage(postView.perPage, postView.currentPage, adminFlag);
+      $('.main-nav').hide();
+      $('#posts-wrapper').show();
+    }
+
     API.post('api/post/', data, Post, callback);
   });
 

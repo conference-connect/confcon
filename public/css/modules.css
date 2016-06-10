@@ -52,15 +52,17 @@ float icons right
   padding-right: .5em;
   margin-right: .5em;
   margin-left: .5em;
+  margin-top: .5em;
 }
+
 .post-controls {
   text-align: center;
 }
+
 .post-controls > span {
   font-size: 1.8em;
   position:relative;
   top: -6px
-
 }
 
 /* ======== events/my Agenda ======== */
