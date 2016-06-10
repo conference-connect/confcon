@@ -61,5 +61,19 @@ userSchema.methods.generateHash = function(password) {
 userSchema.methods.compareHash = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
+const User = module.exports = mongoose.model ('User', userSchema);
 
-module.exports = mongoose.model ('User', userSchema);
+// create new Admin user if there are no users in the collection
+const newAdmin = function() {
+  const adminData = { username: 'Admin', firstName:'Admin', lastName: 'User', roles: ['admin']};
+  const user = new User(adminData);
+  user.generateHash('password');
+  user.save();
+};
+
+User.find()
+  .then(users => {
+    if (users.length === 0) {
+      newAdmin();
+    }
+  });
