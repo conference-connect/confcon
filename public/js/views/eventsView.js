@@ -34,6 +34,8 @@
         });
       });
 
+      //TODO change cal btn to cal_check when added to agenda
+      //TODO set up agenda view controls
     },
 
     renderAgenda(){
