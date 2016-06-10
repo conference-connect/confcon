@@ -2,12 +2,15 @@
 
 ## Things you can do with the REST API
 
+[VALIDATE](#validate)  
 [SIGN UP](#signup)  
 [SIGN IN](#signin)  
 
 *The following endpoints require a valid token, provided with sign up or sign in*
 
 [VIEW POSTS](#viewposts)  
+[VIEW POSTS PAGINATED](#viewpostspaginated)  
+[POSTCOUNT](#postcount)  
 [CREATE POST](#createpost)  
 [DELETE POST](#deletepost)  
 [UPDATE POST](#updatepost)  
@@ -37,9 +40,26 @@
 
 ___
 
+<a name="validate"></a>  
+#### VALIDATE  
+__URL:__ /validate  
+__Method:__ GET
+__Description:__ returns true if a user is valid, and true if the user is an admin.
+__Authorized roles:__ N/A  
+__Inputs:__
+
+- token *-- Supplied in the header.*  
+
+__Outputs:__
+
+- valid: boolean
+- admin: boolean
+
+___
+
 <a name="signup"></a>  
 #### SIGN UP  
-__URL:__ /api/signup  
+__URL:__ /signup  
 __Method:__ POST
 __Description:__ Creates a new user and returns a token. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
 __Authorized roles:__ N/A  
@@ -60,7 +80,7 @@ ___
 
 <a name="signin"></a>  
 #### SIGN IN
-__URL:__ /api/signin  
+__URL:__ /signin  
 __Method:__ POST  
 __Description:__ If the login returns a successful authentication, a token is returned. The token must be included in all API calls in the header as the VALUE for the KEY 'token'.  
 __Authorized roles:__ N/A  
@@ -81,7 +101,7 @@ ___
 #### VIEW POSTS
 __URL:__ /api/post/list  
 __Method:__ GET  
-__Description:__ Returns posts in reverse chronological order, includes all posts unless input has an optional filter parameter.  
+__Description:__ Returns posts in reverse chronological order, includes all posts.
 __Authorized roles:__ attendee, admin  
 
 
@@ -96,6 +116,39 @@ __Outputs:__
 - edit_history  *--array of datetimes of edits, an empty array if has never been edited*
 - creation_date  *--timestamp of creation date*
 
+___  
+
+<a name="viewpostspaginated"></a>  
+#### VIEW POSTS PAGINATED
+__URL:__ /api/post/list/[perPage]/[page]  
+__Method:__ GET  
+__Description:__ Returns posts in reverse chronological order, includes [perPage] posts, offset by [page].  
+__Authorized roles:__ attendee, admin  
+
+
+__Outputs:__  
+
+- id
+- body  *--the full text of the post*
+- user  *--name of poster*
+- topics  *--all associated topics*
+- event  *--name of associated event*
+- link  *--HTTP link associated with post*
+- edit_history  *--array of datetimes of edits, an empty array if has never been edited*
+- creation_date  *--timestamp of creation date*
+
+___
+<a name="postcount"></a>  
+#### POSTCOUNT
+__URL:__ /api/postcount  
+__Method:__ GET  
+__Description:__ Returns the total number of posts  
+__Authorized roles:__ attendee, admin  
+
+
+__Outputs:__  
+
+- integer
 ___
 
 <a name="createpost"></a>  
@@ -206,44 +259,6 @@ __Outputs:__
 - profile_image
 - profile_website
 - profile\_twitter\_username
-
-___
-
-<a name="createuser"></a>  
-#### CREATE USER
-__URL:__ /api/user  
-__Method:__ POST    
-__Description:__ Returns details for the new User account including the id.    
-__Authorized roles:__ admin  *--token of user making the request must be an admin role*  
-__Inputs:__   
-
-- username
-- password  *--The password is encrypted before saved to database.*
-- email (OPTIONAL)
-- email_hidden (OPTIONAL)  *--default is true*
-- roles (OPTIONAL)  
-- organization (OPTIONAL)
-- agenda (OPTIONAL)  *--an array of Event ids*
-- profile_description (OPTIONAL)
-- profile_image (OPTIONAL)
-- profile_website (OPTIONAL)
-- profile\_twitter\_username (OPTIONAL)
-- profile\_twitter\_hidden (OPTIONAL)  *--default is true*
-
-__Outputs:__  
-
-- id
-- username
-- organization
-- email
-- email_hidden
-- roles
-- agenda
-- profile_description
-- profile_image
-- profile_website
-- profile\_twitter\_username
-- profile\_twitter\_hidden
 
 ___
 
@@ -484,7 +499,7 @@ ___
 
 <a name="viewtopic"></a>
 #### VIEW TOPICS  
-__URL:__ /api/topic  
+__URL:__ /api/topic/list  
 __Method:__ GET  
 __Description:__ Returns available topics.  
 __Authorized roles:__ admin *--token of user making the request must be an admin role*  
@@ -553,7 +568,7 @@ __Outputs:__
 
 ___
 
-<a name="updateconfig"></a>  
+<a name="viewconfig"></a>  
 #### VIEW CONFIG
 __URL:__ /api/config  
 __Method:__ GET   
