@@ -14,6 +14,7 @@
 
     renderAllEvents(){
       $('.my-agenda').hide();
+
       API.getAll('api/event/list', Event, function(arrayOfEvents){
         postView.populateEventSelector (arrayOfEvents);
         $('#all-events').empty();
@@ -21,6 +22,7 @@
           event.date = moment(event.date).format('HH:mm on MM-DD-YY');
           $('#events').append(eventsView.renderTemplate(event));
         });
+        $('.agenda-btn').children('i').addClass('fa-calendar-plus-o').removeClass('fa-calendar');
         eventsView.addToAgenda();
       });
     },
@@ -31,11 +33,11 @@
         var userId = window.userView.userId();
         var eventId = $(this).attr('data');
         var url = '/api/agenda/' + userId;
-        // var target = this;
+        var target = this;
 
         API.patch(url, {'event_id':eventId}, Event, function(agendaArray){
           console.log(agendaArray);
-          // $(target).children('i').removeClass('fa-calendar-plus-o').addClass('fa-calendar-check-o');
+          $(target).children('i').removeClass('fa-calendar-plus-o').addClass('fa-calendar-check-o');
           //TODO how to get checkmark icon to persist on page reload.
         });
       });
@@ -66,6 +68,7 @@
           event.date = moment(event.date).format('HH:mm on MM-DD-YY');
           $('#my-agenda').append(eventsView.renderTemplate(event));
         });
+        $('.agenda-btn').children('i').addClass('fa-calendar-times-o').removeClass('fa-calendar');
         eventsView.removeFromAgenda();
       });
     },
@@ -75,11 +78,13 @@
         $('.my-agenda').show();
         $('.all-events').hide();
         eventsView.renderAgenda();
+        $('.agenda-btn').children('i').addClass('fa-calendar-times-o').removeClass('fa-calendar');
       });
 
       $('#all-events-btn').on('click', function(){
         $('.my-agenda').hide();
         $('.all-events').show();
+        $('.agenda-btn').children('i').addClass('fa-calendar-plus-o').removeClass('fa-calendar-times-o');
       });
     }
   };
