@@ -34,7 +34,6 @@
         API.patch(url, {'event_id':eventId}, Event, function(agendaArray){
           console.log(agendaArray);
           // $(target).children('i').removeClass('fa-calendar-plus-o').addClass('fa-calendar-check-o');
-          //DONE change cal btn to cal_check when added to agenda
           //TODO how to get checkmark icon to persist on page reload.
         });
       });
@@ -50,20 +49,20 @@
         API.patch(url, {'event_id': eventId}, Event, function(data){
           console.log(data);
         });
+        $(this).parent().parent().remove();
       });
     },
 
     renderAgenda(){
       var userId = window.userView.userId();
       var url = '/api/agenda/' + userId;
+
       API.getAll(url, Event, function(agendaArray){
-        console.log(agendaArray);
         $('#my-agenda').empty();
+        console.log(agendaArray);
         agendaArray.forEach(function(event){
           event.date = moment(event.date).format('HH:mm on MM-DD-YY');
           $('#my-agenda').append(eventsView.renderTemplate(event));
-          // $('#my-agenda').children().children().children().children('i').addClass('.delete-agenda-btn').removeClass('.add-agenda-btn');
-          //change the buttons here
         });
         eventsView.removeFromAgenda();
       });
@@ -73,20 +72,21 @@
       $('#my-agenda-btn').on('click', function(){
         $('.my-agenda').show();
         $('.all-events').hide();
+        eventsView.renderAgenda();
       });
 
       $('#all-events-btn').on('click', function(){
-        $('.all-events').hide();
-        $('all-agenda').show();
+        $('.my-agenda').hide();
+        $('.all-events').show();
       });
     },
 
     renderEventsPage(){
-      eventsView.renderAllEvents();
-      eventsView.renderAgenda();
-      eventsView.toggleEventsAgenda();
       $('.my-agenda').hide();
+      eventsView.renderAllEvents();
+      eventsView.toggleEventsAgenda();
     }
+
   };
 
   module.eventsView = eventsView;
