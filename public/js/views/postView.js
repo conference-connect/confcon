@@ -38,7 +38,7 @@
           $('#all-posts').append(postView.renderPostTemplate(post));
           $(`#${post._id}`).on('click', function(e){
             e.preventDefault();
-            function callback() {postView.renderPage(postView.perPage,postView.currentPage, isAdmin); }
+            function callback() {postView.renderPage(postView.perPage, postView.currentPage, isAdmin); }
             API.delete ('/api/post/' + e.target.id, Post, callback);
           });
         });
@@ -102,7 +102,6 @@
     $('#new-post-form').find('textarea').val('');
 
     postView.postCount++;
-    function callback() {postView.renderPage(postView.perPage, postView.currentPage, adminFlag); }
     $('#topics-drop-down').children().prop('selected', false);
     function callback() {
       postView.renderPage(postView.perPage, postView.currentPage, adminFlag);
