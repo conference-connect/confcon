@@ -4,7 +4,7 @@ const Post = require('../models/post');
 
 router
   .get('/list', bodyParser, (req, res, next) => {
-    Post.find({})
+    Post.find()
       .populate('author', '_id username')
       .populate('topics')
       .populate('event')
@@ -14,6 +14,30 @@ router
         else next({code: 404,error:'no posts found'});
       })
 
+      .catch(err => next(err));
+  })
+  .get('/list/:perPage/:page', bodyParser, (req, res, next) => {
+    const page = Math.max(0, req.params.page);
+    Post.find()
+      .populate('author', '_id username')
+      .populate('topics')
+      .populate('event')
+      .lean()
+      .sort({createdAt: -1})
+      .limit(req.params.perPage)
+      .skip(page)
+      .then(results => {
+        if (results.length > 0) res.json(results);
+        else next({code: 404,error:'no posts found'});
+      })
+
+      .catch(err => next(err));
+  })
+  .get('/postcount', bodyParser, (req, res, next) => {
+    Post.find()
+      .then(results => {
+        res.json(results.length);
+      })
       .catch(err => next(err));
   })
   .post('/', bodyParser, (req, res, next) => {
