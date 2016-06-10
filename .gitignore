@@ -23,7 +23,7 @@
 logs
 *.log
 npm-debug.log*
-log/*
+log/access.log
 
 # Runtime data
 pids
