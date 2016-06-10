@@ -27,9 +27,9 @@
         var eventId = $(this).attr('data');
 
         var userId = window.userView.userId();
-        var url = '/api/agenda/:' + userId;
-
-        API.patch(url, {event_id: eventId}, Event, function(agendaArray){
+        var url = '/api/agenda/' + userId;
+        console.log(url);
+        API.patch(url, {'event_id':eventId}, Event, function(agendaArray){
           console.log(agendaArray);
         });
       });
