@@ -248,11 +248,15 @@
 		</section>
 
 	  <section id="events-wrapper" class="main-nav">
-			<section id="events" class="agenda-btn-handler">
-				<h1>Events</h1>
-				<button id="all-events-btn"><i class="fa fa-calendar"></i>&nbsp;All Events</button>
-				<button id="my-agenda-btn"><i class="fa fa-calendar-check-o"></i>&nbsp;My Agenda</button>
+			<section id="events" class="agenda-btn-handler all-events">
+				<h1 class="all-events">Events</h1>
+				<button id="my-agenda-btn" class="all-events"><i class="fa fa-calendar-check-o"></i>&nbsp;My Agenda</button>
 	  	</section>
+			<h1 class="my-agenda">My Agenda</h1>
+			<button id="all-events-btn" class="my-agenda"><i class="fa fa-calendar"></i>&nbsp;All Events</button>
+			<section id="my-agenda" class="my-agenda">
+
+			</section>
 		</section>
 
 		<section id="my-profile" class="main-nav">
@@ -415,7 +419,7 @@
 			postView.renderPage(postView.perPage,postView.currentPage, user.admin);
 
 			postView.populateEventSelector();
-			eventsView.renderAllEvents();
+			eventsView.renderEventsPage();
 
 			adminTopicsView.renderAllAdminTopics();
 			adminConfigView.renderAllAdminConfigs();
