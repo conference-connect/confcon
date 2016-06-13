@@ -80,7 +80,7 @@
       }
     },
     currentPage: 0,
-    perPage: 30
+    perPage: 8
 
   };
 
