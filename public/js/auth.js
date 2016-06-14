@@ -18,6 +18,8 @@ function getToken() {
   });
 }
 
+// why not have validateToken return a Promise?
+// try not to mix callback and Promises
 function validateToken (callback) {
   getToken()
     .then(callback, function(err) {
@@ -26,5 +28,5 @@ function validateToken (callback) {
       window.location = 'login.html';
     });
 }
-
+// use a file or inline comment ignore
 validateToken.shutuplint = true;

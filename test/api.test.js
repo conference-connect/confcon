@@ -28,4 +28,11 @@ describe('End-to-End REST API test', () => {
 
   });
 
+  // thin on api tests!
+  // Focus on golden path tests to hit major API endpoints.
+  // In some ways, using POSTMAN can be a hinderance in that it makes
+  // it easy to try endpoints, but no permanant artifact (a test) remains.
+  // Next time, consider writing test rather than using POSTMAN - and use 
+  // POSTMAN for quick exploration if outcome is unclear. 
+
 });

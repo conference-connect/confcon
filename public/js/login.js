@@ -1,3 +1,4 @@
+// nice IIFE!
 (function (module){
 
   var login = {

@@ -1,5 +1,9 @@
 # confcon
 
+REST API instructions are good. If I were a developer joining the team, README would seem thin:
+* Is there a specific way to set up environment variables?
+* Are there coding conventions?
+
 ## Installation  
 Clone the repository and run:
 
@@ -15,7 +19,6 @@ Then, run:
     npm start
 
 The default user is Admin and the default password is 'password'. You are encouraged to create a new user, set it as admin, and delete Admin immediately.
-
 
 
 ## Things you can do with the REST API

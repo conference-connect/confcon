@@ -14,11 +14,14 @@ router
         else next({code: 404,error:'no posts found'});
       })
 
+      // these can all just use:
+      //.catch(next)
       .catch(err => next(err));
   })
   .get('/list/:perPage/:page', bodyParser, (req, res, next) => {
     const page = Math.max(0, req.params.page);
     Post.find()
+      // nice use of paging!
       .populate('author', '_id username')
       .populate('topics')
       .populate('event')
@@ -47,32 +50,35 @@ router
   })
   .patch('/:id', bodyParser, (req, res, next) => {
     if (req.params.id) {
+      // avoid unnecessary nesting by leveraging promise chain...
+      // consolidate common validation.
       Post.findById(req.params.id)
         .populate('author')
-        .then(result => {
-          if (result) {
-            if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1)) {
-              new Post(Object.assign(result, req.body)).save()
-                .then(result => res.json(result))
-                .catch(err => next(err));
-            } else next({code: 403,error:'only post authors and admins may edit posts.'});
-          } else next({code: 404,error:'post not found'});
+        // use semantic variable names when known
+        .then(post => {
+          validatePostEdit( post, req.user );
+          return new Post(Object.assign(post, req.body)).save();
         })
-        .catch(err => next(err));
-    }
+        .then(post => res.json(post))
+        .catch(next);
+    } // or no response ???
   })
   .delete('/:id', bodyParser, (req, res, next) => {
     Post.findById(req.params.id)
-      .then(result => {
-        if (result) {
-          if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1)) {
-            Post.findByIdAndRemove(req.params.id)
-              .then(result => res.json(result))
-              .catch(err => next(err));
-          } else next({code: 403,error:'only post authors and admins may delete posts.'});
-        } else next({code: 404,error:'post not found'});
+      .then(post => {
+        // now we can use same validation rules
+        validatePostEdit( post, req.user );
+        return Post.findByIdAndRemove(req.params.id);
       })
-      .catch(err => next(err));
+      .then(post => res.json(post))
+      .catch(next);
   });
+
+function validatePostEdit( post, user ) {
+  if (!post) throw {code: 404,error:'post not found'};
+  if (post.author._id !== user.id || user.roles.indexOf('admin') === -1) {
+    throw {code: 403,error:'only post authors and admins may edit posts.'};
+  }
+}
 
 module.exports = router;

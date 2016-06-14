@@ -20,7 +20,8 @@ function configToReturn(configData){
 
 router
   .get('/', bodyParser, (req, res, next) => {
-    Config.findOne({config_id: 1})
+    Config.findOne({config_id: 1}) //hard-coded id? just one conf :)
+    .lean()
     .then( configData => {
       res.json(configToReturn(configData));
     })

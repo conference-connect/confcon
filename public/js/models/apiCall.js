@@ -1,4 +1,8 @@
 (function(module){
+  // nice encapsulation of service calls (api calls)
+  // you might refactor some common stuff like
+  // creating the ajax argument and some of the 
+  // failure handling into some functions
 
   var API = {
     getOne (url, Item, callback) {

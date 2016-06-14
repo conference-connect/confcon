@@ -23,14 +23,14 @@ const userSchema = new Schema({
     type:[String]
   },
   organization: {
-    type:String
+    type: String
   },
   agenda:[{
-    type:Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Event'
   }],
   profile_email: {
-    type:String
+    type: String
   },
   profile_description:{
     type: String
@@ -42,7 +42,7 @@ const userSchema = new Schema({
     type: String
   },
   profile_twitter:{
-    type:String
+    type: String
   },
   hidden_email: {
     type: Boolean,
@@ -72,8 +72,9 @@ const newAdmin = function() {
 };
 
 User.find()
+  .count()
   .then(users => {
-    if (users.length === 0) {
+    if (!users) {
       newAdmin();
     }
   });

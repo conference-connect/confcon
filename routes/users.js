@@ -3,6 +3,8 @@ const User = require('../models/user');
 const ensureRole = require('../lib/ensureRole');
 const bodyParser = require('body-parser').json();
 
+// again, work on not nesting so deeply and using the promise chain instead.
+
 router
   .post('/:userId/roles/:role', ensureRole('admin'), (req, res, next) => {
     User.findById(req.params.userId)
