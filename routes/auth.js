@@ -6,11 +6,11 @@ const ensureAuth = require('../lib/ensureAuth');
 
 router
   .get('/validate', ensureAuth, (req,res) => {
-    const message = {
-      valid: true
-    };
-    if (req.user.roles.indexOf('admin') > -1) message.admin = true;
-    res.json(message);
+    res.json({
+      valid: true,
+      admin: req.user.roles.indexOf('admin') > -1
+    });
+    // (unless you only wanted to add .admin prop if they are admin...)
   })
   .post('/signup', bodyParser, (req, res, next) => {
     const username = req.body.username;
@@ -24,8 +24,9 @@ router
     }
 
     User.findOne({username})
-      .then( exists => {
-        if (exists) {
+      .count()
+      .then( count => {
+        if (count) {
           return res.status(500).json({
             msg: 'Unable to create username',
             reason: 'Username already exists.  Please choose another.'

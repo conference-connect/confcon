@@ -1,5 +1,8 @@
-(function(module){
+// these don't really do anything. Just stick with POJO's
 
+(function(module){
+  
+  //don't use el unless you mean DOM element
   function Event(obj){
     Object.keys(obj).forEach(function(el){
       this[el] = obj[el];

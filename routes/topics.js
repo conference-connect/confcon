@@ -32,9 +32,9 @@ router
             new Topic(Object.assign(result, req.body)).save()
               .then(result => res.json(topicToReturn(result)))
               .catch(err => next(err));
-          }
+          } // else: let the server not respond!!!
         });
-    }
+    } // else: let the server not respond!!!
 
   })
   .delete('/:id', bodyParser, (req, res, next) => {
