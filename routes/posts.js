@@ -50,28 +50,26 @@ router
       Post.findById(req.params.id)
         .populate('author')
         .then(result => {
-          if (result) {
-            if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1)) {
-              new Post(Object.assign(result, req.body)).save()
-                .then(result => res.json(result))
-                .catch(err => next(err));
-            } else next({code: 403,error:'only post authors and admins may edit posts.'});
-          } else next({code: 404,error:'post not found'});
+          if (result)
+            if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1))
+              return new Post(Object.assign(result, req.body)).save();
+            else next({code: 403,error:'only post authors and admins may edit posts.'});
+          else next({code: 404,error:'post not found'});
         })
+        .then(result => res.json(result))
         .catch(err => next(err));
     }
   })
   .delete('/:id', bodyParser, (req, res, next) => {
     Post.findById(req.params.id)
       .then(result => {
-        if (result) {
-          if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1)) {
-            Post.findByIdAndRemove(req.params.id)
-              .then(result => res.json(result))
-              .catch(err => next(err));
-          } else next({code: 403,error:'only post authors and admins may delete posts.'});
-        } else next({code: 404,error:'post not found'});
+        if (result)
+          if ((result.author._id === req.user.id) || (req.user.roles.indexOf('admin') > -1))
+            return Post.findByIdAndRemove(req.params.id);
+          else next({code: 403,error:'only post authors and admins may delete posts.'});
+        else next({code: 404,error:'post not found'});
       })
+      .then(result => res.json(result))
       .catch(err => next(err));
   });
 

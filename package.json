@@ -5,9 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "env $(cat .env) gulp test",
-    "dev": "env $(cat .env) nodemon index.js",
-    "lint": "gulp lint"
+    "test": "mocha --recursive",
+    "test:watch": "mocha --recursive -w",
+    "test:int": "mocha test/integration",
+    "test:int:watch": "mocha -w test/integration",
+    "test:unit": "mocha test/unit",
+    "test:unit:watch": "mocha -w test/unit",
+    "pretest": "npm run lint",
+    "lint": "eslint **/*.js"
   },
   "repository": {
     "type": "git",
