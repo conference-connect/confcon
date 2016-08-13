@@ -1,0 +1,27 @@
+{
+  "name": "confcon",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "APP_SECRET": {
+      "required": true
+    },
+    "MONGO_URI": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
