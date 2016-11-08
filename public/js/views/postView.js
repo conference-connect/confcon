@@ -27,7 +27,10 @@
       // $('#events').hide();
       // $('#my-profile').hide();
 
-      API.getAll('api/post/list/'+perPage+'/'+page, Post, function(arrayOfPosts){
+      // TODO: The perPage endpoint is not returning anything.
+      // Defaulting to the /list endpoint is a temoporary fix 
+      // API.getAll('api/post/list/'+perPage+'/'+page, Post, function(arrayOfPosts){
+      API.getAll('api/post/list/', Post, function(arrayOfPosts){
         $('#all-posts').empty();
         arrayOfPosts.reverse();
         arrayOfPosts.forEach(function(post){
