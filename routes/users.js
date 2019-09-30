@@ -36,45 +36,45 @@ router
 
   .get('/list', ensureRole('admin'), (req, res, next) => {
     User.find()
-    .then( users => {
-      res.json(users.map( el =>{
-        return {
-          id: el['_id'],
-          username: el.username,
-          roles: el.roles,
-          organization: el.organization};
-      }));
-    })
-    .catch( err => {
-      next({code: 500,
-        msg: 'unable to return users',
-        error: err
+      .then( users => {
+        res.json(users.map( el =>{
+          return {
+            id: el['_id'],
+            username: el.username,
+            roles: el.roles,
+            organization: el.organization};
+        }));
+      })
+      .catch( err => {
+        next({code: 500,
+          msg: 'unable to return users',
+          error: err
+        });
       });
-    });
   })
 
   .get('/:id', (req, res, next) =>{
     User.findById(req.params.id)
-    .lean()
-    .then(result => {
-      delete result.password;
-      if(result._id != req.user.id && req.user.roles.indexOf('admin') === -1 ){
-        if(result.hidden.email && result.profile_email) delete result.profile_email;
-        if(result.hidden.twitter && result.profile_twitter) delete result.profile_twitter;
-        delete result.agenda;
-        delete result.roles;
-      }
+      .lean()
+      .then(result => {
+        delete result.password;
+        if (result._id != req.user.id && req.user.roles.indexOf('admin') === -1 ) {
+          if (result.hidden.email && result.profile_email) delete result.profile_email;
+          if (result.hidden.twitter && result.profile_twitter) delete result.profile_twitter;
+          delete result.agenda;
+          delete result.roles;
+        }
 
-      return result;
-    })
-    .then(publicUser => res.json(publicUser))
-    .catch(err => {
-      next({
-        code: 400,
-        msg: 'user not found',
-        error: err
+        return result;
+      })
+      .then(publicUser => res.json(publicUser))
+      .catch(err => {
+        next({
+          code: 400,
+          msg: 'user not found',
+          error: err
+        });
       });
-    });
   })
 
   // .patch('/:id', bodyParser, ensureRole('admin'), (req, res, next) => {
@@ -108,14 +108,14 @@ router
 
   .delete('/:id', ensureRole('admin'), (req, res, next) => {
     User.findByIdAndRemove(req.params.id)
-    .then(result => res.json(result))
-    .catch(err => {
-      next({
-        code: 500,
-        msg: 'unable to delete user',
-        error: err
+      .then(result => res.json(result))
+      .catch(err => {
+        next({
+          code: 500,
+          msg: 'unable to delete user',
+          error: err
+        });
       });
-    });
 
   });
 
