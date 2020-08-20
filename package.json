@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/conference-connect/confcon#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.15.1",
     "bootstrap": "^4.3.1",
     "express": "^4.13.4",
