@@ -39,7 +39,7 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "grant-express": "^4.6.3",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.7.1",
     "morgan": "^1.7.0",
     "pills": "^1.0.1",
